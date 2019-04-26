@@ -639,11 +639,16 @@
     },
     {
       "files": [
-        "css/base/mozilla-share-cta.less",
-        "css/newsletter/fxnewsletter-subscribe.less",
-        "css/firefox/all.less"
+        "css/firefox/all.scss"
       ],
       "name": "firefox_all"
+    },
+    {
+      "files": [
+        "css/newsletter/fxnewsletter-subscribe.less",
+        "css/firefox/all-old.less"
+      ],
+      "name": "firefox_all_old"
     },
     {
       "files": [
@@ -1452,11 +1457,17 @@
     },
     {
       "files": [
-        "js/base/mozilla-share-cta.js",
-        "js/base/mozilla-pager.js",
-        "js/firefox/all-downloads.js"
+        "protocol/js/protocol-modal.js",
+        "js/firefox/all.js"
       ],
       "name": "firefox_all"
+    },
+    {
+      "files": [
+        "js/base/mozilla-pager.js",
+        "js/firefox/all-old.js"
+      ],
+      "name": "firefox_all_old"
     },
     {
       "files": [

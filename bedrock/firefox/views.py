@@ -243,6 +243,13 @@ def send_to_device_ajax(request):
 
 
 def all_downloads(request, platform, channel):
+    locale = l10n_utils.get_locale(request)
+
+    if lang_file_is_active('firefox/all-2019', locale):
+        template_name = 'firefox/all.html'
+    else:
+        template_name = 'firefox/all-old.html'
+
     if platform is None:
         platform = 'desktop'
     if platform == 'desktop':
@@ -293,7 +300,7 @@ def all_downloads(request, platform, channel):
                                                                                    next_version, query)
             context['test_builds_next'] = firefox_desktop.get_filtered_test_builds('esr_next',
                                                                                    next_version, query)
-    return l10n_utils.render(request, 'firefox/all.html', context)
+    return l10n_utils.render(request, template_name, context)
 
 
 def detect_channel(version):

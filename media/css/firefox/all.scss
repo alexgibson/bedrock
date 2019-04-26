@@ -1,0 +1,154 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+$font-path: '/media/fonts';
+$image-path: '/media/protocol/img';
+
+@import '../../protocol/css/includes/lib';
+@import '../../protocol/css/templates/main-with-sidebar';
+@import '../../protocol/css/components/sidebar-menu';
+@import '../../protocol/css/components/modal';
+
+
+.no-js {
+    .c-selection,
+    .c-browser-help {
+        display: none;
+    }
+
+    .mzp-c-sidemenu {
+        background: transparent;
+    }
+}
+
+.js {
+    #all-downloads {
+        display: none;
+    }
+}
+
+.c-intro {
+    margin-bottom: $spacing-xl;
+
+    @media #{$mq-lg} {
+        @include grid-two-thirds;
+    }
+}
+
+
+@media #{$mq-lg} {
+    .js {
+        .c-intro {
+            width: auto;
+        }
+
+        @supports (display:grid) {
+            .c-page-header {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-column-gap: $layout-md;
+            }
+        }
+    }
+}
+
+.c-page-title {
+    @include text-display-lg;
+}
+
+.c-download {
+    display: none;
+
+    .mzp-c-button-download-privacy-link {
+        display: none;
+    }
+
+    .js & {
+        display: block;
+    }
+}
+
+.mzp-l-sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: $spacing-md;
+}
+
+.mzp-c-sidemenu-main {
+    @include text-body-lg;
+
+    a:link,
+    a:visited {
+        color: $color-black;
+    }
+}
+
+.c-channel {
+    margin-bottom: $layout-lg;
+}
+
+.c-channel-name {
+    @include text-display-md;
+}
+
+.c-locale-alpha {
+    @include text-display-sm;
+}
+
+.c-locale-label {
+    @include text-body-md;
+
+    span {
+        font-weight: normal;
+        display: block;
+    }
+}
+
+.c-locale-list {
+    .c-locale-list-item {
+        padding: $spacing-md 0;
+        margin: 0;
+        border-bottom: 2px solid $color-gray-20;
+    }
+}
+
+.c-download-list {
+    columns: 2;
+    margin: $spacing-md 0 $spacing-sm;
+
+    li {
+        margin-bottom: $spacing-sm;
+    }
+}
+
+.c-browser-help {
+    dt {
+        @include text-display-sm;
+        font-weight: bold;
+    }
+
+    dd {
+        margin-bottom: 1.5em;
+    }
+}
+
+// Compact modal
+.mzp-c-modal.l-compact {
+    .c-modal-title {
+        display: none;
+    }
+
+    .mzp-c-modal-inner {
+        @media #{$mq-md} {
+            max-width: $content-md;
+            margin: 0 auto;
+        }
+
+        .mzp-c-modal-overlay-contents {
+            padding: $spacing-lg;
+            background: $color-white;
+            color: $color-black;
+        }
+    }
+}

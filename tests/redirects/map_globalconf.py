@@ -1318,4 +1318,7 @@ URLS = flatten((
 
     # Issue 8644
     url_test('/builders{,/}', 'https://builders.mozilla.community/'),
+
+    # issue 8420
+    url_test('/firefox/dedicated-profiles/', 'https://support.mozilla.org/kb/dedicated-profiles-firefox-installation'),
 ))

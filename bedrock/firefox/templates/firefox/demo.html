@@ -1,0 +1,35 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "firefox/base/base-protocol.html" %}
+
+{% block page_title %}{{ ftl('firefox-demo-page-title') }}{% endblock %}
+
+{% block page_desc %}{{ ftl('firefox-demo-page-desc') }}{% endblock %}
+
+{% block content %}
+<main class="mzp-l-content">
+  <h1>{{ ftl('firefox-demo-page-heading') }}</h1>
+
+  <p>{{ ftl('firefox-demo-page-tagline', url=url('firefox.privacy.index'), trackers='2000') }}</p>
+
+  {{ download_firefox(alt_copy=ftl('download-button-download-now')) }}
+</main>
+
+
+<style>
+  main {
+    text-align: center;
+  }
+
+  main h1 {
+    margin: 50px 0;
+  }
+
+  main p {
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+  }
+</style>
+{% endblock %}

@@ -155,4 +155,6 @@ urlpatterns = (
 
     # Issue 8536
     page('firefox/retention/thank-you', 'firefox/retention/thank-you.html'),
+
+    page('firefox/demo', 'firefox/demo.html', ftl_files='firefox/demo'),
 )

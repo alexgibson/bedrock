@@ -16,6 +16,11 @@ case $1 in
     BROWSER_VERSION=latest
     PLATFORM="Windows 10"
     ;;
+  edge)
+    BROWSER_NAME=edge
+    BROWSER_VERSION=latest
+    PLATFORM="Windows 10"
+    ;;
   ie)
     BROWSER_NAME="internet explorer"
     PLATFORM="Windows 10"
@@ -38,7 +43,7 @@ case $1 in
     set +x
     echo "Missing or invalid required argument"
     echo
-    echo "Usage: run_integration_tests.sh <chrome|firefox|ie{,6,7}|headless>"
+    echo "Usage: run_integration_tests.sh <chrome|firefox|ie{,9}|headless>"
     exit 1
     ;;
 esac

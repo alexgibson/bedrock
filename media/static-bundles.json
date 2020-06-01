@@ -1437,6 +1437,12 @@
         "js/base/mozilla-fxa-product-button-init.js"
       ],
       "name": "sync"
+    },
+    {
+      "files": [
+        "js/libs/html5shiv.js"
+      ],
+      "name": "html5-shiv"
     }
   ]
 }

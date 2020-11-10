@@ -28,8 +28,6 @@
 {% set referrals = '?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=firefox-browsers' %}
 {% set _entrypoint = 'mozilla.org-firefox-browsers' %}
 
-{% include '/includes/sticky-promo.html' %}
-
 {% block content %}
 <main role="main">
 
@@ -140,6 +138,8 @@
   </div>
 </main>
 {% endblock %}
+
+{% include '/includes/sticky-promo.html' %}
 
 {% block js %}
   {{ js_bundle('firefox-browsers-products') }}

@@ -244,7 +244,9 @@
 </main>
 {% endblock %}
 
-{% include '/includes/sticky-promo.html' %}
+{% block sticky_promo %}
+  {% include '/includes/sticky-promo.html' %}
+{% endblock %}
 
 {% block js %}
   {{ js_bundle('firefox-master') }}

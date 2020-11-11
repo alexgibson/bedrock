@@ -4,6 +4,11 @@
 
 @import '../../../protocol/css/includes/lib';
 
+.mzp-c-footer {
+    position: relative;
+    z-index: 11;
+}
+
 .mzp-c-footer.mzp-t-firefox {
     background-color: $color-ink-80;
 }

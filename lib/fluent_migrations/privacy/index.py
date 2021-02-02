@@ -88,18 +88,6 @@ privacy-index-data-privacy-principles = {COPY(index, "Data Privacy Principles",)
                     }
                 )
             ),
-            FTL.Message(
-                id=FTL.Identifier("privacy-index-mozilla-is-an-open-source"),
-                value=REPLACE(
-                    index,
-                    "Mozilla is an open source project with a mission to improve your Internet experience. This is a driving force behind our data privacy practices. <a href=\"%(link)s\">Read More</a>",
-                    {
-                        "%%": "%",
-                        "%(link)s": VARIABLE_REFERENCE("link"),
-                        "Mozilla": TERM_REFERENCE("brand-name-mozilla"),
-                    }
-                )
-            ),
         ] + transforms_from("""
 privacy-index-transparency-report = {COPY(index, "Transparency Report",)}
 """, index=index) + [
@@ -152,15 +140,23 @@ privacy-index-transparency-report = {COPY(index, "Transparency Report",)}
                 )
             ),
             FTL.Message(
-                id=FTL.Identifier("privacy-index-our-ongoing-work-on-privacy"),
+                id=FTL.Identifier("privacy-index-mozilla-websites-communications"),
                 value=REPLACE(
                     index,
-                    "Our ongoing work on privacy is covered by the <a href=\"%(blog)s\">Privacy &amp; Data Safety Blog</a> and information about our ongoing work is available on <a href=\"%(wiki)s\"> Mozilla’s privacy team wiki</a>.",
+                    "Mozilla Websites, Communications &amp; Cookies",
                     {
-                        "%%": "%",
-                        "%(blog)s": VARIABLE_REFERENCE("blog"),
-                        "%(wiki)s": VARIABLE_REFERENCE("wiki"),
                         "Mozilla": TERM_REFERENCE("brand-name-mozilla"),
+                    }
+                )
+            ),
+            FTL.Message(
+                id=FTL.Identifier("privacy-index-firefox-fire-tv"),
+                value=REPLACE(
+                    index,
+                    "Firefox for Fire TV",
+                    {
+                        "Firefox": TERM_REFERENCE("brand-name-firefox"),
+                        "Fire TV": TERM_REFERENCE("brand-name-fire-tv"),
                     }
                 )
             ),

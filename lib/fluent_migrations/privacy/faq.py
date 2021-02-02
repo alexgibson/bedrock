@@ -258,23 +258,13 @@ privacy-faq-what-about-my-account-data = {COPY(faq, "What about my account data?
 privacy-faq-we-are-big-believers-of-data = {COPY(faq, "We are big believers of data minimization and not asking for things we don't need.",)}
 """, faq=faq) + [
             FTL.Message(
-                id=FTL.Identifier("privacy-faq-you-dont-need-an-account-to-updated"),
+                id=FTL.Identifier("privacy-faq-you-dont-need-an-account-to"),
                 value=REPLACE(
                     faq,
                     "You don't need an account to use Firefox. <a href=\"%(accounts)s\">Accounts</a> are required to sync data across devices, but we only ask you for an email address. We don't want to know things like your name, address, birthday and phone number.",
                     {
                         "%%": "%",
                         "%(accounts)s": VARIABLE_REFERENCE("accounts"),
-                        "Firefox": TERM_REFERENCE("brand-name-firefox"),
-                    }
-                )
-            ),
-            FTL.Message(
-                id=FTL.Identifier("privacy-faq-you-dont-need-an-account-to"),
-                value=REPLACE(
-                    faq,
-                    "You don't need an account to use Firefox. Accounts are required to sync data across devices, but we only ask you for an email address. We don't want to know things like your name, address, birthday and phone number.",
-                    {
                         "Firefox": TERM_REFERENCE("brand-name-firefox"),
                     }
                 )

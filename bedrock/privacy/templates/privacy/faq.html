@@ -144,11 +144,7 @@
           {{ ftl('privacy-faq-we-are-big-believers-of-data') }}
         </p>
         <p>
-        {% if l10n_has_tag('firefox-accounts-112018') %}
-          {{ ftl('privacy-faq-you-dont-need-an-account-to-updated', accounts=url('firefox.accounts')) }}
-        {% else %}
-          {{ ftl('privacy-faq-you-dont-need-an-account-to') }}
-        {%- endif -%}
+          {{ ftl('privacy-faq-you-dont-need-an-account-to', accounts=url('firefox.accounts')) }}
         </p>
       </dd>
       <dt>

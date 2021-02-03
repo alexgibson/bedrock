@@ -192,6 +192,19 @@ privacy-faq-that-documentation-is-gobbledygook = {COPY(faq, "That documentation 
                     }
                 )
             ),
+        ] + transforms_from("""
+privacy-faq-the-first-is-what-we-call-technical = {COPY(faq, 'The first is what we call "technical data." This is data about the browser itself, such as the operating system it is running on and information about errors or crashes.',)}
+""", faq=faq) + [
+            FTL.Message(
+                id=FTL.Identifier("privacy-faq-the-second-is-what-we-call-interaction"),
+                value=REPLACE(
+                    faq,
+                    'The second is what we call "interaction data." This is data about an individual\'s engagement with Firefox, such as the number of tabs that were open, the status of user preferences, or number of times certain browser features were used, such as screenshots or containers. For example,  we collect this data in terms of the back button, that arrow in the upper left corner of your browser that lets you navigate back to a previous webpage in a way that shows us someone used the back button, but doesn’t tell what specific webpages are accessed.',
+                    {
+                        "Firefox": TERM_REFERENCE("brand-name-firefox"),
+                    }
+                )
+            ),
             FTL.Message(
                 id=FTL.Identifier("privacy-faq-do-you-collect-more-data-in"),
                 value=REPLACE(

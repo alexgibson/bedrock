@@ -7,51 +7,236 @@ $image-path: '/media/protocol/img';
 
 @import '../../../protocol/css/includes/lib';
 
+//* -------------------------------------------------------------------------- */
+// Conditional states
+
+.js-join-waitlist,
+.js-country-list {
+    display: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.vpn-not-available {
+    .js-try-vpn {
+        display: none !important; /* stylelint-disable-line declaration-no-important */
+    }
+
+    .js-country-list {
+        display: block !important; /* stylelint-disable-line declaration-no-important */
+    }
+
+    .js-join-waitlist {
+        display: inline-block !important; /* stylelint-disable-line declaration-no-important */
+    }
+}
 
 //* -------------------------------------------------------------------------- */
-// Base styles
+// VPN Nav CTA
 
-body {
-    background-color: $color-marketing-gray-10;
+.vpn-nav-cta {
+    .mzp-c-cta-link {
+        @include text-body-sm;
+        display: block;
+        margin-top: $spacing-lg;
+
+        &:link,
+        &:visited {
+            color: $color-black;
+            text-decoration: none;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+
+    @media #{$mq-md} {
+        @include bidi(((text-align, left, right),));
+        margin-top: 0;
+
+        .mzp-c-cta-link {
+            @include bidi(((margin-left, $spacing-md, margin-right, 0),));
+            display: inline;
+        }
+    }
 }
 
 //* -------------------------------------------------------------------------- */
 // VPN button
 
-.vpn-button {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    background-color: $color-white;
-    border: solid 2px $color-black;
-    box-shadow: 8px 8px 0 #6a57dc;
-    color: $color-black;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 32px;
+main .mzp-c-button.mzp-t-xl {
+    @include font-size(18px);
     margin-bottom: $spacing-lg;
-    padding: 16px 32px;
-    position: relative;
-    text-decoration: none;
-    transition: background-color .15s ease, color .15s ease;
+}
 
-    &:hover,
-    &:active,
-    &:focus {
-        background-color: $color-black;
-        color: $color-white;
+//* -------------------------------------------------------------------------- */
+// Content Well component
+
+.vpn-content-well {
+    margin: 0 auto $spacing-xl;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    z-index: 0;
+
+    .vpn-content-well-image {
+        img {
+            height: auto;
+            max-width: 480px;
+            width: 100%;
+        }
     }
 
-    &.t-dark {
-        background-color: $color-black;
-        color: $color-white;
+    .vpn-content-well-copy {
+        @include bidi(((text-align, left, right),));
+    }
 
-        &:hover,
-        &:active,
-        &:focus {
-            background-color: $color-white;
-            color: $color-black;
+    .vpn-content-well-title {
+        @include text-title-md;
+        margin-bottom: $spacing-xl;
+    }
+
+    .vpn-content-well-desc {
+        @include text-body-xl;
+        color: $color-marketing-gray-90;
+    }
+
+    .vpn-content-well-copy,
+    .vpn-content-well-image-wrapper {
+        padding: $spacing-lg $spacing-xl;
+    }
+
+    &:nth-child(odd) {
+        outline: 4px solid $color-black;
+        border-radius: 4px;
+
+        &:after {
+            background: $color-marketing-gray-20;
+            border-radius: 4px;
+            content: '';
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: -1;
         }
+    }
+
+    @media #{$mq-md} {
+        clear: both;
+        margin-bottom: $layout-lg;
+
+        .vpn-content-well-copy,
+        .vpn-content-well-image-wrapper {
+            margin-top: 0;
+            padding: ($spacing-xl * 2) $spacing-2xl;
+            width: calc(50% - (#{$spacing-2xl} * 2));
+        }
+
+        &:nth-child(odd) {
+            &:after {
+                left: $spacing-xl;
+                top: $spacing-xl;
+            }
+        }
+
+        &.vpn-content-well-left-half {
+            .vpn-content-well-copy {
+                @include bidi((
+                    (float, left, right),
+                ));
+            }
+
+            .vpn-content-well-image-wrapper {
+                @include bidi((
+                    (float, right, left),
+                ));
+            }
+        }
+
+        &.vpn-content-well-right-half {
+            .vpn-content-well-copy {
+                @include bidi((
+                    (float, right, left),
+                ));
+            }
+
+            .vpn-content-well-image-wrapper {
+                @include bidi((
+                    (float, left, right),
+                ));
+            }
+        }
+    }
+
+    @supports(display: grid) {
+        overflow: visible;
+
+        @media #{$mq-md} {
+            @include grid-column-gap($spacing-xl);
+            display: grid;
+
+            .vpn-content-well-copy {
+                @include flexbox;
+                align-items: center;
+            }
+
+            &.vpn-content-well-left-half {
+                .vpn-content-well-copy {
+                    grid-column: 1;
+                    grid-row: 1;
+                    width: auto;
+                }
+
+                .vpn-content-well-image-wrapper {
+                    grid-column: 2;
+                    grid-row: 1;
+                    width: auto;
+                }
+            }
+
+            &.vpn-content-well-left-half {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            &.vpn-content-well-right-half {
+                .vpn-content-well-copy {
+                    grid-column: 2;
+                    grid-row: 1;
+                    width: auto;
+                }
+
+                .vpn-content-well-image-wrapper {
+                    grid-column: 1;
+                    grid-row: 1;
+                    width: auto;
+                }
+            }
+
+            &.vpn-content-well-right-half {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media #{$mq-lg} {
+            @include grid-column-gap($spacing-2xl);
+        }
+    }
+}
+
+//* -------------------------------------------------------------------------- */
+// Legal Footer Links
+
+.vpn-footer-list {
+    margin-top: $spacing-xl;
+
+    a:link,
+    a:visited {
+        @include text-body-xs;
+        color: $color-black;
     }
 }

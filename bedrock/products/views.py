@@ -15,34 +15,36 @@ from lib import l10n_utils
 from lib.l10n_utils.fluent import ftl
 
 
-def vpn_allowed_countries():
-    countries = settings.VPN_ALLOWED_COUNTRY_CODES
+def vpn_fixed_price_countries():
+    countries = settings.VPN_FIXED_PRICE_COUNTRY_CODES
     return '|%s|' % '|'.join(cc.lower() for cc in countries)
 
 
 def vpn_default_monthly_price():
-    return settings.VPN_PRICE_MONTHLY['US']['monthly']
+    return settings.VPN_PRICE_MONTHLY_DEFAULT
 
 
 @require_safe
 def vpn_landing_page(request):
+    ftl_files = ['products/vpn/landing', 'products/vpn/shared']
     template_name = 'products/vpn/landing.html'
 
     context = {
-        'allowed_countries': vpn_allowed_countries(),
+        'fixed_price_countries': vpn_fixed_price_countries(),
         'default_monthly_price': vpn_default_monthly_price(),
     }
 
-    return l10n_utils.render(request, template_name, context)
+    return l10n_utils.render(request, template_name, context, ftl_files=ftl_files)
 
 
 @require_safe
 def vpn_invite_page(request):
+    ftl_files = ['products/vpn/landing', 'products/vpn/shared']
     locale = l10n_utils.get_locale(request)
     newsletter_form = VPNWaitlistForm(locale)
 
     return l10n_utils.render(
-        request, 'products/vpn/invite.html', {'newsletter_form': newsletter_form}
+        request, 'products/vpn/invite.html', {'newsletter_form': newsletter_form}, ftl_files=ftl_files
     )
 
 

@@ -6,10 +6,10 @@
 
 {% extends "products/vpn/base.html" %}
 
-{% block page_title_full %}Mozilla VPN: Protect Your Entire Device{% endblock %}
+{% block page_title_full %}{{ ftl('vpn-landing-page-title') }}{% endblock %}
 {% block page_title_suffix %}{% endblock %}
 
-{% block page_desc %}Use the Mozilla VPN for full-device protection for all apps. With servers in 30+ countries, you can connect to anywhere, from anywhere.{% endblock %}
+{% block page_desc %}{{ ftl('vpn-landing-page-desc', countries=30) }}{% endblock %}
 
 {% block body_id %}mozilla-vpn-landing{% endblock %}
 
@@ -24,9 +24,9 @@
 {% block site_header %}
   {% with
     custom_nav_cta=vpn_nav_cta(
-      link_text='Try Mozilla VPN',
-      alt_link_text='Join the Waitlist',
-      sign_in_link_text='Sign In',
+      link_text=ftl('vpn-shared-subscribe-link'),
+      alt_link_text=ftl('vpn-shared-waitlist-link'),
+      sign_in_link_text=ftl('vpn-shared-sign-in-link'),
       utm_source=_utm_source,
       utm_campaign=_utm_campaign,
     )
@@ -41,15 +41,15 @@
     <div class="mzp-l-content mzp-t-content-xl">
       <div class="vpn-hero-container">
         <div class="vpn-hero-body">
-          <h1 class="vpn-hero-title">Mozilla VPN</h1>
-          <h2 class="vpn-hero-subtitle">Security you can rely on. A name you can trust.</h2>
+          <h1 class="vpn-hero-title">{{ ftl('vpn-shared-product-name') }}</h1>
+          <h2 class="vpn-hero-subtitle">{{ ftl('vpn-landing-hero-sub-heading') }}</h2>
           <div class="vpn-hero-desc">
-            <p>A VPN from the trusted pioneer in internet privacy.</p>
+            <p>{{ ftl('vpn-landing-hero-desc') }}</p>
 
             {{ vpn_subscribe_link(
               entrypoint=_utm_source,
-              link_text='Try Mozilla VPN',
-              class_name='vpn-button try js-try-vpn',
+              link_text=ftl('vpn-shared-subscribe-link'),
+              class_name='mzp-c-button mzp-t-xl js-try-vpn',
               optional_parameters={
                 'utm_campaign': _utm_campaign
               },
@@ -60,10 +60,10 @@
               }
             ) }}
 
-            {{ join_waitlist_button(link_text='Join the Waitlist', position='primary') }}
-            <p class="availability-copy js-country-list">We currently offer Mozilla VPN in the US, the UK, Canada, New Zealand, Singapore and Malaysia.</p>
+            {{ join_waitlist_button(link_text=ftl('vpn-shared-waitlist-link'), position='primary') }}
+            <p class="availability-copy js-country-list">{{ ftl('vpn-shared-available-countries') }}</p>
             <div class="vpn-hero-tagline">
-              <p class="vpn-availability">Available now: Windows 10, Mac, Android, iOS & Linux</p>
+              <p class="vpn-availability">{{ ftl('vpn-shared-available-platforms') }}</p>
             </div>
           </div>
         </div>
@@ -101,46 +101,46 @@
   <div class="mzp-l-content mzp-t-content-xl">
 
     {% call vpn_content_well(
-      title='One tap to privacy',
+      title=ftl('vpn-landing-encrypt-heading'),
       image_url='img/products/vpn/landing/vpn-cntwell-01.png',
       class='vpn-content-well-right-half'
     ) %}
-      <p>We use the most advanced protocol, WireGuard®, to encrypt your network activity and hide your IP address.</p>
+      <p>{{ ftl('vpn-landing-encrypt-desc') }}</p>
     {% endcall %}
 
     {% call vpn_content_well(
-      title='Fast network speed',
+      title=ftl('vpn-landing-speed-heading'),
       image_url='img/products/vpn/landing/vpn-cntwell-02.png',
       class='vpn-content-well-left-half'
     ) %}
-      <p>Surf, stream, game, and get work done with fast network speed using our WireGuard® powered servers.</p>
+      <p>{{ ftl('vpn-landing-speed-desc') }}</p>
     {% endcall %}
 
     {% call vpn_content_well(
-      title='Your privacy comes first',
+      title=ftl('vpn-landing-activity-heading'),
       image_url='img/products/vpn/landing/vpn-cntwell-03.png',
       class='vpn-content-well-right-half'
     ) %}
-      <p>We don’t store your online activity logs on our servers.</p>
+      <p>{{ ftl('vpn-landing-activity-desc') }}</p>
     {% endcall %}
 
     {% call vpn_content_well(
-      title=default_monthly_price + '/month',
+      title=ftl('vpn-shared-price-monthly', amount=default_monthly_price),
       image_url='img/products/vpn/landing/vpn-cntwell-04.png',
       class='vpn-content-well-left-half vpn-content-well-price'
     ) %}
       <ul class="mzp-u-list-styled">
-        <li>Device-level encryption</li>
-        <li>280+ servers in 30+ countries</li>
-        <li>No bandwidth restrictions</li>
-        <li>No logging of your network activity</li>
-        <li>Connect up to 5 devices</li>
+        <li>{{ ftl('vpn-shared-features-encrypt') }}</li>
+        <li>{{ ftl('vpn-shared-features-servers', servers=280, countries=30) }}</li>
+        <li>{{ ftl('vpn-shared-features-bandwidth') }}</li>
+        <li>{{ ftl('vpn-shared-features-activity') }}</li>
+        <li>{{ ftl('vpn-shared-features-devices', devices=5) }}</li>
       </ul>
 
       {{ vpn_subscribe_link(
         entrypoint=_utm_source,
-        link_text='Try Mozilla VPN',
-        class_name='vpn-button try js-try-vpn',
+        link_text=ftl('vpn-shared-subscribe-link'),
+        class_name='mzp-c-button mzp-t-xl js-try-vpn',
         optional_parameters={
           'utm_campaign': _utm_campaign
         },
@@ -151,64 +151,64 @@
         }
       ) }}
 
-      {{ join_waitlist_button(link_text='Join the Waitlist', position='secondary') }}
+      {{ join_waitlist_button(link_text=ftl('vpn-shared-waitlist-link'), position='secondary') }}
     {% endcall %}
 
     {% call vpn_content_well(
-      title='Available in 6 countries now. More regions coming soon.',
+      title=ftl('vpn-shared-available-coming-soon', countries=6),
       image_url='img/products/vpn/landing/vpn-cntwell-05.png',
       class='vpn-content-well-right-half vpn-content-well-waitlist'
     ) %}
-      {{ join_waitlist_button(link_text='Join the Waitlist', is_conditional=False, position='secondary') }}
-      <p class="availability-copy">We currently offer Mozilla VPN in the US, the UK, Canada, New Zealand, Singapore and Malaysia.</p>
+      {{ join_waitlist_button(link_text=ftl('vpn-shared-waitlist-link'), is_conditional=False, position='secondary') }}
+      <p class="availability-copy">{{ ftl('vpn-shared-available-countries') }}</p>
     {% endcall %}
 
     {% call vpn_content_well(
-      title='About our trusted partner',
+      title=ftl('vpn-landing-partner-heading'),
       image_url='img/products/vpn/landing/vpn-cntwell-06.png',
       class='vpn-content-well-left-half'
     ) %}
-      <p>The Mozilla VPN runs on a global network of servers powered by <a href="https://mullvad.net/help/no-logging-data-policy/">Mullvad</a> using the <a href="https://mullvad.net/help/why-wireguard/">WireGuard</a>® protocol. Mullvad puts your privacy first and does not keep logs of any kind.</p>
+      <p>{{ ftl('vpn-landing-partner-desc', mullvad='https://mullvad.net/help/no-logging-data-policy/', wireguard='https://mullvad.net/help/why-wireguard/') }}</p>
     {% endcall %}
 
   </div>
 
   <section class="vpn-faq mzp-l-content mzp-t-content-lg">
-    <h2 class="vpn-faq-section-title">FAQs</h2>
+    <h2 class="vpn-faq-section-title">{{ ftl('vpn-landing-faq-heading') }}</h2>
 
     <details class="vpn-faq-item">
       <summary class="vpn-faq-item-title">
-        <h3>What devices is the Mozilla VPN compatible with?</h3>
+        <h3>{{ ftl('vpn-landing-faq-devices-question-heading') }}</h3>
       </summary>
-      <p class="vpn-faq-item-detail">The Mozilla VPN clients are compatible with Windows 10 (64-bit only), Mac (10.15 and up), Android (version 6 and up), iOS (13.0 and up), and Linux (Ubuntu-only).</p>
+      <p class="vpn-faq-item-detail">{{ ftl('vpn-landing-faq-devices-question-desc') }}</p>
     </details>
 
     <details class="vpn-faq-item">
       <summary  class="vpn-faq-item-title">
-        <h3>What information does the Mozilla VPN keep?</h3>
+        <h3>{{ ftl('vpn-landing-faq-info-question-heading') }}</h3>
       </summary>
-      <p class="vpn-faq-item-detail">We don’t log, track, or share any of your network activity. We adhere strictly to Mozilla’s <a href="{{ url('privacy.principles') }}">Data Privacy Principles</a>, and we only collect the most minimal data required to keep the VPN healthy and operational.</p>
+      <p class="vpn-faq-item-detail">{{ ftl('vpn-landing-faq-info-question-desc', privacy=url('privacy.principles')) }}</p>
     </details>
 
     <details class="vpn-faq-item">
       <summary class="vpn-faq-item-title">
-        <h3>How is my privacy protected?</h3>
+        <h3>{{ ftl('vpn-landing-faq-protected-question-heading') }}</h3>
       </summary>
-      <p class="vpn-faq-item-detail">WireGuard® protocol encrypts your network traffic protecting all your private information. Compared to existing VPN protocols, WireGuard’s lightweight code is easier for security analysts to review and audit - making it a more secure option for the VPN. In addition, your online activities can stay anonymous because we never log, track or share your network data.</p>
+      <p class="vpn-faq-item-detail">{{ ftl('vpn-landing-faq-protected-question-desc') }}</p>
     </details>
 
     <details class="vpn-faq-item">
       <summary class="vpn-faq-item-title">
-        <h3>What is the Mozilla VPN’s refund policy?</h3>
+        <h3>{{ ftl('vpn-landing-faq-refund-question-heading') }}</h3>
       </summary>
-      <p class="vpn-faq-item-detail">You can get your money back within 30-days of purchasing the subscription. Contact us and submit the refund request by tapping the Get Help button in Settings on your app.</p>
+      <p class="vpn-faq-item-detail">{{ ftl('vpn-landing-faq-refund-question-desc') }}</p>
     </details>
 
     <footer class="vpn-faq-footer">
       {{ vpn_subscribe_link(
         entrypoint=_utm_source,
-        link_text='Try Mozilla VPN',
-        class_name='vpn-button try js-try-vpn',
+        link_text=ftl('vpn-shared-subscribe-link'),
+        class_name='mzp-c-button mzp-t-xl js-try-vpn',
         optional_parameters={
           'utm_campaign': _utm_campaign
         },
@@ -219,16 +219,13 @@
         }
       ) }}
 
-      {{ join_waitlist_button(link_text='Join the Waitlist', position='secondary') }}
+      {{ join_waitlist_button(link_text=ftl('vpn-shared-waitlist-link'), position='secondary') }}
 
-      <a class="vpn-faq-footer-link mzp-c-cta-link" href="https://support.mozilla.org/products/firefox-private-network-vpn{{ _params }}&utm_content=vpn-faq-see-more-link" data-cta-type="link" data-cta-text="FAQ See More">See more FAQs</a>
+      <a class="vpn-faq-footer-link mzp-c-cta-link" href="https://support.mozilla.org/products/firefox-private-network-vpn{{ _params }}&utm_content=vpn-faq-see-more-link" data-cta-type="link" data-cta-text="FAQ See More">
+        {{ ftl('vpn-landing-faq-link') }}
+      </a>
 
-      <ul class="vpn-footer-list">
-        <li><a href="{{ url('privacy.notices.mozilla-vpn') }}">Privacy Notice</a></li>
-        <li><a href="{{ url('legal.terms.mozilla-vpn') }}">Terms and Conditions</a></li>
-      </ul>
-
-      <p><small>WireGuard is a registered trademark of Jason A. Donenfeld</small></p>
+      {% include 'products/vpn/includes/footer-legal.html' %}
     </footer>
   </section>
 

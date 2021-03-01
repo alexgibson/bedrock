@@ -11,7 +11,7 @@
 {% endmacro %}
 
 {% macro join_waitlist_button(link_text, is_conditional=True, position=None) -%}
-  <a class="vpn-button waitlist t-dark {% if is_conditional %}js-join-waitlist hide-from-legacy-ie{% endif %}" href="{{ url('products.vpn.invite') }}" data-cta-type="button" data-cta-text="Join the VPN Waitlist" {% if position %}data-cta-position="{{ position }}"{% endif %}>
+  <a class="mzp-c-button mzp-t-xl {% if is_conditional %}js-join-waitlist hide-from-legacy-ie{% endif %}" href="{{ url('products.vpn.invite') }}" data-cta-type="button" data-cta-text="Join the VPN Waitlist" {% if position %}data-cta-position="{{ position }}"{% endif %}>
     {{ link_text }}
   </a>
 {% endmacro %}

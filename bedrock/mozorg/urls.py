@@ -12,14 +12,7 @@ from .dev_urls import urlpatterns as dev_only_urlpatterns
 from .util import page
 
 urlpatterns = (
-    path(
-        "",
-        views.home_view,
-        #  VariationTemplateView.as_view(
-        #      template_context_variations=["1", "2"],
-        # ),
-        name="mozorg.home",
-    ),
+    path("", views.home_view, name="mozorg.home"),
     page("about/", "mozorg/about/index.html", ftl_files=["mozorg/about"]),
     page("about/manifesto/", "mozorg/about/manifesto.html", ftl_files=["mozorg/about/manifesto"]),
     page("about/manifesto/details/", "mozorg/about/manifesto-details.html", ftl_files=["mozorg/about/manifesto"]),

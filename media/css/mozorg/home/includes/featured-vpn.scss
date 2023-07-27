@@ -9,21 +9,6 @@ $image-path: '/media/protocol/img';
 
 @import '~@mozilla-protocol/core/protocol/css/includes/lib';
 
-#home-feature-vpn-banner {
-    &.c-banner {
-        // hide by default if JS is available to avoid flicker
-        // (if visitor previously dismissed)
-        .js & {
-            display: none;
-        }
-
-        // conditional class used to display the banner.
-        &.c-banner-is-visible {
-            display: block;
-        }
-    }
-}
-
 .vpn-feature {
     @include font-firefox;
     position: relative;

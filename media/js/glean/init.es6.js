@@ -7,6 +7,7 @@
 import Glean from '@mozilla/glean/web';
 
 import { initPageView, pageEventPing } from './page.es6';
+import { bindElementClicks } from './elements.es6';
 import Utils from './utils.es6';
 
 const shouldInitialize = Utils.hasValidURLScheme(window.location.href);
@@ -61,6 +62,7 @@ function initPageEventHelper() {
 if (shouldInitialize) {
     initGlean();
     initPageView();
+    bindElementClicks();
 }
 
 initPageEventHelper();

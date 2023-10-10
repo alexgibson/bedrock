@@ -1,0 +1,18 @@
+{
+  "srcDir": "media/js/",
+  "srcFiles": [
+    ""
+  ],
+  "specDir": "dist",
+  "specFiles": [
+    "test.js"
+  ],
+  "env": {
+    "stopSpecOnExpectationFailure": false,
+    "stopOnSpecFailure": false,
+    "random": true
+  },
+  "browser": {
+    "name": "firefox"
+  }
+}

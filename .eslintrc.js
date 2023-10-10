@@ -97,6 +97,7 @@ module.exports = {
             files: [
                 'webpack.config.js',
                 'webpack.static.config.js',
+                'webpack.test.config.js',
                 'tests/unit/karma.conf.js'
             ],
             env: {

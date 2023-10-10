@@ -4,7 +4,14 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+import CookieHelper from '@mozmeao/cookie-helper';
 import FormUtils from '../../../../media/js/newsletter/form-utils.es6';
+
+if (typeof window.Mozilla === 'undefined') {
+    window.Mozilla = {};
+}
+
+Mozilla.Cookies = CookieHelper;
 
 const TOKEN_MOCK = 'a1a2a3a4-abc1-12ab-a123-12345a12345b';
 
@@ -48,21 +55,21 @@ describe('getUserToken', function () {
     });
 
     it('should return a UUID token from cookie', function () {
-        spyOn(Mozilla.Cookies, 'hasItem').and.returnValue(true);
-        spyOn(Mozilla.Cookies, 'getItem').and.returnValue(TOKEN_MOCK);
+        spyOn(window.Mozilla.Cookies, 'hasItem').and.returnValue(true);
+        spyOn(window.Mozilla.Cookies, 'getItem').and.returnValue(TOKEN_MOCK);
         expect(FormUtils.getUserToken()).toEqual(TOKEN_MOCK);
     });
 
     it('should return a token from local memory if cookie has expired', function () {
-        spyOn(Mozilla.Cookies, 'hasItem').and.returnValue(false);
+        spyOn(window.Mozilla.Cookies, 'hasItem').and.returnValue(false);
         FormUtils.userToken = TOKEN_MOCK;
         expect(FormUtils.getUserToken()).toEqual(TOKEN_MOCK);
     });
 
     it('should return an empty string if token is invalid', function () {
         const token = 'some invalid string';
-        spyOn(Mozilla.Cookies, 'hasItem').and.returnValue(true);
-        spyOn(Mozilla.Cookies, 'getItem').and.returnValue(token);
+        spyOn(window.Mozilla.Cookies, 'hasItem').and.returnValue(true);
+        spyOn(window.Mozilla.Cookies, 'getItem').and.returnValue(token);
         expect(FormUtils.getUserToken()).toEqual('');
     });
 });
@@ -168,9 +175,9 @@ describe('setUserToken', function () {
     });
 
     it('should set a cookie with a valid UUID token', function () {
-        spyOn(Mozilla.Cookies, 'setItem');
+        spyOn(window.Mozilla.Cookies, 'setItem');
         FormUtils.setUserToken(TOKEN_MOCK);
-        expect(Mozilla.Cookies.setItem).toHaveBeenCalledOnceWith(
+        expect(window.Mozilla.Cookies.setItem).toHaveBeenCalledOnceWith(
             'nl-token',
             TOKEN_MOCK,
             jasmine.any(String),
@@ -184,9 +191,9 @@ describe('setUserToken', function () {
 
     it('should not set a cookie if token is invalid', function () {
         const token = 'some invalid string';
-        spyOn(Mozilla.Cookies, 'setItem');
+        spyOn(window.Mozilla.Cookies, 'setItem');
         FormUtils.setUserToken(token);
-        expect(Mozilla.Cookies.setItem).not.toHaveBeenCalled();
+        expect(window.Mozilla.Cookies.setItem).not.toHaveBeenCalled();
     });
 });
 

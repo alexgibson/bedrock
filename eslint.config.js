@@ -144,8 +144,31 @@ module.exports = [
         }
     },
     {
+        // JS Jasmine test files.
+        files: ['tests/webdriverio/**/*.js'],
+        languageOptions: {
+            ecmaVersion: 'latest',
+            sourceType: 'script',
+            globals: {
+                ...testingGlobals,
+                ...globals.browser,
+                ...globals.jasmine,
+                ...globals.node
+            }
+        },
+        rules: {
+            ...baseRules,
+            ...extendedRules,
+            ...nodeRules,
+            ...{
+                'no-redeclare': ['error', { builtinGlobals: false }]
+            }
+        }
+    },
+    {
         // JS build files for local dev.
         files: [
+            'wdio.conf.js',
             'eslint.config.js',
             'webpack.config.js',
             'webpack.static.config.js',

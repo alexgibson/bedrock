@@ -146,6 +146,9 @@ module.exports = [
     {
         // JS build files for local dev.
         files: [
+            'babel.config.js',
+            'jest-puppeteer.config.cjs',
+            'jest.config.js',
             'eslint.config.js',
             'webpack.config.js',
             'webpack.static.config.js',

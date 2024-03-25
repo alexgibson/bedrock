@@ -66,7 +66,8 @@ const customGlobals = {
 };
 
 const testingGlobals = {
-    sinon: true
+    sinon: true,
+    cy: true
 };
 
 module.exports = [
@@ -127,7 +128,7 @@ module.exports = [
     },
     {
         // JS Jasmine test files.
-        files: ['tests/unit/**/*.js'],
+        files: ['tests/unit/**/*.js', 'cypress/**/*.js'],
         languageOptions: {
             ecmaVersion: 'latest',
             sourceType: 'module',
@@ -146,6 +147,7 @@ module.exports = [
     {
         // JS build files for local dev.
         files: [
+            'cypress.config.js',
             'eslint.config.js',
             'webpack.config.js',
             'webpack.static.config.js',

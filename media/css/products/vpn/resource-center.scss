@@ -12,6 +12,7 @@ $image-path: '/media/protocol/img';
 @import '~@mozilla-protocol/core/protocol/css/components/logos/wordmark';
 @import '~@mozilla-protocol/core/protocol/css/components/logos/wordmark-product-vpn';
 @import '~@mozilla-protocol/core/protocol/css/components/breadcrumb';
+@import '../../cms/rich-text';
 
 .resource-center-page-header {
     .mzp-l-content {
@@ -67,6 +68,7 @@ $image-path: '/media/protocol/img';
 }
 
 .resource-center-cta-title {
+    @include text-title-md;
     margin-bottom: $spacing-2xl;
 }
 
@@ -74,7 +76,7 @@ $image-path: '/media/protocol/img';
     @include text-body-sm;
     font-family: var(--body-font-family);
 
-    // this color will be added to protocol, this should be updated once its availible as a token
+    // this color will be added to protocol, this should be updated once its available as a token
     color: #666;
 }
 
@@ -92,7 +94,7 @@ $image-path: '/media/protocol/img';
 .vpn-article {
     background-color: $color-white;
     box-sizing: border-box;
-    padding: $layout-sm $layout-md 0 $layout-md;
+    padding: $layout-sm $layout-md;
 
     .vpn-article-category {
         @include text-body-xs;

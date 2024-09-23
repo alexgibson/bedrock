@@ -44,4 +44,33 @@
             margin-bottom: 0;
         }
     }
+
+    .richtext-image {
+        margin-bottom: $spacing-lg;
+
+        &.full-width {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media #{$mq-md} {
+            &.left,
+            &.right {
+                margin-bottom: $spacing-md;
+                max-width: 50%;
+            }
+
+            &.left {
+                @include bidi(((float, left, right),));
+            }
+
+            &.right {
+                @include bidi(((float, right, left),));
+            }
+        }
+    }
+
+    h2, h3, h4, h5, h6 {
+        clear: both; // clear headings after floated rich-text images.
+    }
 }

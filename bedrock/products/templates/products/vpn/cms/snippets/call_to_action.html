@@ -1,0 +1,32 @@
+{#
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+#}
+
+{% set snippet_image=image(snippet.image, "width-800") %}
+
+{% if not snippet_image.url.endswith('.svg') %}
+  {% set snippet_image = srcset_image(
+    snippet.image,
+    "width-{200,400,600,800,1000,1200}",
+    class="mzp-c-split-media-asset",
+    sizes="50vw",
+    width="400",
+    alt=""
+  ) %}
+{% endif %}
+
+{% call split(
+  block_class='resource-center-split mzp-t-content-lg mzp-l-split-center-on-sm-md',
+  media_class='resource-center-split-media',
+  image=snippet_image
+) %}
+  <h2 class="resource-center-cta-title">{{ snippet.heading }}</h2>
+  {{ vpn_resource_center_cta(
+    referral_id='vpn-resource-center-article',
+    link_text=ftl('vpn-shared-subscribe-link'),
+    alt_link_text=ftl('vpn-shared-waitlist-link'),
+    class_name='mzp-c-button mzp-t-product',
+  ) }}
+{% endcall %}

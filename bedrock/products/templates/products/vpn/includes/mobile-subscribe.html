@@ -1,0 +1,22 @@
+{#
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+#}
+
+<div>
+  {% if heading %}
+    <h2>{{ heading }}</h2>
+  {% endif %}
+  <p>{{ ftl('vpn-pricing-scan-qrcode-to-download') }}</p>
+
+  <ol>
+    <li>{{ ftl('vpn-pricing-sign-up-on-your-mobile-device') }}</li>
+    <li>{{ ftl('vpn-pricing-connect-up-to-platforms', fallback='vpn-pricing-connect-up-to', devices=connect_devices) }}</li>
+    <li>{{ ftl('vpn-pricing-access', servers=connect_servers, countries=connect_countries) }}</li>
+  </ol>
+
+  {{ qrcode(android_download_url, 12) }}
+
+  <p><a href="#">{{ ftl('vpn-pricing-download-the-app') }}</a></p>
+</div>

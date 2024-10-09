@@ -46,7 +46,11 @@
         <h2 class="c-section-title">{{ ftl('vpn-pricing-one-subscription') }}</h2>
       </header>
 
-      {% include 'products/vpn/includes/pricing-refresh.html' %}
+      {% if mobile_sub_only %}
+        {% include 'products/vpn/includes/mobile-subscribe.html' %}
+      {% else %}
+        {% include 'products/vpn/includes/pricing-refresh.html' %}
+      {% endif %}
 
     {% else %}
       <header class="c-pricing-main-header">

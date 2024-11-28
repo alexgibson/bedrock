@@ -1,0 +1,73 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+@use '../../m24/vars/lib' as *;
+
+.m24-c-report-title {
+    font-size: $text-title-xl;
+    margin-bottom: $spacer-sm;
+}
+
+.m24-c-report-body {
+    font-weight: 500;
+    font-size: $text-body-lg;
+}
+
+.m24-c-report-media-large,
+.m24-c-report-media-small {
+    margin-bottom: $spacer-md;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media #{$mq-md} {
+    .m24-c-report {
+        @include grid;
+    }
+
+    .m24-c-report-header {
+        grid-column: 1/-1;
+        grid-row: 1/2;
+        max-width: none;
+    }
+
+    .m24-c-report-media-large,
+    .m24-c-report-media-small {
+        margin-bottom: 0;
+    }
+
+    .m24-c-report-media-large {
+        grid-column: 1/7;
+        grid-row: 2/2;
+    }
+
+    .m24-c-report-media-small {
+        grid-column: 7/-1;
+        grid-row: 2/2;
+    }
+}
+
+@media #{$mq-xl} {
+    .m24-c-report {
+        @include grid;
+    }
+
+    .m24-c-report-header {
+        grid-column: 7/-1;
+        grid-row: 1/1;
+    }
+
+    .m24-c-report-media-large {
+        grid-column: 1/5;
+        grid-row: 1/1;
+    }
+
+    .m24-c-report-media-small {
+        grid-column: 5/7;
+        grid-row: 1/1;
+    }
+}

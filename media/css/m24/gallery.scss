@@ -46,6 +46,10 @@
         &.m24-l-grid-three-quarters {
             grid-column: 4 / span 9;
         }
+
+        &.m24-l-grid-full {
+            grid-column: auto / span 12;
+        }
     }
 }
 

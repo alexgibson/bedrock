@@ -56,6 +56,7 @@ urlpatterns = (
     page("annualreport/2021/article/mozilla-ventures/", "foundation/annualreport/2021/article/mozilla-ventures.html"),
     page("annualreport/2021/article/people/", "foundation/annualreport/2021/article/people.html"),
     page("annualreport/2021/article/products/", "foundation/annualreport/2021/article/products.html"),
+    page("annualreport/2024/", "foundation/annualreport/2024/index.html"),
     page("feed-icon-guidelines/", "foundation/feed-icon-guidelines/index.html"),
     page("feed-icon-guidelines/faq/", "foundation/feed-icon-guidelines/faq.html"),
     page("licensing/", "foundation/licensing.html"),

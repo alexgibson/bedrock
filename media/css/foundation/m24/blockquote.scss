@@ -1,0 +1,33 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+@use '../../m24/vars/lib' as *;
+
+blockquote {
+    color: $m24-color-black;
+    border: none;
+    padding: none;
+
+    &.m24-t-md {
+        font-size: $text-title-md;
+    }
+
+    &.m24-t-lg {
+        font-size: $text-title-lg;
+    }
+
+    &.m24-t-xl {
+        font-size: $text-title-xl;
+    }
+}
+
+@media #{$mq-xl} {
+    .m24-c-blockquote.m24-l-grid-half {
+        @include grid;
+
+        blockquote {
+            grid-column: 7/-1;
+        }
+    }
+}

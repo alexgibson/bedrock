@@ -1,0 +1,196 @@
+{#
+ This Source Code Form is subject to the terms of the Mozilla Public
+ License, v. 2.0. If a copy of the MPL was not distributed with this
+ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+#}
+
+{% from "macros-m24.html" import gallery_tile with context %}
+
+<section id="studies" class="m24-c-content">
+  <header class="m24-c-showcase-text m24-l-two-columns">
+    <h2 class="m24-c-showcase-title">Case Studies</h2>
+    <p class="m24-c-showcase-body">Introduction for what this section means and what it revolves around plus any other additional copy.</p>
+  </header>
+
+  <div class="m24-c-gallery-container">
+    {{ gallery_tile(
+      class='m24-l-grid-quarter',
+      image=picture(
+        url='img/m24/todo-3-2.svg',
+        sources=[
+          {
+            'media': '(max-width: 1311px)',
+            'srcset': {
+              'img/m24/todo-3-2.svg': 'default'
+            },
+            'sizes': {
+              '(min-width: 768px)': 'calc(50vw - 32px)',
+              'default': 'calc(100vw - 32px)',
+            },
+          },
+          {
+            'srcset': {
+              'img/m24/todo-1-1.svg': 'default'
+            },
+            'sizes': {
+              '(min-width: 1440px)': '332px',
+              'default': 'calc(100vw - 64px)'
+            },
+          },
+        ],
+        optional_attributes={
+          'loading': 'lazy'
+        }
+      ),
+      title='Article title',
+      desc='Article description',
+      link_url='#TODO',
+      cta_text='Read more',
+      link_attributes='data-cta-text="TODO"'
+    ) }}
+
+    {{ gallery_tile(
+      class='m24-l-grid-quarter',
+      image=picture(
+        url='img/m24/todo-3-2.svg',
+        sources=[
+          {
+            'media': '(max-width: 1311px)',
+            'srcset': {
+              'img/m24/todo-3-2.svg': 'default'
+            },
+            'sizes': {
+              '(min-width: 768px)': 'calc(50vw - 32px)',
+              'default': 'calc(100vw - 32px)',
+            },
+          },
+          {
+            'srcset': {
+              'img/m24/todo-16-9.svg': 'default'
+            },
+            'sizes': {
+              '(min-width: 1440px)': '332px',
+              'default': 'calc(100vw - 64px)'
+            },
+          },
+        ],
+        optional_attributes={
+          'loading': 'lazy'
+        }
+      ),
+      title='Article title',
+      desc='Article description',
+      link_url='#TODO',
+      cta_text='Read more',
+      link_attributes='data-cta-text="TODO"'
+    ) }}
+
+    {{ gallery_tile(
+      class='m24-l-grid-half',
+      image=picture(
+        url='img/m24/todo-3-2.svg',
+        sources=[
+          {
+            'media': '(max-width: 1311px)',
+            'srcset': {
+              'img/m24/todo-3-2.svg': 'default',
+            },
+            'sizes': {
+              '(min-width: 768px)': 'calc(50vw - 32px)',
+              'default': 'calc(100vw - 32px)',
+            },
+          },
+          {
+            'srcset': {
+              'img/m24/todo-3-2.svg': 'default'
+            },
+            'sizes': {
+              '(min-width: 1440px)': '680px',
+              'default': 'calc(100vw - 64px)'
+            },
+          },
+        ],
+        optional_attributes={
+          'loading': 'lazy'
+        }
+      ),
+      title='Article title',
+      desc='Article description',
+      link_url='#TODO',
+      cta_text='Read more',
+      link_attributes='data-cta-text="TODO"'
+    ) }}
+
+    {{ gallery_tile(
+      class='m24-l-grid-half',
+      image=picture(
+        url='img/m24/todo-3-2.svg',
+        sources=[
+          {
+            'media': '(max-width: 1311px)',
+            'srcset': {
+              'img/m24/todo-3-2.svg': 'default',
+            },
+            'sizes': {
+              '(min-width: 768px)': 'calc(50vw - 32px)',
+              'default': 'calc(100vw - 32px)',
+            },
+          },
+          {
+            'srcset': {
+              'img/m24/todo-16-9.svg': 'default'
+            },
+            'sizes': {
+              '(min-width: 1440px)': '680px',
+              'default': 'calc(100vw - 64px)'
+            },
+          },
+        ],
+        optional_attributes={
+          'loading': 'lazy'
+        }
+      ),
+      title='Article title',
+      desc='Article description',
+      link_url='#TODO',
+      cta_text='Read more',
+      link_attributes='data-cta-text="TODO"'
+    ) }}
+
+    {{ gallery_tile(
+      class='m24-l-grid-quarter',
+      image=picture(
+        url='img/m24/todo-3-2.svg',
+        sources=[
+          {
+            'media': '(max-width: 1311px)',
+            'srcset': {
+              'img/m24/todo-3-2.svg': 'default',
+            },
+            'sizes': {
+              '(min-width: 768px)': 'calc(50vw - 32px)',
+              'default': 'calc(100vw - 32px)',
+            },
+          },
+          {
+            'srcset': {
+              'img/m24/todo-5-7.svg': 'default'
+            },
+            'sizes': {
+              '(min-width: 1440px)': '332px',
+              'default': 'calc(100vw - 64px)'
+            },
+          },
+        ],
+        optional_attributes={
+          'loading': 'lazy'
+        }
+      ),
+      title='Article title',
+      desc='Article description',
+      link_url='#TODO',
+      cta_text='Read more',
+      link_attributes='data-cta-text="TODO"'
+    ) }}
+  </div>
+</section>

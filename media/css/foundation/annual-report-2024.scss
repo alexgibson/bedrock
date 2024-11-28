@@ -1,0 +1,29 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+@use '../m24/vars/lib' as *;
+
+// components
+@use 'm24/blockquote';
+@use 'm24/documents';
+@use 'm24/report';
+@use 'm24/toc';
+
+@media #{$mq-xl} {
+    .m24-c-report-section.m24-l-grid-half {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: $grid-gutter;
+
+        .m24-c-showcase-body {
+            max-width: none;
+        }
+    }
+}
+
+.m24-c-gallery-tile-image {
+    img {
+        width: 100%; // TODO remove this once placeholder images are no longer used.
+    }
+}

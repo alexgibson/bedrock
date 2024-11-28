@@ -1,0 +1,26 @@
+{#
+ This Source Code Form is subject to the terms of the Mozilla Public
+ License, v. 2.0. If a copy of the MPL was not distributed with this
+ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+#}
+
+{% extends "foundation/annualreport/2024/base.html" %}
+
+{% block main_content %}
+  {% include 'foundation/annualreport/2024/includes/index/hero.html'%}
+  {% include 'foundation/annualreport/2024/includes/index/report.html'%}
+  {% include 'foundation/annualreport/2024/includes/index/documents.html'%}
+  {% include 'foundation/annualreport/2024/includes/index/mozilla.html'%}
+  {% include 'foundation/annualreport/2024/includes/index/quote-1.html'%}
+  {% include 'foundation/annualreport/2024/includes/index/growth.html'%}
+  <div class="m24-c-content">
+    <div class="m24-c-report-section m24-l-grid-half">
+      {% include 'foundation/annualreport/2024/includes/index/community.html'%}
+      {% include 'foundation/annualreport/2024/includes/index/advertising.html'%}
+    </div>
+  </div>
+  {% include 'foundation/annualreport/2024/includes/index/quote-2.html'%}
+  {% include 'foundation/annualreport/2024/includes/index/ai.html'%}
+  {% include 'foundation/annualreport/2024/includes/index/quote-3.html'%}
+  {% include 'foundation/annualreport/2024/includes/index/case-studies.html'%}
+{% endblock %}

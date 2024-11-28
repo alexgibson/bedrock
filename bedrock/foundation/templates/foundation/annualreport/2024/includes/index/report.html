@@ -1,0 +1,91 @@
+{#
+ This Source Code Form is subject to the terms of the Mozilla Public
+ License, v. 2.0. If a copy of the MPL was not distributed with this
+ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+#}
+
+{% from "macros-m24.html" import gallery_tile with context %}
+
+<section id="report" class="m24-c-content">
+  <div class="m24-c-report m24-l-two-columns">
+    <header class="m24-c-report-header">
+      <h2 class="m24-c-report-title">Report Opening</h2>
+      <div class="m24-c-report-body">
+        <p>
+          Not sure what’s going to be needed here, but it can go in this
+          general area. Cotton candy pudding gummi bears macaroon bear claw
+          fruitcake pie sugar plum pie. Icing bonbon carrot cake cupcake
+          cotton candy cake lemon drops lollipop. Lollipop gummies halvah
+          donut candy biscuit tootsie roll. Cake lemon drops apple pie sugar
+          plum oat cake gummies pudding fruitcake carrot cake.
+        </p>
+
+        <p>
+          Cheesecake marzipan icing wafer gummies candy biscuit toffee.
+          Bear claw shortbread chocolate bar  chocolate bonbon. Powder
+          candy canes candy dragée lollipop donut bear  claw. Gummies wafer
+          liquorice candy carrot cake tootsie roll.
+        </p>
+      </div>
+    </header>
+
+    <div class="m24-c-report-media-large">
+      {{ picture(
+        url='img/m24/todo-3-2.svg',
+        sources=[
+          {
+            'media': '(max-width: 1311px)',
+            'srcset': {
+              'img/m24/todo-3-2.svg': 'default'
+            },
+            'sizes': {
+              'default': 'calc(100vw - 32px)',
+            },
+          },
+          {
+            'srcset': {
+              'img/m24/todo-1-1.svg': 'default'
+            },
+            'sizes': {
+              '(min-width: 1440px)': '448px',
+              'default': 'calc(100vw - 64px)'
+            },
+          },
+        ],
+        optional_attributes={
+          'loading': 'lazy'
+        }
+      ) }}
+    </div>
+
+    <div class="m24-c-report-media-small">
+      {{ picture(
+        url='img/m24/todo-3-2.svg',
+        sources=[
+          {
+            'media': '(max-width: 1311px)',
+            'srcset': {
+              'img/m24/todo-3-2.svg': 'default'
+            },
+            'sizes': {
+              'default': 'calc(100vw - 32px)',
+            },
+          },
+          {
+            'srcset': {
+              'img/m24/todo-1-1.svg': 'default'
+            },
+            'sizes': {
+              '(min-width: 1440px)': '216px',
+              'default': 'calc(100vw - 64px)'
+            },
+          },
+        ],
+        optional_attributes={
+          'loading': 'lazy'
+        }
+      ) }}
+    </div>
+  </div>
+
+</section>

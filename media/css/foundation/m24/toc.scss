@@ -1,0 +1,96 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+@use '../../m24/vars/lib' as *;
+
+$toc-icon-width: 36px;
+
+.m24-c-toc {
+    margin-top: $spacer-3xl;
+}
+
+.m24-c-toc-list-item {
+    border-top: 2px solid $m24-color-black;
+
+    & > a {
+        box-sizing: border-box;
+        color: $m24-color-black;
+        display: block;
+        font-size: $text-title-sm;
+        padding: $spacer-md 0 $spacer-md calc($toc-icon-width + $spacer-md);
+        position: relative;
+        text-decoration: none;
+        width: 100%;
+
+        &:link,
+        &:visited {
+            color: $m24-color-black;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: $m24-color-light-gray;
+        }
+
+        &::before,
+        &::after {
+            background-position: center left;
+            background-repeat: no-repeat;
+            bottom: 0;
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+        }
+
+        &::before {
+            left: 0;
+            background-size: $toc-icon-width auto;
+            width: $toc-icon-width;
+            background-image: url('/media/img/m24/todo-1-1.svg');
+        }
+
+        &::after {
+            background-image: url('/media/img/icons/m24-small/arrow-right-white.svg');
+            background-position: center left;
+            background-repeat: no-repeat;
+            background-size: 18px auto;
+            bottom: 0;
+            content: '';
+            display: block;
+            position: absolute;
+            right: $spacing-sm;
+            top: 0;
+            transition-duration: $fast;
+            transition-property: right;
+            transition-timing-function: $bezier;
+            width: $toc-icon-width;
+        }
+
+        &:focus-visible::after,
+        &:active::after,
+        &:hover::after {
+            right: $spacing-xs;
+        }
+    }
+
+    &:last-child {
+        border-bottom: 2px solid $m24-color-black;
+    }
+}
+
+@media #{$mq-md} {
+    .m24-c-toc-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: $grid-gutter;
+    }
+
+    .m24-c-toc-list-item {
+        &:nth-last-child(2):nth-child(odd) {
+            border-bottom: 2px solid $m24-color-black;
+        }
+    }
+}

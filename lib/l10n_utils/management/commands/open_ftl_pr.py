@@ -61,9 +61,9 @@ class Command(FTLRepoCommand):
     def commit_message(self):
         message = "Updates from bedrock\n\n"
         if GIT_HASH:
-            message += f"From file changes in https://github.com/mozilla/bedrock/commit/{GIT_HASH}"
+            message += f"From file changes in https://github.com/mozmeao/springfield/commit/{GIT_HASH}"
         else:
-            message += "From file changes in https://github.com/mozilla/bedrock/commits/main"
+            message += "From file changes in https://github.com/mozmeao/springfield/commits/main"
 
         return message
 

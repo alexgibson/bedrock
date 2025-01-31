@@ -15,7 +15,7 @@ on:
 
 jobs:
   open_l10n_pr:
-    if: github.repository == 'mozilla/bedrock'
+    if: github.repository == 'mozmeao/springfield'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

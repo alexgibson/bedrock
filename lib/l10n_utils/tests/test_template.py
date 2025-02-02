@@ -10,7 +10,7 @@ from django.test import RequestFactory, override_settings
 
 from django_jinja.backend import Jinja2
 
-from bedrock.mozorg.tests import TestCase
+from bedrock.base.tests import TestCase
 from lib.l10n_utils import render, render_to_string
 
 ROOT_PATH = Path(__file__).with_name("test_files")
@@ -37,13 +37,13 @@ class TestFtlTemplateHelper(TestCase):
     def test_english_locale(self):
         req = self.rf.get("/en-US/")
         req.locale = "de"
-        result = render_to_string("test-en-title.html", request=req, ftl_files="mozorg/fluent")
+        result = render_to_string("test-en-title.html", request=req, ftl_files="base/fluent")
         assert result.strip() == "Title in German:This is a test of the new Fluent L10n system"
 
     def test_french_locale(self):
         req = self.rf.get("/en-US/")
         req.locale = "en-US"
-        result = render_to_string("test-fr-title.html", request=req, ftl_files="mozorg/fluent")
+        result = render_to_string("test-fr-title.html", request=req, ftl_files="base/fluent")
         assert result.strip() == "This is a test of the new Fluent L10n system:Title in French"
 
 

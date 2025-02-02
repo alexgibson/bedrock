@@ -339,7 +339,7 @@ def video(ctx, *args, **kwargs):
     data.update(**kwargs)
     data.update(filetypes=filetypes, mime=mime, videos=videos)
 
-    return Markup(render_to_string("mozorg/videotag.html", data, request=ctx["request"]))
+    return Markup(render_to_string("base/videotag.html", data, request=ctx["request"]))
 
 
 @library.global_function

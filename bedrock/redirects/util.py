@@ -19,7 +19,7 @@ from django.views.decorators.vary import vary_on_headers
 
 import commonware.log
 
-from bedrock.mozorg.decorators import cache_control_expires
+from bedrock.base.decorators import cache_control_expires
 
 log = commonware.log.getLogger("redirects.util")
 LOCALE_RE = r"^(?P<locale>\w{2,3}(?:-\w{2})?/)?"
@@ -184,8 +184,8 @@ def redirect(
 
     Usage:
     urlpatterns = [
-        redirect(r'projects/$', 'mozorg.product'),
-        redirect(r'^projects/seamonkey$', 'mozorg.product', locale_prefix=False),
+        redirect(r'projects/$', 'base.product'),
+        redirect(r'^projects/seamonkey$', 'seamonkey.product', locale_prefix=False),
         redirect(r'apps/$', 'https://marketplace.firefox.com'),
         redirect(r'firefox/$', 'firefox.download', name='firefox'),
         redirect(r'the/dude$', 'abides', query={'aggression': 'not_stand'}),

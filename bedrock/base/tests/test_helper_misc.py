@@ -18,9 +18,9 @@ from django_jinja.backend import Jinja2
 from markupsafe import Markup
 from pyquery import PyQuery as pq
 
+from bedrock.base.templatetags import misc
 from bedrock.base.templatetags.helpers import static
-from bedrock.mozorg.templatetags import misc
-from bedrock.mozorg.tests import TestCase
+from bedrock.base.tests import TestCase
 from lib.l10n_utils.fluent import fluent_l10n
 
 TEST_FILES_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test_files")
@@ -42,7 +42,7 @@ def test_convert_to_high_res():
     assert misc.convert_to_high_res("/media/thats-a-bummer-man.jpg") == "/media/thats-a-bummer-man-high-res.jpg"
 
 
-@patch("bedrock.mozorg.templatetags.misc._l10n_media_exists")
+@patch("bedrock.base.templatetags.misc._l10n_media_exists")
 @patch("django.conf.settings.LANGUAGE_CODE", "en-US")
 class TestImgL10n(TestCase):
     rf = RequestFactory()
@@ -100,11 +100,11 @@ class TestImgL10n(TestCase):
 
 
 @override_settings(DEBUG=False)
-@patch("bedrock.mozorg.templatetags.misc._l10n_media_exists")
+@patch("bedrock.base.templatetags.misc._l10n_media_exists")
 class TestL10nCSS(TestCase):
     rf = RequestFactory()
     static_url_dev = "/static/"
-    cdn_url = "//mozorg.cdn.mozilla.net"
+    cdn_url = "//springfield.cdn.mozilla.net"
     static_url_prod = cdn_url + static_url_dev
     markup = '<link rel="stylesheet" media="screen,projection,tv" href="%scss/l10n/%s/intl.css">'
 
@@ -603,9 +603,9 @@ class TestPicture(TestCase):
 class TestAbsoluteURLFilter(TestCase):
     rf = RequestFactory()
     static_url_dev = "/static/"
-    static_url_prod = "//mozorg.cdn.mozilla.net/static/"
-    static_url_full = "https://mozorg.cdn.mozilla.net/static/"
-    image_path = "img/mozorg/mozilla-256.jpg"
+    static_url_prod = "//springfield.cdn.mozilla.net/static/"
+    static_url_full = "https://springfield.cdn.mozilla.net/static/"
+    image_path = "img/base/mozilla-256.jpg"
     inline_template = "{{ static('%s')|absolute_url }}" % image_path
     block_template = "{% filter absolute_url %}{% block page_image %}" + "{{ static('%s') }}" % image_path + "{% endblock %}{% endfilter %}"
 
@@ -939,19 +939,19 @@ class TestMSStoreURL(TestCase):
     def test_firefox_ms_store_url_campaign(self):
         """should return a MS Store URL including campaign parameters"""
         assert (
-            self._render(product="firefox", campaign="mozorg-firefox-home")
-            == "https://apps.microsoft.com/detail/9nzvdkpmr9rd?mode=mini&amp;cid=mozorg-firefox-home"
+            self._render(product="firefox", campaign="springfield-firefox-home")
+            == "https://apps.microsoft.com/detail/9nzvdkpmr9rd?mode=mini&amp;cid=springfield-firefox-home"
         )
 
     def test_firefox_ms_store_url_protocol_handler(self):
         """should return a MS Store URL including campaign parameters"""
         assert (
-            self._render(product="firefox", campaign="mozorg-firefox-home", handler="ms-windows-store")
-            == "ms-windows-store://pdp/?productid=9nzvdkpmr9rd&amp;mode=mini&amp;cid=mozorg-firefox-home"
+            self._render(product="firefox", campaign="springfield-firefox-home", handler="ms-windows-store")
+            == "ms-windows-store://pdp/?productid=9nzvdkpmr9rd&amp;mode=mini&amp;cid=springfield-firefox-home"
         )
         assert (
-            self._render(product="firefox_beta", campaign="mozorg-firefox-home", handler="ms-windows-store")
-            == "ms-windows-store://pdp/?productid=9nzw26frndln&amp;mode=mini&amp;cid=mozorg-firefox-home"
+            self._render(product="firefox_beta", campaign="springfield-firefox-home", handler="ms-windows-store")
+            == "ms-windows-store://pdp/?productid=9nzw26frndln&amp;mode=mini&amp;cid=springfield-firefox-home"
         )
 
 

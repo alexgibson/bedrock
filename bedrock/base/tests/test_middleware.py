@@ -1,18 +1,19 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
-
 from contextlib import suppress
 from importlib import reload
 from unittest import mock
 
-from django.http import HttpResponse
-from django.test import Client, RequestFactory, TestCase
+from django.conf import settings
+from django.http import HttpRequest, HttpResponse
+from django.test import Client, RequestFactory
 from django.test.utils import override_settings
 from django.urls import reverse
 
 import csp.constants
 import pytest
+from freezegun import freeze_time
 from jinja2.exceptions import UndefinedError
 from markus.testing import MetricsMock
 from pytest_django.asserts import assertTemplateUsed
@@ -20,8 +21,12 @@ from pytest_django.asserts import assertTemplateUsed
 from bedrock.base.middleware import (
     BedrockLangCodeFixupMiddleware,
     BedrockLocaleMiddleware,
+    CacheMiddleware,
+    ClacksOverheadMiddleware,
     CSPMiddlewareByPathPrefix,
+    HostnameMiddleware,
 )
+from bedrock.base.tests import TestCase
 
 
 @override_settings(
@@ -392,3 +397,86 @@ def test_csp_ro_report_uri():
     assert settings.CONTENT_SECURITY_POLICY["DIRECTIVES"]["report-uri"] == "/_the_csp_dude"
     assert settings.csp_ro_report_uri == "/_csp_ro"
     assert settings.CONTENT_SECURITY_POLICY_REPORT_ONLY["DIRECTIVES"]["report-uri"] == "/_csp_ro"
+
+
+class TestCacheMiddleware(TestCase):
+    def setUp(self):
+        self.middleware = CacheMiddleware(get_response=HttpResponse)
+        self.request = HttpRequest()
+        self.response = HttpResponse()
+
+    @freeze_time("2023-01-01 00:00:00.123456")
+    def test_good_response_has_headers(self):
+        for method in ("GET", "HEAD"):
+            for status in (200, 301, 302, 403, 404, 500):
+                self.request.method = method
+                self.response.status_code = status
+                self.middleware.process_response(self.request, self.response)
+                self.assertEqual(self.response["Cache-Control"], "max-age=600")
+                self.assertEqual(self.response["Expires"], "Sun, 01 Jan 2023 00:10:00 GMT")
+
+    def test_no_caching_methods(self):
+        for method in ("POST", "PUT", "DELETE", "OPTIONS"):
+            self.request.method = method
+            self.response.status_code = 200
+            self.middleware.process_response(self.request, self.response)
+            self.assertNotIn("Cache-Control", self.response)
+            self.assertNotIn("Expires", self.response)
+
+    def test_no_caching_headers(self):
+        self.request.method = "GET"
+        self.response.status_code = 200
+        self.response["Cache-Control"] = "no-cache"
+        self.middleware.process_response(self.request, self.response)
+        self.assertEqual(self.response["Cache-Control"], "no-cache")
+        self.assertNotIn("Expires", self.response)
+
+    def test_no_cache_streaming_response(self):
+        self.request.method = "GET"
+        self.response.status_code = 200
+        self.response.streaming = True
+        self.middleware.process_response(self.request, self.response)
+        self.assertNotIn("Cache-Control", self.response)
+        self.assertNotIn("Expires", self.response)
+
+
+class TestClacksOverheadMiddleware(TestCase):
+    def setUp(self):
+        self.middleware = ClacksOverheadMiddleware(get_response=HttpResponse)
+        self.request = HttpRequest()
+        self.response = HttpResponse()
+
+    def test_good_response_has_header(self):
+        self.response.status_code = 200
+        self.middleware.process_response(self.request, self.response)
+        self.assertEqual(self.response["X-Clacks-Overhead"], "GNU Terry Pratchett")
+
+    def test_other_response_has_no_header(self):
+        self.response.status_code = 301
+        self.middleware.process_response(self.request, self.response)
+        self.assertNotIn("X-Clacks-Overhead", self.response)
+
+        self.response.status_code = 404
+        self.middleware.process_response(self.request, self.response)
+        self.assertNotIn("X-Clacks-Overhead", self.response)
+
+
+@override_settings(ENABLE_HOSTNAME_MIDDLEWARE=True)
+class TestHostnameMiddleware(TestCase):
+    @override_settings(HOSTNAME="foobar", CLUSTER_NAME="oregon-b")
+    def test_base(self):
+        self.middleware = HostnameMiddleware(get_response=HttpResponse)
+        self.request = HttpRequest()
+        self.response = HttpResponse()
+
+        self.middleware.process_response(self.request, self.response)
+        self.assertEqual(self.response["X-Backend-Server"], "foobar.oregon-b")
+
+    @override_settings(
+        MIDDLEWARE=(list(settings.MIDDLEWARE) + ["bedrock.base.middleware.HostnameMiddleware"]),
+        HOSTNAME="foobar",
+        CLUSTER_NAME="el-dudarino",
+    )
+    def test_request(self):
+        response = self.client.get("/en-US/")
+        self.assertEqual(response["X-Backend-Server"], "foobar.el-dudarino")

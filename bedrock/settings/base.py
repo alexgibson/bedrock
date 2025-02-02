@@ -314,7 +314,6 @@ EXCLUDE_EDIT_TEMPLATES = [
     "firefox/releases/release-notes.html",
     "firefox/releases/notes.html",
     "firefox/releases/system_requirements.html",
-    "mozorg/about/forums.html",
 ]
 # Also allow entire directories to be skipped
 EXCLUDE_EDIT_TEMPLATES_DIRECTORIES = [
@@ -476,7 +475,7 @@ SUPPORTED_LOCALE_IGNORE = [
 ]
 # Pages that we don't want to be indexed by search engines.
 # Only impacts sitemap generator. If you need to disallow indexing of
-# specific URLs, add them to mozorg/templates/mozorg/robots.txt.
+# specific URLs, add them to base/templates/base/robots.txt.
 NOINDEX_URLS = [
     r"^(404|500)/",
     r"^contribute/(embed|event)/",
@@ -661,23 +660,23 @@ MIDDLEWARE = [
     "allow_cidr.middleware.AllowCIDRMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    "bedrock.mozorg.middleware.HostnameMiddleware",
+    "bedrock.base.middleware.HostnameMiddleware",
     "django.middleware.http.ConditionalGetMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     # VaryNoCacheMiddleware must be above LocaleMiddleware"
     # so that it can see the response has a vary on accept-language.
-    "bedrock.mozorg.middleware.VaryNoCacheMiddleware",
+    "bedrock.base.middleware.VaryNoCacheMiddleware",
     "bedrock.base.middleware.BasicAuthMiddleware",
     "bedrock.redirects.middleware.RedirectsMiddleware",  # must come before BedrockLocaleMiddleware
     "bedrock.base.middleware.BedrockLangCodeFixupMiddleware",  # must come after RedirectsMiddleware
     "bedrock.base.middleware.BedrockLocaleMiddleware",  # wraps django.middleware.locale.LocaleMiddleware
-    "bedrock.mozorg.middleware.ClacksOverheadMiddleware",
+    "bedrock.base.middleware.ClacksOverheadMiddleware",
     "bedrock.base.middleware.MetricsStatusMiddleware",
     "bedrock.base.middleware.MetricsViewTimingMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "bedrock.mozorg.middleware.CacheMiddleware",
+    "bedrock.base.middleware.CacheMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
@@ -723,7 +722,6 @@ INSTALLED_APPS = [
     "bedrock.base",
     "bedrock.cms",  # Wagtail-based CMS bases
     "bedrock.firefox",
-    "bedrock.mozorg",
     "bedrock.newsletter",
     "bedrock.privacy",
     "bedrock.releasenotes",
@@ -803,8 +801,8 @@ TEMPLATES = [
                 "bedrock.base.context_processors.i18n",
                 "bedrock.base.context_processors.globals",
                 "bedrock.base.context_processors.geo",
-                "bedrock.mozorg.context_processors.canonical_path",
-                "bedrock.mozorg.context_processors.current_year",
+                "bedrock.base.context_processors.canonical_path",
+                "bedrock.base.context_processors.current_year",
                 "bedrock.firefox.context_processors.latest_firefox_versions",
             ],
             "extensions": [

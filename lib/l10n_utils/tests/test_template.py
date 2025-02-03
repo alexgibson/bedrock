@@ -37,13 +37,13 @@ class TestFtlTemplateHelper(TestCase):
     def test_english_locale(self):
         req = self.rf.get("/en-US/")
         req.locale = "de"
-        result = render_to_string("test-en-title.html", request=req, ftl_files="base/fluent")
+        result = render_to_string("test-en-title.html", request=req, ftl_files="mozorg/fluent")
         assert result.strip() == "Title in German:This is a test of the new Fluent L10n system"
 
     def test_french_locale(self):
         req = self.rf.get("/en-US/")
         req.locale = "en-US"
-        result = render_to_string("test-fr-title.html", request=req, ftl_files="base/fluent")
+        result = render_to_string("test-fr-title.html", request=req, ftl_files="mozorg/fluent")
         assert result.strip() == "This is a test of the new Fluent L10n system:Title in French"
 
 

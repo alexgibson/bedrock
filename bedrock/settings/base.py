@@ -866,7 +866,7 @@ EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
 
 # Prefix for media. No trailing slash.
-# e.g. '//mozorg.cdn.mozilla.net'
+# e.g. '//projectname.cdn.mozilla.net'
 CDN_BASE_URL = config("CDN_BASE_URL", default="")
 
 DONATE_LINK = "https://foundation.mozilla.org/{location}"

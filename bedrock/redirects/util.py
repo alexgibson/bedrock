@@ -185,7 +185,7 @@ def redirect(
     Usage:
     urlpatterns = [
         redirect(r'projects/$', 'base.product'),
-        redirect(r'^projects/seamonkey$', 'seamonkey.product', locale_prefix=False),
+        redirect(r'^projects/vpn$', 'vpn.product', locale_prefix=False),
         redirect(r'apps/$', 'https://marketplace.firefox.com'),
         redirect(r'firefox/$', 'firefox.download', name='firefox'),
         redirect(r'the/dude$', 'abides', query={'aggression': 'not_stand'}),

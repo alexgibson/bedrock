@@ -15,7 +15,7 @@ describe('stub-attribution.js', function () {
     const GA4_CLIENT_ID = '4442748357.1686074738';
     const GA_SESSION_ID = '1668161374';
     const STUB_SESSION_ID = '1234567890';
-    const DLSOURCE = 'mozorg';
+    const DLSOURCE = 'fxdotcom';
 
     beforeEach(function () {
         // stub out google tag manager

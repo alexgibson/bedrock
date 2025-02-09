@@ -26,7 +26,7 @@ if (typeof window.Mozilla === 'undefined') {
 
     StubAttribution.COOKIE_CODE_ID = 'moz-stub-attribution-code';
     StubAttribution.COOKIE_SIGNATURE_ID = 'moz-stub-attribution-sig';
-    StubAttribution.DLSOURCE = 'mozorg';
+    StubAttribution.DLSOURCE = 'fxdotcom';
 
     /**
      * Experiment name and variation globals. These values can be set directly by a

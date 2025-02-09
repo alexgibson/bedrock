@@ -50,7 +50,7 @@ STUB_VALUE_NAMES = [
     ("ua", "(not set)"),
     ("client_id_ga4", "(not set)"),
     ("session_id", "(not set)"),
-    ("dlsource", "mozorg"),
+    ("dlsource", "fxdotcom"),
 ]
 STUB_VALUE_RE = re.compile(r"^[a-z0-9-.%():_]+$", flags=re.IGNORECASE)
 

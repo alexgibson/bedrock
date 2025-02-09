@@ -9,7 +9,7 @@ urlpatterns = (
     path(
         "newsletter/",
         VariationTemplateView.as_view(
-            template_name="newsletter/index.html", template_context_variations=["1", "2"], ftl_files=["mozorg/newsletters"]
+            template_name="newsletter/index.html", template_context_variations=["1", "2"], ftl_files=["newsletter/newsletters"]
         ),
         name="newsletter",
     ),

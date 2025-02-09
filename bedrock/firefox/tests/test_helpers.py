@@ -97,7 +97,7 @@ class TestDownloadButtons(TestCase):
         for link in links[1:5]:
             link = pq(link)
             href = link.attr("href")
-            assert href == "/fr/firefox/download/thanks/"
+            assert href == "/fr/download/thanks/"
 
         doc = pq(
             render("{{ download_firefox(locale_in_transition=false) }}", {"request": get_request, "fluent_l10n": self.get_l10n(get_request.locale)})
@@ -108,7 +108,7 @@ class TestDownloadButtons(TestCase):
         for link in links[1:5]:
             link = pq(link)
             href = link.attr("href")
-            assert href == "/firefox/download/thanks/"
+            assert href == "/download/thanks/"
 
     def test_download_location_attribute(self):
         """
@@ -321,7 +321,7 @@ class TestDownloadThanksButton(TestCase):
 
     def test_download_firefox_thanks_button(self):
         """
-        Download link should point to /firefox/download/thanks/
+        Download link should point to /download/thanks/
         """
         rf = RequestFactory()
         get_request = rf.get("/fake")
@@ -335,7 +335,7 @@ class TestDownloadThanksButton(TestCase):
         link = pq(links)
         href = link.attr("href")
 
-        assert href == "/firefox/download/thanks/"
+        assert href == "/download/thanks/"
         assert button.attr("id") == "download-button-thanks"
         assert link.attr("data-cta-text") == "Download Firefox"
 
@@ -364,7 +364,7 @@ class TestDownloadThanksButton(TestCase):
         link = pq(links)
         href = link.attr("href")
 
-        assert href == "/en-US/firefox/download/thanks/"
+        assert href == "/en-US/download/thanks/"
         assert button.attr("id") == "test-download"
         assert link.attr("data-cta-position") == "primary cta"
         assert "test-css-class" in link.attr("class")
@@ -383,18 +383,18 @@ class TestFirefoxURL(TestCase):
 
     def test_firefox_all(self):
         """Should return a reversed path for the Firefox all downloads page"""
-        assert self._render("desktop", "all").endswith("/firefox/download/all/desktop-release/")
-        assert self._render("desktop", "all", "release").endswith("/firefox/download/all/desktop-release/")
-        assert self._render("desktop", "all", "beta").endswith("/firefox/download/all/desktop-beta/")
-        assert self._render("desktop", "all", "alpha").endswith("/firefox/download/all/desktop-developer/")
-        assert self._render("desktop", "all", "developer").endswith("/firefox/download/all/desktop-developer/")
-        assert self._render("desktop", "all", "nightly").endswith("/firefox/download/all/desktop-nightly/")
-        assert self._render("desktop", "all", "esr").endswith("/firefox/download/all/desktop-esr/")
-        assert self._render("desktop", "all", "organizations").endswith("/firefox/download/all/desktop-esr/")
-        assert self._render("android", "all").endswith("/firefox/download/all/android-release/")
-        assert self._render("android", "all", "release").endswith("/firefox/download/all/android-release/")
-        assert self._render("android", "all", "beta").endswith("/firefox/download/all/android-beta/")
-        assert self._render("android", "all", "nightly").endswith("/firefox/download/all/android-nightly/")
+        assert self._render("desktop", "all").endswith("/download/all/desktop-release/")
+        assert self._render("desktop", "all", "release").endswith("/download/all/desktop-release/")
+        assert self._render("desktop", "all", "beta").endswith("/download/all/desktop-beta/")
+        assert self._render("desktop", "all", "alpha").endswith("/download/all/desktop-developer/")
+        assert self._render("desktop", "all", "developer").endswith("/download/all/desktop-developer/")
+        assert self._render("desktop", "all", "nightly").endswith("/download/all/desktop-nightly/")
+        assert self._render("desktop", "all", "esr").endswith("/download/all/desktop-esr/")
+        assert self._render("desktop", "all", "organizations").endswith("/download/all/desktop-esr/")
+        assert self._render("android", "all").endswith("/download/all/android-release/")
+        assert self._render("android", "all", "release").endswith("/download/all/android-release/")
+        assert self._render("android", "all", "beta").endswith("/download/all/android-beta/")
+        assert self._render("android", "all", "nightly").endswith("/download/all/android-nightly/")
 
     def test_firefox_sysreq(self):
         """Should return a reversed path for the Firefox sysreq page"""

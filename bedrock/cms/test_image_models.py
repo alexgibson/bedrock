@@ -8,15 +8,15 @@ from django.test import TestCase, override_settings
 
 import pytest
 
-from bedrock.cms.models.images import BedrockImage, _make_renditions
+from bedrock.cms.models.images import SpringfieldImage, _make_renditions
 
 pytestmark = [pytest.mark.django_db]
 
 
-class BedrockImageTestCase(TestCase):
+class SpringfieldImageTestCase(TestCase):
     @override_settings(TASK_QUEUE_AVAILABLE=False)
     def test_pre_generate_expected_renditions__no_queue_available(self):
-        image = BedrockImage(width=1, height=1)
+        image = SpringfieldImage(width=1, height=1)
         expected_filter_specs = [
             "width-2400",
             "width-2200",
@@ -40,7 +40,7 @@ class BedrockImageTestCase(TestCase):
 
     @override_settings(TASK_QUEUE_AVAILABLE=True)
     def test_pre_generate_expected_renditions__queue_available(self):
-        image = BedrockImage(width=1, height=1)
+        image = SpringfieldImage(width=1, height=1)
         expected_filter_specs = [
             "width-2400",
             "width-2200",
@@ -72,7 +72,7 @@ class BedrockImageTestCase(TestCase):
             )
 
     def test_pre_generate_expected_renditions_uses_defer_task(self):
-        image = BedrockImage(width=1, height=1)
+        image = SpringfieldImage(width=1, height=1)
         expected_filter_specs = [
             "width-2400",
             "width-2200",
@@ -101,7 +101,7 @@ class BedrockImageTestCase(TestCase):
             )
 
     def test_pre_generate_expected_renditions_called_on_save(self):
-        image = BedrockImage(width=1, height=1)
+        image = SpringfieldImage(width=1, height=1)
         with patch.object(image, "_pre_generate_expected_renditions") as pre_generate_mock:
             image.save()
             pre_generate_mock.assert_called_once_with()

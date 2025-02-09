@@ -10,7 +10,7 @@ from django.core.management.base import BaseCommand
 
 from google.cloud import storage
 
-from bedrock.cms.models import BedrockImage
+from bedrock.cms.models import SpringfieldImage
 from bedrock.settings.base import path as build_path
 
 BUCKETS = {
@@ -60,7 +60,7 @@ class Command(BaseCommand):
         if redownload:
             self.stdout.write("Forcing redownload of all files.\n")
 
-        for image in BedrockImage.objects.all():
+        for image in SpringfieldImage.objects.all():
             image_key = f"media/cms/{image.file.name}"
             local_dest = build_path(settings.MEDIA_ROOT, image.file.name)
 

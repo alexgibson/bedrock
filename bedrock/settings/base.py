@@ -1343,7 +1343,7 @@ WAGTAIL_RICHTEXT_FEATURES_FULL = [
     "image",
 ]
 
-WAGTAILIMAGES_IMAGE_MODEL = "cms.BedrockImage"
+WAGTAILIMAGES_IMAGE_MODEL = "cms.SpringfieldImage"
 
 WAGTAILIMAGES_EXTENSIONS = [
     "gif",

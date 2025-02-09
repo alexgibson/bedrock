@@ -157,7 +157,7 @@ python manage.py dumpdata \
     waffle.Switch \
     cms.StructuralPage \
     cms.SimpleRichTextPage \
-    cms.BedrockImage \
+    cms.SpringfieldImage \
     newsletter.Newsletter \
     security.Product \
     security.SecurityAdvisory \

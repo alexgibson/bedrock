@@ -86,7 +86,7 @@ class ArticleIndexPageBase(AbstractBedrockCMSPage):
 
 class ArticleDetailPageBase(AbstractBedrockCMSPage):
     image = models.ForeignKey(
-        "cms.BedrockImage",
+        "cms.SpringfieldImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

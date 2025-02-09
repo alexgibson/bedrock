@@ -23,11 +23,11 @@ AUTOMATIC_RENDITION_FILTER_SPECS = [
 
 
 def _make_renditions(image_id, filter_specs):
-    image = BedrockImage.objects.get(id=image_id)
+    image = SpringfieldImage.objects.get(id=image_id)
     image.get_renditions(*filter_specs)
 
 
-class BedrockImage(AbstractImage):
+class SpringfieldImage(AbstractImage):
     """
     Custom image model from which we can hang extra methods, such as the one that
     pre-generates custom renditions for the image.
@@ -80,7 +80,7 @@ class BedrockImage(AbstractImage):
 
 class BedrockRendition(AbstractRendition):
     image = models.ForeignKey(
-        BedrockImage,
+        SpringfieldImage,
         on_delete=models.CASCADE,
         related_name="renditions",
     )

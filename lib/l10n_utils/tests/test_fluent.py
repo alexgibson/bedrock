@@ -15,7 +15,7 @@ L10N_PATH = Path(__file__).with_name("test_files").joinpath("l10n")
 
 def get_l10n(locales=None, ftl_files=None):
     locales = locales or ["de", "en"]
-    ftl_files = ftl_files or ["mozorg/fluent", "brands"]
+    ftl_files = ftl_files or ["firefox/fluent", "brands"]
     return fluent.fluent_l10n(locales, ftl_files)
 
 
@@ -130,27 +130,27 @@ class TestFluentViewTranslationUtils(TestCase):
         fluent.cache.clear()
 
     def test_ftl_view_util(self):
-        assert fluent.ftl("fluent-title", locale="de", ftl_files="mozorg/fluent") == "Title in German"
-        assert fluent.ftl("fluent-title", locale="fr", ftl_files="mozorg/fluent") == "Title in French"
-        assert fluent.ftl("fluent-title", locale="en", ftl_files="mozorg/fluent") == "This is a test of the new Fluent L10n system"
+        assert fluent.ftl("fluent-title", locale="de", ftl_files="firefox/fluent") == "Title in German"
+        assert fluent.ftl("fluent-title", locale="fr", ftl_files="firefox/fluent") == "Title in French"
+        assert fluent.ftl("fluent-title", locale="en", ftl_files="firefox/fluent") == "This is a test of the new Fluent L10n system"
 
     def test_ftl_view_util_no_mutate_list(self):
         """Should not mutate the ftl_files list"""
-        ftl_files = ["mozorg/fluent"]
+        ftl_files = ["firefox/fluent"]
         assert fluent.ftl("fluent-title", locale="de", ftl_files=ftl_files) == "Title in German"
-        assert ftl_files == ["mozorg/fluent"]
+        assert ftl_files == ["firefox/fluent"]
 
     def test_ftl_view_util_tuple(self):
         """Should be able to pass in a tuple of ftl files"""
-        ftl_files = ("mozorg/fluent",)
+        ftl_files = ("firefox/fluent",)
         assert fluent.ftl("fluent-title", locale="de", ftl_files=ftl_files) == "Title in German"
 
-    @override_settings(FLUENT_DEFAULT_FILES=["mozorg/fluent"])
+    @override_settings(FLUENT_DEFAULT_FILES=["firefox/fluent"])
     def test_ftl_view_util_default_files(self):
         """Should use default FTL files"""
         assert fluent.ftl("fluent-title", locale="de") == "Title in German"
 
-    @override_settings(FLUENT_DEFAULT_FILES=["mozorg/fluent"])
+    @override_settings(FLUENT_DEFAULT_FILES=["firefox/fluent"])
     def test_ftl_view_util_active_locale(self):
         """Should use activated locale if not provided"""
         translation.activate("fr")

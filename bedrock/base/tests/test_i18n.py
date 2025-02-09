@@ -89,8 +89,6 @@ def test_normalize_language(lang_code, expected):
         ("xbl", False),
         ("revision.txt", False),
         ("locales", False),
-        ("/sitemap_none.xml", False),
-        ("/sitemap.xml", False),
         # Some example paths that do need them
         ("/about/", True),
         ("about", True),

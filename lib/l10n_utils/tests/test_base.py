@@ -85,12 +85,6 @@ class TestRender(TestCase):
 
         # Test that a path in the `SUPPORTED_NONLOCALES` doesn't 404.
         self._test("/robots.txt", template, "", "", 200, active_locales=locales)
-        self._test("/sitemap_none.xml", template, "", "", 200, active_locales=locales)
-
-        # Test that a path in the `SUPPORTED_LOCALE_IGNORE` works both with and without locale in the path.
-        self._test("/sitemap.xml", template, "", "", 200, active_locales=locales)
-        self._test("/en-US/sitemap.xml", template, "", "", 200, active_locales=locales)
-        self._test("/fr/sitemap.xml", template, "", "", 200, active_locales=locales)
 
     def test_with_accept_language_header(self):
         template = "firefox/download.html"

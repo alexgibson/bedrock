@@ -165,7 +165,6 @@ python manage.py dumpdata \
     security.MitreCVE \
     releasenotes.ProductRelease \
     utils.GitRepoState \
-    sitemaps.SitemapURL \
     --indent 2 \
     --output /tmp/export_remainder.json || all_well=false
 

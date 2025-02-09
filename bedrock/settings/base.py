@@ -470,27 +470,7 @@ SUPPORTED_NONLOCALES = [
 # Paths that can exist either with or without a locale code in the URL.
 # Matches the whole URL path
 SUPPORTED_LOCALE_IGNORE = [
-    "/sitemap_none.xml",  # in sitemap urls
-    "/sitemap.xml",  # in sitemap urls
-]
-# Pages that we don't want to be indexed by search engines.
-# Only impacts sitemap generator. If you need to disallow indexing of
-# specific URLs, add them to base/templates/base/robots.txt.
-NOINDEX_URLS = [
-    r"^(404|500)/",
-    r"^contribute/(embed|event)/",
-    r"^cms-admin/",
-    r"^django-admin/",
-    r"^firefox/set-as-default/thanks/",
-    r"^firefox/stub_attribution_code/",
-    r"^firefox/installer-help/",
-    r"^firefox/nightly/notes/feed/$",
-    r"^firefox.*/all/$",
-    r"/system-requirements/$",
-    r"^readiness/$",
-    r"^healthz(-cron)?/$",
-    # exclude redirects
-    r"^firefox/notes/$",
+    # Sitemap URLs are a good candidate here
 ]
 
 # Pages we do want indexed but don't show up in automated URL discovery
@@ -499,10 +479,6 @@ EXTRA_INDEX_URLS = {
     "/privacy/firefox-klar/": ["de"],
     "/about/legal/impressum/": ["de"],
 }
-
-SITEMAPS_REPO = config("SITEMAPS_REPO", default="https://github.com/mozmeao/www-sitemap-generator.git")
-SITEMAPS_REPO_BRANCH = config("SITEMAPS_REPO_BRANCH", default="master")
-SITEMAPS_PATH = DATA_PATH / "sitemaps"
 
 # Pages that have different URLs for different locales, e.g.
 #   'firefox/private-browsing/': {
@@ -726,7 +702,6 @@ INSTALLED_APPS = [
     "bedrock.privacy",
     "bedrock.releasenotes",
     "bedrock.utils",
-    "bedrock.sitemaps",
     # last so that redirects here will be last
     "bedrock.redirects",
     # libs

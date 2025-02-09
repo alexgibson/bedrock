@@ -21,7 +21,7 @@ wagtail_jinja_image_tag_regex_pattern = re.compile(
 def test_templates_only_contain_valid_image_tag_calls():
     """Because we have to pre-generate renditions of images, we must ensure
     that no template includes an image that is not an appropriate
-    width - see cms.models.images.BedrockImage._pre_generate_expected_renditions
+    width - see cms.models.images.SpringfieldImage._pre_generate_expected_renditions
     for details.
     """
 

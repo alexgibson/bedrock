@@ -4,4 +4,3 @@ disallow: /
 {% else -%}
 disallow: /*/etc/
 {% endif -%}
-Sitemap: {{ request.scheme }}://{{ request.get_host() }}/sitemap.xml

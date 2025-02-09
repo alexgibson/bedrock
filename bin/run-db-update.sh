@@ -35,7 +35,6 @@ failure_detected=false
 python manage.py update_product_details_files || failure_detected=true
 python manage.py update_release_notes --quiet || failure_detected=true
 python manage.py update_newsletter_data --quiet || failure_detected=true
-python manage.py update_sitemaps_data --quiet || failure_detected=true
 
 # if [[ "$AUTH" == true ]]; then
 #     # Some jobs require some auth. Don't run these during build of the Docker images

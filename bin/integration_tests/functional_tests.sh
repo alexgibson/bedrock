@@ -49,7 +49,7 @@ fi
 docker pull ${TEST_IMAGE}
 
 docker run \
-    --name "bedrock-${CI_JOB_ID}" \
+    --name "springfield-${CI_JOB_ID}" \
     ${DOCKER_LINKS[@]} \
     -e "DRIVER=${DRIVER}" \
     -e "SAUCELABS_USERNAME=${SAUCELABS_USERNAME}" \

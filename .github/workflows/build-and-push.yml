@@ -17,12 +17,12 @@ on:
         required: true
         default: refs/heads/main
 env:
-  APP: bedrock
+  APP: springfield
   APPLICATION_REPOSITORY: mozmeao/springfield
-  IMAGE: bedrock
+  IMAGE: springfield
   GAR_LOCATION: us
-  GCP_PROJECT_ID: moz-fx-bedrock-prod
-  GAR_REPOSITORY: bedrock-prod
+  GCP_PROJECT_ID: moz-fx-springfield-prod
+  GAR_REPOSITORY: springfield-prod
   REF_ID: ${{ github.ref }}
 
 
@@ -39,8 +39,8 @@ jobs:
         with:
           buildkitd-flags: "cache-from: type=gha cache-to: type=gha,mode=max"
 
-      - id: checkout-bedrock-repo
-        name: checkout-bedrock-repo
+      - id: checkout-springfield-repo
+        name: checkout-springfield-repo
         uses: actions/checkout@v4
         with:
             fetch-depth: 10 # get enough so we have a Git history, but not everything
@@ -153,8 +153,8 @@ jobs:
       - id: push-existing-image-to-gar
         name: Push existing stage image to GAR
         run: |-
-             docker pull mozmeao/bedrock:${{ needs.build_and_publish_public_images.outputs.long_sha }}
-             docker tag mozmeao/bedrock:${{ needs.build_and_publish_public_images.outputs.long_sha }} ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY}}/${{ env.IMAGE }}:${{ env.TAG }}
+             docker pull mozmeao/springfield:${{ needs.build_and_publish_public_images.outputs.long_sha }}
+             docker tag mozmeao/springfield:${{ needs.build_and_publish_public_images.outputs.long_sha }} ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY}}/${{ env.IMAGE }}:${{ env.TAG }}
              docker push ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY}}/${{ env.IMAGE }}:${{ env.TAG }}
 
 

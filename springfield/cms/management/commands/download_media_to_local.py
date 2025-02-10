@@ -14,9 +14,9 @@ from springfield.cms.models import SpringfieldImage
 from springfield.settings.base import path as build_path
 
 BUCKETS = {
-    "dev": "bedrock-nonprod-dev-cms-media",
-    "stage": "bedrock-nonprod-stage-cms-media",
-    "prod": "bedrock-prod-prod-cms-media",
+    "dev": "springfield-nonprod-dev-cms-media",
+    "stage": "springfield-nonprod-stage-cms-media",
+    "prod": "springfield-prod-prod-cms-media",
 }
 
 

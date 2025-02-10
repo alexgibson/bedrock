@@ -21,7 +21,7 @@ fi
 
 TMP_DIR="s3-static"
 TMP_DIR_HASHED="s3-static-hashed"
-CONTAINER_NAME="bedrock-${GIT_COMMIT}"
+CONTAINER_NAME="springfield-${GIT_COMMIT}"
 
 rm -rf "${TMP_DIR}"
 rm -rf "${TMP_DIR_HASHED}"
@@ -43,14 +43,14 @@ for BUCKET in "${BUCKETS[@]}"; do
     aws s3 sync \
         --acl public-read \
         --cache-control "max-age=315360000, public, immutable" \
-        "./${TMP_DIR_HASHED}" "s3://bedrock-${BUCKET}-media/media/"
+        "./${TMP_DIR_HASHED}" "s3://springfield-${BUCKET}-media/media/"
     # non-hashed filenames
     # may not need to include non-hashed files
     # TODO look into this if this is slow or makes the bucket too large
     aws s3 sync \
         --acl public-read \
         --cache-control "max-age=21600, public" \
-        "./${TMP_DIR}" "s3://bedrock-${BUCKET}-media/media/"
+        "./${TMP_DIR}" "s3://springfield-${BUCKET}-media/media/"
 done
 
 rm -rf "${TMP_DIR}"

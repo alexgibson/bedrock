@@ -7,14 +7,14 @@ services:
     build:
       context: .
       target: assets
-    image: mozmeao/bedrock_assets:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield_assets:${GIT_COMMIT:-latest}
     platform: linux/amd64
     command: npm run watch
     ports:
       - "8000-8010:8000-8010"
     volumes:
       - ./media/:/app/media:delegated
-      - ./bedrock/:/app/bedrock:delegated
+      - ./springfield/:/app/springfield:delegated
       - ./assets/:/app/assets:delegated
     environment:
       WP_PROXY_URL: "http://app:8080"
@@ -24,7 +24,7 @@ services:
     build:
       context: .
       target: devapp
-    image: mozmeao/bedrock_test:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield_test:${GIT_COMMIT:-latest}
     platform: linux/amd64
     command: python manage.py runserver 0.0.0.0:8080
     env_file:
@@ -33,7 +33,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./bedrock/:/app/bedrock:delegated
+      - ./springfield/:/app/springfield:delegated
       - ./bin/:/app/bin:delegated
       - ./docker/:/app/docker:delegated
       - ./etc/:/app/etc:delegated
@@ -62,7 +62,7 @@ services:
     platform: linux/amd64
 
   worker:
-    image: mozmeao/bedrock_test:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield_test:${GIT_COMMIT:-latest}
     platform: linux/amd64
     restart: unless-stopped
     volumes:
@@ -78,10 +78,10 @@ services:
 
   # run the tests against local changes
   test:
-    image: mozmeao/bedrock_test:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield_test:${GIT_COMMIT:-latest}
     env_file: docker/envfiles/test.env
     volumes:
-      - ./bedrock/:/app/bedrock:delegated
+      - ./springfield/:/app/springfield:delegated
       - ./bin/:/app/bin:delegated
       - ./docker/:/app/docker:delegated
       - ./etc/:/app/etc:delegated
@@ -96,7 +96,7 @@ services:
 
   # run tests with no volumes
   test-image:
-    image: mozmeao/bedrock_test:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield_test:${GIT_COMMIT:-latest}
     env_file: docker/envfiles/test.env
 
   # the django app
@@ -106,11 +106,11 @@ services:
       target: release
       args:
         GIT_SHA: ${GIT_COMMIT:-latest}
-    image: mozmeao/bedrock:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield:${GIT_COMMIT:-latest}
     platform: linux/amd64
 
   release-local:
-    image: mozmeao/bedrock:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield:${GIT_COMMIT:-latest}
     env_file:
       - docker/envfiles/local.env
       - .env
@@ -119,7 +119,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./bedrock/:/app/bedrock:delegated
+      - ./springfield/:/app/springfield:delegated
       - ./bin/:/app/bin:delegated
       - ./docker/:/app/docker:delegated
       - ./etc/:/app/etc:delegated
@@ -131,7 +131,7 @@ services:
       - ./l10n/:/app/l10n:delegated
 
   docs:
-    image: mozmeao/bedrock_test:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield_test:${GIT_COMMIT:-latest}
     platform: linux/amd64
     command: sphinx-autobuild "docs" "docs/_build/html" --host 0.0.0.0 --port 8100
     ports:
@@ -143,19 +143,19 @@ services:
     build:
       context: .
       target: python-builder
-    image: mozmeao/bedrock_build:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield_build:${GIT_COMMIT:-latest}
     platform: linux/amd64
 
   app-base:
     build:
       context: .
       target: app-base
-    image: mozmeao/bedrock_code:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield_code:${GIT_COMMIT:-latest}
     platform: linux/amd64
 
   # Python dependency management
   compile-requirements:
-    image: mozmeao/bedrock_build:${GIT_COMMIT:-latest}
+    image: mozmeao/springfield_build:${GIT_COMMIT:-latest}
     platform: linux/amd64
     command:
       ./bin/compile-requirements.sh

@@ -22,15 +22,12 @@ ROOT_URLCONF = "bedrock.urls"
 # CSP settings, expanded upon later:
 _csp_default_src = [
     csp.constants.SELF,
-    "*.mozilla.net",
-    "*.mozilla.org",
-    "*.mozilla.com",
+    "*.firefox.com",
 ]
 _csp_img_src = [
     "data:",
     "www.googletagmanager.com",
     "www.google-analytics.com",
-    "images.ctfassets.net",
 ]
 _csp_script_src = [
     # TODO change settings so we don't need unsafes even in dev

@@ -34,7 +34,7 @@ function dntEnabled() {
 
 /**
  * Determines the hostname to set the consent cookie on.
- * Typically, this is either .mozilla.org or .springfield.moz.works.
+ * Typically, this is either .mozilla.org or .allizom.org.
  * But otherwise, it returns null so the cookie will apply
  * to the current domain.
  * @param {String} hostname - The hostname of the current page.
@@ -47,8 +47,8 @@ function getHostName(hostname) {
         return domain;
     }
 
-    if (hostname.indexOf('.springfield.moz.works') !== -1) {
-        domain = '.springfield.moz.works';
+    if (hostname.indexOf('.allizom.org') !== -1) {
+        domain = '.allizom.org';
     }
 
     if (hostname.indexOf('.mozilla.org') !== -1) {

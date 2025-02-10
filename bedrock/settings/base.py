@@ -938,9 +938,6 @@ RELEASE_NOTES_PATH = config("RELEASE_NOTES_PATH", default=data_path("release_not
 RELEASE_NOTES_REPO = config("RELEASE_NOTES_REPO", default="https://github.com/mozilla/release-notes.git")
 RELEASE_NOTES_BRANCH = config("RELEASE_NOTES_BRANCH", default="master")
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r"^/newsletter/$"
-
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,

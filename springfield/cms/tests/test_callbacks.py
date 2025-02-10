@@ -58,7 +58,7 @@ def test_visual_context__for_inviable_object(client):
 
 
 @pytest.mark.django_db
-@mock.patch("bedrock.cms.wagtail_localize_smartling.callbacks.capture_message")
+@mock.patch("springfield.cms.wagtail_localize_smartling.callbacks.capture_message")
 def test_visual_context__for_page__with_no_revision(mock_capture_message, client):
     top_level_page = SimpleRichTextPageFactory()
 
@@ -89,8 +89,8 @@ def test_visual_context__for_page__with_no_revision(mock_capture_message, client
 
 
 # The happy path is implicitly tested in test_visual_context__*, above
-@mock.patch("bedrock.cms.wagtail_localize_smartling.callbacks.capture_exception")
-@mock.patch("bedrock.cms.wagtail_localize_smartling.callbacks.SharingLinkView.as_view")
+@mock.patch("springfield.cms.wagtail_localize_smartling.callbacks.capture_exception")
+@mock.patch("springfield.cms.wagtail_localize_smartling.callbacks.SharingLinkView.as_view")
 def test__get_html_for_sharing_link__unhappy_path(mock_sharing_link_as_view, mock_capture_exception):
     test_exception = Exception("Boom!")
     mock_sharing_link_as_view.return_value = mock.Mock(side_effect=test_exception)

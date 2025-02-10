@@ -12,7 +12,7 @@ from django.test import TestCase, TransactionTestCase
 import everett
 
 
-@patch("bedrock.cms.management.commands.bootstrap_local_admin.sys.stdout.write")
+@patch("springfield.cms.management.commands.bootstrap_local_admin.sys.stdout.write")
 class BootstrapLocalAdminTests(TransactionTestCase):
     def _run_test(self, mock_write, expected_output):
         out = StringIO()
@@ -90,7 +90,7 @@ class BootstrapLocalAdminTests(TransactionTestCase):
         self.assertEqual(output, expected_output)
 
 
-@patch("bedrock.cms.management.commands.bootstrap_demo_server_admins.sys.stdout.write")
+@patch("springfield.cms.management.commands.bootstrap_demo_server_admins.sys.stdout.write")
 class BootstrapDemoAdminsTests(TransactionTestCase):
     maxDiff = None
 
@@ -178,16 +178,16 @@ class BootstrapDemoAdminsTests(TransactionTestCase):
 
 
 class SmartlingSyncTests(TestCase):
-    @patch("bedrock.cms.management.commands.run_smartling_sync.call_command")
+    @patch("springfield.cms.management.commands.run_smartling_sync.call_command")
     def test_sentry_logging_for_run_smartling_sync_command(self, mock_call_command):
         test_exception = Exception("Boom!")
         mock_call_command.side_effect = test_exception
-        with patch("bedrock.cms.management.commands.run_smartling_sync.capture_exception") as mock_capture_exception:
+        with patch("springfield.cms.management.commands.run_smartling_sync.capture_exception") as mock_capture_exception:
             call_command("run_smartling_sync")
         mock_capture_exception.assert_called_once_with(test_exception)
 
-    @patch("bedrock.cms.management.commands.bootstrap_local_admin.sys.stderr.write")
-    @patch("bedrock.cms.management.commands.run_smartling_sync.call_command")
+    @patch("springfield.cms.management.commands.bootstrap_local_admin.sys.stderr.write")
+    @patch("springfield.cms.management.commands.run_smartling_sync.call_command")
     def test_error_messaging_for_run_smartling_sync_command(self, mock_call_command, mock_stderr_write):
         test_exception = Exception("Boom!")
         mock_call_command.side_effect = test_exception

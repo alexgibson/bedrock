@@ -43,7 +43,7 @@ def test_show_android_sys_req(version_string, expected):
     assert show_android_sys_req(version_string) == expected
 
 
-@patch("bedrock.firefox.views.l10n_utils.render")
+@patch("springfield.firefox.views.l10n_utils.render")
 def test_releases_index(render_mock, rf):
     """Spot checks, incl confirmation that FF100 will not cause a hiccup"""
 
@@ -84,7 +84,7 @@ def test_releases_index(render_mock, rf):
 
     request = rf.get("/")
 
-    with patch("bedrock.releasenotes.views.firefox_desktop") as mock_firefox_desktop:
+    with patch("springfield.releasenotes.views.firefox_desktop") as mock_firefox_desktop:
         mock_firefox_desktop.firefox_history_major_releases = mock_major_releases_val
         mock_firefox_desktop.firefox_history_stability_releases = mock_minor_releases_val
 
@@ -152,7 +152,7 @@ def test_releases_index(render_mock, rf):
     )
 
 
-@patch("bedrock.firefox.views.l10n_utils.render")
+@patch("springfield.firefox.views.l10n_utils.render")
 def test_releases_index__product_other_than_firefox(render_mock, rf):
     request = rf.get("/")
     releases_index(request, "someproduct")

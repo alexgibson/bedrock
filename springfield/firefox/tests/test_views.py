@@ -356,7 +356,7 @@ class TestStubAttributionCode(TestCase):
 
 
 @override_settings(DEV=False)
-@patch("bedrock.firefox.views.l10n_utils.render", return_value=HttpResponse())
+@patch("springfield.firefox.views.l10n_utils.render", return_value=HttpResponse())
 class TestFirefoxDownload(TestCase):
     def test_post(self, render_mock):
         req = RequestFactory().post("/download/")

@@ -52,7 +52,7 @@ class TestNewsletterModel(TestCase):
         self.assertEqual(result, self.data)
 
 
-@mock.patch("bedrock.newsletter.utils.get_newsletters", newsletters_mock)
+@mock.patch("springfield.newsletter.utils.get_newsletters", newsletters_mock)
 class TestGetNewsletterLanguages(TestCase):
     def test_newsletter_langs(self):
         """Without args should return all langs."""

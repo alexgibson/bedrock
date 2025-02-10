@@ -179,7 +179,7 @@ if csp_ro_report_uri:
 if DEV:  # noqa: F405
     ALLOWED_HOSTS = ["*"]
 else:
-    MIDDLEWARE += ["bedrock.base.middleware.FrameOptionsHeader"]  # noqa: F405
+    MIDDLEWARE += ["springfield.base.middleware.FrameOptionsHeader"]  # noqa: F405
 
 
 if CACHES["default"]["BACKEND"] == "django_pylibmc.memcached.PyLibMCCache":  # noqa: F405

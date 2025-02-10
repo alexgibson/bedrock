@@ -246,7 +246,7 @@ class TestRedirectUrlPattern(TestCase):
         assert response.status_code == 301
         assert response["Location"] == "/just/your/opinion/man"
 
-    @patch("bedrock.redirects.util.reverse")
+    @patch("springfield.redirects.util.reverse")
     def test_to_view(self, mock_reverse):
         """
         Should use return value of reverse as redirect location
@@ -259,7 +259,7 @@ class TestRedirectUrlPattern(TestCase):
         assert response.status_code == 301
         assert response["Location"] == "/just/your/opinion/man"
 
-    @patch("bedrock.redirects.util.reverse")
+    @patch("springfield.redirects.util.reverse")
     def test_to_view_args_kwargs(self, mock_reverse):
         """
         Should call reverse with specified args and/or kwargs.

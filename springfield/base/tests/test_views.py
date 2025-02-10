@@ -25,8 +25,8 @@ geo_template_view = GeoTemplateView.as_view(
 
 class TestGeoTemplateView(DjangoTestCase):
     def get_template(self, country):
-        with patch("bedrock.firefox.views.l10n_utils.render") as render_mock:
-            with patch("bedrock.base.views.get_country_from_request") as geo_mock:
+        with patch("springfield.firefox.views.l10n_utils.render") as render_mock:
+            with patch("springfield.base.views.get_country_from_request") as geo_mock:
                 geo_mock.return_value = country
                 rf = RequestFactory()
                 req = rf.get("/")
@@ -48,7 +48,7 @@ class TestGeoTemplateView(DjangoTestCase):
 
 @pytest.mark.django_db
 def test_csrf_view_is_custom_one():
-    assert settings.CSRF_FAILURE_VIEW == "bedrock.base.views.csrf_failure"
+    assert settings.CSRF_FAILURE_VIEW == "springfield.base.views.csrf_failure"
 
 
 class TestRobots(TestCase):

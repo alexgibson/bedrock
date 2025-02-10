@@ -19,7 +19,7 @@ RELEASES_PATH = str(Path(__file__).parent)
 release_cache = caches["release-notes"]
 
 
-@patch("bedrock.releasenotes.models.reverse")
+@patch("springfield.releasenotes.models.reverse")
 class TestReleaseNotesURL(TestCase):
     def test_aurora_android_releasenotes_url(self, mock_reverse):
         """

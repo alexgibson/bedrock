@@ -9,12 +9,12 @@ from django.test import TestCase, override_settings
 
 from springfield.base import tasks
 
-logger = logging.getLogger("bedrock.base.tasks")
+logger = logging.getLogger("springfield.base.tasks")
 
 
 class TasksHelperTests(TestCase):
     @override_settings(TASK_QUEUE_AVAILABLE=True)
-    @patch("bedrock.base.tasks.django_rq.get_queue")
+    @patch("springfield.base.tasks.django_rq.get_queue")
     @patch.object(logger, "info")
     def test_defer_task_with_task_queue_available(
         self,
@@ -47,7 +47,7 @@ class TasksHelperTests(TestCase):
         assert "<MagicMock name='fake_function'" in mock_logger_info.call_args_list[0][0][0]
 
     @override_settings(TASK_QUEUE_AVAILABLE=True)
-    @patch("bedrock.base.tasks.django_rq.get_queue")
+    @patch("springfield.base.tasks.django_rq.get_queue")
     @patch.object(logger, "info")
     def test_defer_task_no_args(self, mock_logger_info, mock_get_queue):
         mock_queue = MagicMock()
@@ -74,7 +74,7 @@ class TasksHelperTests(TestCase):
         mock_logger_info.assert_called_once_with(f"Sending {func} to the task queue 'custom_queue_name'")
 
     @override_settings(TASK_QUEUE_AVAILABLE=True)
-    @patch("bedrock.base.tasks.django_rq.get_queue")
+    @patch("springfield.base.tasks.django_rq.get_queue")
     @patch.object(logger, "info")
     def test_defer_task_no_kwargs(
         self,
@@ -105,7 +105,7 @@ class TasksHelperTests(TestCase):
         mock_logger_info.assert_called_once_with(f"Sending {func} to the task queue 'custom_queue_name'")
 
     @override_settings(TASK_QUEUE_AVAILABLE=True)
-    @patch("bedrock.base.tasks.django_rq.get_queue")
+    @patch("springfield.base.tasks.django_rq.get_queue")
     @patch.object(logger, "info")
     def test_defer_task_with_task_queue_available__default_queue_name(
         self,
@@ -135,7 +135,7 @@ class TasksHelperTests(TestCase):
         mock_logger_info.assert_called_once_with(f"Sending {func} to the task queue 'default'")
 
     @override_settings(TASK_QUEUE_AVAILABLE=False)
-    @patch("bedrock.base.tasks.django_rq.get_queue")
+    @patch("springfield.base.tasks.django_rq.get_queue")
     @patch.object(logger, "info")
     def test_defer_task_with_task_queue_not_available(
         self,

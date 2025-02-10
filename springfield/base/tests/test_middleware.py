@@ -31,8 +31,8 @@ from springfield.base.tests import TestCase
 
 
 @override_settings(
-    MIDDLEWARE=["bedrock.base.middleware.MetricsStatusMiddleware"],
-    ROOT_URLCONF="bedrock.base.tests.urls",
+    MIDDLEWARE=["springfield.base.middleware.MetricsStatusMiddleware"],
+    ROOT_URLCONF="springfield.base.tests.urls",
 )
 class TestMetricsStatusMiddleware(DjangoTestCase):
     def test_200(self):
@@ -110,8 +110,8 @@ class TestMetricsStatusMiddleware(DjangoTestCase):
 
 
 @override_settings(
-    MIDDLEWARE=["bedrock.base.middleware.MetricsViewTimingMiddleware"],
-    ROOT_URLCONF="bedrock.base.tests.urls",
+    MIDDLEWARE=["springfield.base.middleware.MetricsViewTimingMiddleware"],
+    ROOT_URLCONF="springfield.base.tests.urls",
     ENABLE_METRICS_VIEW_TIMING_MIDDLEWARE=True,
 )
 class TestMetricsViewTimingMiddleware(DjangoTestCase):
@@ -128,7 +128,7 @@ class TestMetricsViewTimingMiddleware(DjangoTestCase):
             assert resp.status_code == 200
             mm.assert_timing_once(
                 "view.timings",
-                tags=["view_path:bedrock.base.tests.urls.index.GET", "module:bedrock.base.tests.urls.GET", "method:GET", "status_code:200"],
+                tags=["view_path:springfield.base.tests.urls.index.GET", "module:springfield.base.tests.urls.GET", "method:GET", "status_code:200"],
             )
 
     def test_302(self):
@@ -137,7 +137,12 @@ class TestMetricsViewTimingMiddleware(DjangoTestCase):
             assert resp.status_code == 302
             mm.assert_timing_once(
                 "view.timings",
-                tags=["view_path:bedrock.base.tests.urls.redirect.GET", "module:bedrock.base.tests.urls.GET", "method:GET", "status_code:302"],
+                tags=[
+                    "view_path:springfield.base.tests.urls.redirect.GET",
+                    "module:springfield.base.tests.urls.GET",
+                    "method:GET",
+                    "status_code:302",
+                ],
             )
 
     def test_raises_404(self):
@@ -147,7 +152,12 @@ class TestMetricsViewTimingMiddleware(DjangoTestCase):
                 assert resp.status_code == 404
             mm.assert_timing_once(
                 "view.timings",
-                tags=["view_path:bedrock.base.tests.urls.raises_404.GET", "module:bedrock.base.tests.urls.GET", "method:GET", "status_code:404"],
+                tags=[
+                    "view_path:springfield.base.tests.urls.raises_404.GET",
+                    "module:springfield.base.tests.urls.GET",
+                    "method:GET",
+                    "status_code:404",
+                ],
             )
 
     def test_returns_404(self):
@@ -156,7 +166,12 @@ class TestMetricsViewTimingMiddleware(DjangoTestCase):
             assert resp.status_code == 404
             mm.assert_timing_once(
                 "view.timings",
-                tags=["view_path:bedrock.base.tests.urls.returns_404.GET", "module:bedrock.base.tests.urls.GET", "method:GET", "status_code:404"],
+                tags=[
+                    "view_path:springfield.base.tests.urls.returns_404.GET",
+                    "module:springfield.base.tests.urls.GET",
+                    "method:GET",
+                    "status_code:404",
+                ],
             )
 
     def test_raises_500(self):
@@ -166,7 +181,12 @@ class TestMetricsViewTimingMiddleware(DjangoTestCase):
                 assert resp.status_code == 500
             mm.assert_timing_once(
                 "view.timings",
-                tags=["view_path:bedrock.base.tests.urls.raises_500.GET", "module:bedrock.base.tests.urls.GET", "method:GET", "status_code:500"],
+                tags=[
+                    "view_path:springfield.base.tests.urls.raises_500.GET",
+                    "module:springfield.base.tests.urls.GET",
+                    "method:GET",
+                    "status_code:500",
+                ],
             )
 
     def test_returns_500(self):
@@ -175,7 +195,12 @@ class TestMetricsViewTimingMiddleware(DjangoTestCase):
             assert resp.status_code == 500
             mm.assert_timing_once(
                 "view.timings",
-                tags=["view_path:bedrock.base.tests.urls.returns_500.GET", "module:bedrock.base.tests.urls.GET", "method:GET", "status_code:500"],
+                tags=[
+                    "view_path:springfield.base.tests.urls.returns_500.GET",
+                    "module:springfield.base.tests.urls.GET",
+                    "method:GET",
+                    "status_code:500",
+                ],
             )
 
 
@@ -474,7 +499,7 @@ class TestHostnameMiddleware(TestCase):
         self.assertEqual(self.response["X-Backend-Server"], "foobar.oregon-b")
 
     @override_settings(
-        MIDDLEWARE=(list(settings.MIDDLEWARE) + ["bedrock.base.middleware.HostnameMiddleware"]),
+        MIDDLEWARE=(list(settings.MIDDLEWARE) + ["springfield.base.middleware.HostnameMiddleware"]),
         HOSTNAME="foobar",
         CLUSTER_NAME="el-dudarino",
     )

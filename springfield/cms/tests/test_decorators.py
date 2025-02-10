@@ -190,7 +190,7 @@ def test_decorating_django_view__passing_callable_for_locales(
 @pytest.mark.urls(__name__)
 @pytest.mark.parametrize("lang_code_prefix", ("", "/en-US"))
 def test_decorating_django_view__passing_ftl_files(lang_code_prefix, minimal_site, client, mocker):
-    mock_get_active_locales = mocker.patch("bedrock.cms.decorators.get_active_locales")
+    mock_get_active_locales = mocker.patch("springfield.cms.decorators.get_active_locales")
     mock_get_active_locales.return_value = ["sco", "es-ES", "fr-CA"]
 
     assert not mock_get_active_locales.called
@@ -319,7 +319,7 @@ def test_patching_in_urlconf__standard_django_view__with_fluent_files(
     client,
     mocker,
 ):
-    mock_get_active_locales = mocker.patch("bedrock.cms.decorators.get_active_locales")
+    mock_get_active_locales = mocker.patch("springfield.cms.decorators.get_active_locales")
     mock_get_active_locales.return_value = ["sco", "es-ES", "fr-CA"]
 
     assert not mock_get_active_locales.called

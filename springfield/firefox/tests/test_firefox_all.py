@@ -292,8 +292,8 @@ def test_firefox_esr_next(client, os, lang):
         else:
             return orig_get_filtered_full_builds(channel, query)
 
-    with patch("bedrock.firefox.views.firefox_desktop.latest_version", side_effect=mock_latest_version):
-        with patch("bedrock.firefox.views.firefox_desktop.get_filtered_full_builds", side_effect=mock_get_filtered_full_builds):
+    with patch("springfield.firefox.views.firefox_desktop.latest_version", side_effect=mock_latest_version):
+        with patch("springfield.firefox.views.firefox_desktop.get_filtered_full_builds", side_effect=mock_get_filtered_full_builds):
             resp = client.get(reverse("firefox.all.download", kwargs={"product_slug": "desktop-esr", "platform": os, "locale": lang}))
             doc = pq(resp.content)
 

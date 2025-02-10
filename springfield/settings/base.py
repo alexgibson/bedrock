@@ -788,7 +788,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "APP_DIRS": True,
         "DIRS": [
-            "bedrock/admin/templates",
+            "springfield/admin/templates",
         ],
         "OPTIONS": {
             "context_processors": [

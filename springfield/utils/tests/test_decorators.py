@@ -24,7 +24,7 @@ class _TestCommandWithoutException(BaseCommand):
         self.foo()
 
 
-@patch("bedrock.utils.management.decorators.capture_exception")
+@patch("springfield.utils.management.decorators.capture_exception")
 def test_sentry_alerting_base_command__exception_raised(mock_capture_exception):
     assert not mock_capture_exception.called
 
@@ -36,7 +36,7 @@ def test_sentry_alerting_base_command__exception_raised(mock_capture_exception):
         mock_capture_exception.assert_called_once_with(ex)
 
 
-@patch("bedrock.utils.management.decorators.capture_exception")
+@patch("springfield.utils.management.decorators.capture_exception")
 def test_sentry_alerting_base_command__no_exception_raised(mock_capture_exception):
     assert not mock_capture_exception.called
 

@@ -62,7 +62,7 @@ class BedrockLangCodeFixupMiddleware(MiddlewareMixin):
         dest = f"/{lang_code}/{subpath}"
 
         # log the redirect without querystrings, in case there's a token or similar we don't want to end up in Markus
-        metrics.incr("bedrock.langfixup.redirect", tags=[f"from:{request.path}", f"to:{dest}"])
+        metrics.incr("springfield.langfixup.redirect", tags=[f"from:{request.path}", f"to:{dest}"])
 
         if request.GET:
             dest += f"?{request.GET.urlencode()}"
@@ -131,7 +131,7 @@ class BedrockLocaleMiddleware(DjangoLocaleMiddleware):
         if is_root_path_with_no_language_clues(request):
             # Skip using Django's LocaleMiddleware
             metrics.incr(
-                "bedrock.localemiddleware.skipdjangolocalemiddleware",
+                "springfield.localemiddleware.skipdjangolocalemiddleware",
                 tags=[f"path:{request.path}"],
             )
         else:

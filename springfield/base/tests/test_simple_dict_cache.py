@@ -36,7 +36,7 @@ _caches_setting_base = {
     "prefix": {"LOCATION": "default", "KEY_PREFIX": f"cacheprefix{os.getpid()}"},
     "v2": {"LOCATION": "default", "VERSION": 2},
     "custom_key": {"LOCATION": "default", "KEY_FUNCTION": custom_key_func},
-    "custom_key2": {"LOCATION": "default", "KEY_FUNCTION": "bedrock.base.tests.test_simple_dict_cache.custom_key_func"},
+    "custom_key2": {"LOCATION": "default", "KEY_FUNCTION": "springfield.base.tests.test_simple_dict_cache.custom_key_func"},
     "cull": {"LOCATION": "cull", "OPTIONS": {"MAX_ENTRIES": 30}},
     "zero_cull": {"LOCATION": "zero_cull", "OPTIONS": {"CULL_FREQUENCY": 0, "MAX_ENTRIES": 30}},
 }

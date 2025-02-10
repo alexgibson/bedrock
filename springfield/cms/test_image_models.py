@@ -34,7 +34,7 @@ class SpringfieldImageTestCase(TestCase):
             "max-165x165",
         ]
 
-        with patch("bedrock.cms.models.images._make_renditions") as _make_renditions_mock:
+        with patch("springfield.cms.models.images._make_renditions") as _make_renditions_mock:
             image._pre_generate_expected_renditions()
             _make_renditions_mock.assert_called_once_with(image_id=image.id, filter_specs=expected_filter_specs)
 
@@ -58,7 +58,7 @@ class SpringfieldImageTestCase(TestCase):
             "max-165x165",
         ]
 
-        with patch("bedrock.base.tasks.django_rq") as mock_django_rq:
+        with patch("springfield.base.tasks.django_rq") as mock_django_rq:
             mock_queue = Mock(name="mocked_queue")
             mock_django_rq.get_queue.return_value = mock_queue
 
@@ -89,7 +89,7 @@ class SpringfieldImageTestCase(TestCase):
             "width-100",
             "max-165x165",
         ]
-        with patch("bedrock.cms.models.images.defer_task") as mock_defer_task:
+        with patch("springfield.cms.models.images.defer_task") as mock_defer_task:
             image._pre_generate_expected_renditions()
             mock_defer_task.assert_called_once_with(
                 _make_renditions,

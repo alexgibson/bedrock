@@ -49,7 +49,7 @@ class TestRenderers(TestCase):
         self.assertIn('value="false" checked', output)
 
 
-@mock.patch("bedrock.newsletter.utils.get_newsletters", newsletters_mock)
+@mock.patch("springfield.newsletter.utils.get_newsletters", newsletters_mock)
 class TestNewsletterForm(TestCase):
     def test_form(self):
         """test NewsletterForm"""
@@ -72,7 +72,7 @@ class TestNewsletterForm(TestCase):
         self.assertEqual(title, form.cleaned_data["title"])
 
 
-@mock.patch("bedrock.newsletter.utils.get_newsletters", newsletters_mock)
+@mock.patch("springfield.newsletter.utils.get_newsletters", newsletters_mock)
 class TestNewsletterFooterForm(TestCase):
     newsletter_name = "mozilla-and-you"
 

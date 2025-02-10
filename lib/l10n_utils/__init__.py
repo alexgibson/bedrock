@@ -211,7 +211,7 @@ def render(request, template, context=None, ftl_files=None, activation_files=Non
 
 
 def get_locale(request):
-    # request.locale is added in bedrock.base.middleware.BedrockLangCodeFixupMiddleware
+    # request.locale is added in springfield.base.middleware.BedrockLangCodeFixupMiddleware
     lang = getattr(request, "locale", None)
     if not lang:
         lang = settings.LANGUAGE_CODE

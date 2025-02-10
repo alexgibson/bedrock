@@ -40,7 +40,7 @@ def test_convert_to_high_res():
     assert misc.convert_to_high_res("/media/thats-a-bummer-man.jpg") == "/media/thats-a-bummer-man-high-res.jpg"
 
 
-@patch("bedrock.firefox.templatetags.misc._l10n_media_exists")
+@patch("springfield.firefox.templatetags.misc._l10n_media_exists")
 @patch("django.conf.settings.LANGUAGE_CODE", "en-US")
 class TestImgL10n(TestCase):
     rf = RequestFactory()
@@ -98,7 +98,7 @@ class TestImgL10n(TestCase):
 
 
 @override_settings(DEBUG=False)
-@patch("bedrock.firefox.templatetags.misc._l10n_media_exists")
+@patch("springfield.firefox.templatetags.misc._l10n_media_exists")
 class TestL10nCSS(TestCase):
     rf = RequestFactory()
     static_url_dev = "/static/"

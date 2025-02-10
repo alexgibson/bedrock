@@ -36,7 +36,7 @@ class TestReleaseViews(TestCase):
         self.factory = RequestFactory()
         self.request = self.factory.get("/")
 
-        self.render_patch = patch("bedrock.releasenotes.views.l10n_utils.render")
+        self.render_patch = patch("springfield.releasenotes.views.l10n_utils.render")
         self.mock_render = self.render_patch.start()
         self.mock_render.return_value.has_header.return_value = False
 
@@ -51,7 +51,7 @@ class TestReleaseViews(TestCase):
         """
         return self.mock_render.call_args[0][2]
 
-    @patch("bedrock.releasenotes.models.get_release")
+    @patch("springfield.releasenotes.models.get_release")
     def test_get_release_or_404(self, get_release):
         assert views.get_release_or_404("version", "product") == get_release.return_value
         get_release.assert_called_with("product", "version", None, False)
@@ -70,9 +70,9 @@ class TestReleaseViews(TestCase):
         assert rel.channel == "ESR"
 
     @override_settings(DEV=False)
-    @patch("bedrock.releasenotes.views.release_notes_template")
-    @patch("bedrock.releasenotes.views.get_release_or_404")
-    @patch("bedrock.releasenotes.views.equivalent_release_url")
+    @patch("springfield.releasenotes.views.release_notes_template")
+    @patch("springfield.releasenotes.views.get_release_or_404")
+    @patch("springfield.releasenotes.views.equivalent_release_url")
     def test_release_notes(self, mock_equiv_rel_url, get_release_or_404, mock_release_notes_template):
         """
         Should use release returned from get_release_or_404 with the
@@ -91,7 +91,7 @@ class TestReleaseViews(TestCase):
         mock_equiv_rel_url.assert_called_with(mock_release)
         mock_release_notes_template.assert_called_with(mock_release.channel, "Firefox", 34)
 
-    @patch("bedrock.releasenotes.views.get_release_or_404")
+    @patch("springfield.releasenotes.views.get_release_or_404")
     def test_release_notes_beta_redirect(self, get_release_or_404):
         """
         Should redirect to url for beta release
@@ -104,7 +104,7 @@ class TestReleaseViews(TestCase):
         assert response["location"] == "/firefox/27.0beta/releasenotes/"
         get_release_or_404.assert_called_with("27.0beta", "Firefox", True)
 
-    @patch("bedrock.releasenotes.views.get_release_or_404")
+    @patch("springfield.releasenotes.views.get_release_or_404")
     def test_system_requirements(self, get_release_or_404):
         """
         Should use release returned from get_release_or_404, with a
@@ -400,10 +400,10 @@ class TestReleaseNotesIndex(TestCase):
     def setUp(self):
         self.pd_cache.clear()
 
-    @patch("bedrock.releasenotes.views.l10n_utils.render")
+    @patch("springfield.releasenotes.views.l10n_utils.render")
     def test_relnotes_index_firefox(self, render_mock):
         firefox_desktop = FirefoxDesktop(json_dir=DATA_PATH)
-        with patch("bedrock.releasenotes.views.firefox_desktop", firefox_desktop):
+        with patch("springfield.releasenotes.views.firefox_desktop", firefox_desktop):
             render_mock().render.return_value = HttpResponse("")
             with self.activate_locale("en-US"):
                 self.client.get(reverse("firefox.releases.index"))
@@ -452,7 +452,7 @@ class TestNotesRedirects(TestCase):
         assert response["Location"] == "/en-US" + url_to
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404",
+        "springfield.releasenotes.views.get_latest_release_or_404",
         Mock(return_value=ProductRelease(product="Firefox", version="22.0", channel="Release")),
     )
     def test_desktop_release_version(self):
@@ -460,48 +460,49 @@ class TestNotesRedirects(TestCase):
         self._test("/firefox/latest/releasenotes/", "/firefox/22.0/releasenotes/")
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404",
+        "springfield.releasenotes.views.get_latest_release_or_404",
         Mock(return_value=ProductRelease(product="Firefox", version="23.0beta", channel="Beta")),
     )
     def test_desktop_beta_version(self):
         self._test("/firefox/beta/notes/", "/firefox/23.0beta/releasenotes/")
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404",
+        "springfield.releasenotes.views.get_latest_release_or_404",
         Mock(return_value=ProductRelease(product="Firefox", version="23.0beta", channel="Beta")),
     )
     def test_desktop_developer_version(self):
         self._test("/firefox/developer/notes/", "/firefox/23.0beta/releasenotes/")
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404", Mock(return_value=ProductRelease(product="Firefox", version="24.2.0", channel="ESR"))
+        "springfield.releasenotes.views.get_latest_release_or_404",
+        Mock(return_value=ProductRelease(product="Firefox", version="24.2.0", channel="ESR")),
     )
     def test_desktop_esr_version(self):
         self._test("/firefox/organizations/notes/", "/firefox/24.2.0/releasenotes/")
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404",
+        "springfield.releasenotes.views.get_latest_release_or_404",
         Mock(return_value=ProductRelease(product="Firefox for Android", version="22.0", channel="Release")),
     )
     def test_android_release_version(self):
         self._test("/firefox/android/notes/", "/firefox/android/22.0/releasenotes/")
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404",
+        "springfield.releasenotes.views.get_latest_release_or_404",
         Mock(return_value=ProductRelease(product="Firefox for Android", version="23.0beta", channel="Beta")),
     )
     def test_android_beta_version(self):
         self._test("/firefox/android/beta/notes/", "/firefox/android/23.0beta/releasenotes/")
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404",
+        "springfield.releasenotes.views.get_latest_release_or_404",
         Mock(return_value=ProductRelease(product="Firefox for Android", version="24.0a2", channel="Aurora")),
     )
     def test_android_aurora_version(self):
         self._test("/firefox/android/aurora/notes/", "/firefox/android/24.0a2/auroranotes/")
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404",
+        "springfield.releasenotes.views.get_latest_release_or_404",
         Mock(return_value=ProductRelease(product="Firefox for iOS", version="1.4", channel="Release")),
     )
     def test_ios_release_version(self):
@@ -517,28 +518,29 @@ class TestSysreqRedirect(TestCase):
         assert response["Location"] == "/en-US" + url_to
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404",
+        "springfield.releasenotes.views.get_latest_release_or_404",
         Mock(return_value=ProductRelease(product="Firefox", version="22.0", channel="Release")),
     )
     def test_desktop_release_version(self):
         self._test("/firefox/system-requirements/", "/firefox/22.0/system-requirements/")
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404",
+        "springfield.releasenotes.views.get_latest_release_or_404",
         Mock(return_value=ProductRelease(product="Firefox", version="23.0beta", channel="Beta")),
     )
     def test_desktop_beta_version(self):
         self._test("/firefox/beta/system-requirements/", "/firefox/23.0beta/system-requirements/")
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404",
+        "springfield.releasenotes.views.get_latest_release_or_404",
         Mock(return_value=ProductRelease(product="Firefox", version="23.0beta", channel="Beta")),
     )
     def test_desktop_developer_version(self):
         self._test("/firefox/developer/system-requirements/", "/firefox/23.0beta/system-requirements/")
 
     @patch(
-        "bedrock.releasenotes.views.get_latest_release_or_404", Mock(return_value=ProductRelease(product="Firefox", version="24.2.0", channel="ESR"))
+        "springfield.releasenotes.views.get_latest_release_or_404",
+        Mock(return_value=ProductRelease(product="Firefox", version="24.2.0", channel="ESR")),
     )
     def test_desktop_esr_version(self):
         self._test("/firefox/organizations/system-requirements/", "/firefox/24.2.0/system-requirements/")

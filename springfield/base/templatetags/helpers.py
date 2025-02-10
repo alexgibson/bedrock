@@ -163,7 +163,7 @@ def get_locale_options(request, translations):
     # are viable for the page being rendered. Great! \o/
     available_locales = translations
 
-    # However, if a URL route is decorated with bedrock.cms.decorators.prefer_cms
+    # However, if a URL route is decorated with springfield.cms.decorators.prefer_cms
     # that means that a page could come from the CMS or from Django depending on
     # the locale being requested. In this situation _locales_available_via_cms
     # and _locales_for_django_fallback_view are annotated onto the request.

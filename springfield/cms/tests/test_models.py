@@ -21,7 +21,7 @@ pytestmark = [
 ]
 
 
-@mock.patch("bedrock.cms.models.SimpleRichTextPage.get_view_restrictions")
+@mock.patch("springfield.cms.models.SimpleRichTextPage.get_view_restrictions")
 @pytest.mark.parametrize(
     "fake_restrictions, expected_headers",
     (
@@ -100,7 +100,7 @@ def test_CMS_ALLOWED_PAGE_MODELS_controls_Page_can_create_at(
         assert page_class.can_create_at(home_page) == success_expected
 
 
-@mock.patch("bedrock.cms.models.base.get_locales_for_cms_page")
+@mock.patch("springfield.cms.models.base.get_locales_for_cms_page")
 def test__patch_request_for_bedrock__locales_available_via_cms(
     mock_get_locales_for_cms_page,
     minimal_site,

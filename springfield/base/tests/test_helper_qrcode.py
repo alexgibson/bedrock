@@ -10,8 +10,8 @@ from springfield.base.templatetags.qrcode import qrcode
 from springfield.base.tests import TestCase
 
 
-@patch("bedrock.base.templatetags.qrcode.cache")
-@patch("bedrock.base.templatetags.qrcode.qr")
+@patch("springfield.base.templatetags.qrcode.cache")
+@patch("springfield.base.templatetags.qrcode.qr")
 class TestQRCode(TestCase):
     def test_qrcode_cache_cold(self, qr_mock, cache_mock):
         cache_mock.get.return_value = None

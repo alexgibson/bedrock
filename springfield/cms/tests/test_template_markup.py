@@ -51,7 +51,7 @@ def test_templates_only_contain_valid_image_tag_calls():
                 if match not in AUTOMATIC_RENDITION_FILTER_SPECS:
                     failures[template_name].append(match)
 
-    expected_fail = failures.pop("bedrock/cms/templates/cms/for_tests/test_template__invalid_image_inclusion.html", None)
+    expected_fail = failures.pop("springfield/cms/templates/cms/for_tests/test_template__invalid_image_inclusion.html", None)
     if expected_fail is None:
         assert False, "Failed to detect deliberately invalid filter spec in image() call"
     if len(failures.keys()) > 0:

@@ -126,8 +126,8 @@ def test_get_cms_locales_for_path(
     mocker,
 ):
     request = rf.get("/path/is/irrelevant/due/to/mocks")
-    mock_get_page_for_request = mocker.patch("bedrock.cms.utils.get_page_for_request")
-    mock_get_locales_for_cms_page = mocker.patch("bedrock.cms.utils.get_locales_for_cms_page")
+    mock_get_page_for_request = mocker.patch("springfield.cms.utils.get_page_for_request")
+    mock_get_locales_for_cms_page = mocker.patch("springfield.cms.utils.get_locales_for_cms_page")
 
     if get_page_for_request_should_return_a_page:
         page = mocker.Mock("fake-page")

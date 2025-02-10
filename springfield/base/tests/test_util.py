@@ -14,7 +14,7 @@ from springfield.base.util import page
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test_files")
 
 
-@patch("bedrock.base.util.l10n_utils")
+@patch("springfield.base.util.l10n_utils")
 class TestPageUtil(TestCase):
     def setUp(self):
         self.rf = RequestFactory()

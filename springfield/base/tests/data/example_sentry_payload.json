@@ -122,11 +122,11 @@
               {
                 "abs_path": "/Users/testharness/Code/bedrock/bedrock/utils/management/decorators.py",
                 "context_line": "            cls.old_handle(*args, **kwargs)",
-                "filename": "bedrock/utils/management/decorators.py",
+                "filename": "springfield/utils/management/decorators.py",
                 "function": "_handle",
                 "in_app": true,
                 "lineno": 21,
-                "module": "bedrock.utils.management.decorators",
+                "module": "springfield.utils.management.decorators",
                 "post_context": [
                   "        except Exception as ex:",
                   "            capture_exception(ex)",
@@ -143,7 +143,7 @@
                 ],
                 "vars": {
                   "args": [],
-                  "cls": "<bedrock.base.management.commands.update_product_details_files.Command object at 0x110b55bb0>",
+                  "cls": "<springfield.base.management.commands.update_product_details_files.Command object at 0x110b55bb0>",
                   "ex": "Exception('broke yo')",
                   "kwargs": {
                     "database": "'default'",
@@ -155,11 +155,11 @@
               {
                 "abs_path": "/Users/testharness/Code/bedrock/bedrock/base/management/commands/update_product_details_files.py",
                 "context_line": "        self.load_changes(options, self.file_storage.all_json_files())",
-                "filename": "bedrock/base/management/commands/update_product_details_files.py",
+                "filename": "springfield/base/management/commands/update_product_details_files.py",
                 "function": "handle",
                 "in_app": true,
                 "lineno": 64,
-                "module": "bedrock.base.management.commands.update_product_details_files",
+                "module": "springfield.base.management.commands.update_product_details_files",
                 "post_context": [
                   "        self.repo.set_db_latest()",
                   "",
@@ -181,7 +181,7 @@
                     "force": "False",
                     "quiet": "False"
                   },
-                  "self": "<bedrock.base.management.commands.update_product_details_files.Command object at 0x110b55bb0>"
+                  "self": "<springfield.base.management.commands.update_product_details_files.Command object at 0x110b55bb0>"
                 }
               },
               {

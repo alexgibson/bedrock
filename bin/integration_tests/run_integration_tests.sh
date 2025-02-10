@@ -7,7 +7,7 @@ set -xe
 
 # Defaults
 : ${PYTEST_PROCESSES:="1"}
-: ${BASE_URL:="https://www-dev.allizom.org"}
+: ${BASE_URL:="https://www-dev.springfield.moz.works"}
 : ${BOUNCER_URL:="https://download.mozilla.org/"}
 : ${SELENIUM_HOST:="localhost"}
 : ${SELENIUM_PORT:="4444"}

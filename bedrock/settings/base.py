@@ -442,7 +442,7 @@ LANGUAGES = lazy(lazy_langs, list)()
 DEV_GEO_COUNTRY_CODE = config("DEV_GEO_COUNTRY_CODE", default="US")
 
 # Paths that don't require a locale code in the URL.
-# matches the first url component (e.g. mozilla.org/robots.txt)
+# matches the first url component (e.g. firefox.com/robots.txt)
 SUPPORTED_NONLOCALES = [
     # from redirects.urls
     "media",
@@ -452,16 +452,9 @@ SUPPORTED_NONLOCALES = [
     "robots.txt",
     ".well-known",
     "telemetry",  # redirect only
-    "webmaker",  # redirect only
     "healthz",  # Needed for k8s
     "readiness",  # Needed for k8s
     "healthz-cron",  # status dash
-    "2004",
-    "2005",
-    "2006",
-    "keymaster",
-    "microsummaries",
-    "xbl",
     "revision.txt",  # from root_files
     "locales",
     "csrf_403",
@@ -717,11 +710,7 @@ INSTALLED_APPS = [
 # page is exempt by default.
 VARY_NOCACHE_EXEMPT_URL_PREFIXES = (
     "/firefox/",
-    "/contribute/",
-    "/about/",
-    "/contact/",
     "/newsletter/",
-    "/privacy/",
 )
 
 # Sessions
@@ -924,9 +913,6 @@ RELEASE_NOTES_PATH = config("RELEASE_NOTES_PATH", default=data_path("release_not
 RELEASE_NOTES_REPO = config("RELEASE_NOTES_REPO", default="https://github.com/mozilla/release-notes.git")
 RELEASE_NOTES_BRANCH = config("RELEASE_NOTES_BRANCH", default="master")
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r"^/([a-zA-Z-]+/)?(newsletter)/"
-
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -968,7 +954,6 @@ ignore_logger("django.security.DisallowedHost")
 PASSWORD_HASHERS = ["django.contrib.auth.hashers.PBKDF2PasswordHasher"]
 ADMINS = MANAGERS = config("ADMINS", parser=json.loads, default="[]")
 
-GMAP_API_KEY = config("GMAP_API_KEY", default="")
 STUB_ATTRIBUTION_HMAC_KEY = config("STUB_ATTRIBUTION_HMAC_KEY", default="")
 STUB_ATTRIBUTION_RATE = config("STUB_ATTRIBUTION_RATE", default=str(1 if DEV else 0), parser=float)
 STUB_ATTRIBUTION_MAX_LEN = config("STUB_ATTRIBUTION_MAX_LEN", default="600", parser=int)
@@ -1173,7 +1158,7 @@ CSRF_FAILURE_VIEW = "bedrock.base.views.csrf_failure"
 
 # WAGTAIL =======================================================================================
 
-WAGTAIL_SITE_NAME = config("WAGTAIL_SITE_NAME", default="Mozilla.org")
+WAGTAIL_SITE_NAME = config("WAGTAIL_SITE_NAME", default="Firefox.com")
 
 # Disable use of Gravatar URLs.
 # Important: if this is enabled in the future, make sure you redact the

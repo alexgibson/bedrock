@@ -442,7 +442,7 @@ LANGUAGES = lazy(lazy_langs, list)()
 DEV_GEO_COUNTRY_CODE = config("DEV_GEO_COUNTRY_CODE", default="US")
 
 # Paths that don't require a locale code in the URL.
-# matches the first url component (e.g. mozilla.org/robots.txt)
+# matches the first url component (e.g. firefox.com/robots.txt)
 SUPPORTED_NONLOCALES = [
     # from redirects.urls
     "media",
@@ -1187,7 +1187,7 @@ CSRF_FAILURE_VIEW = "bedrock.base.views.csrf_failure"
 
 # WAGTAIL =======================================================================================
 
-WAGTAIL_SITE_NAME = config("WAGTAIL_SITE_NAME", default="Mozilla.org")
+WAGTAIL_SITE_NAME = config("WAGTAIL_SITE_NAME", default="Firefox.com")
 
 # Disable use of Gravatar URLs.
 # Important: if this is enabled in the future, make sure you redact the

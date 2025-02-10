@@ -452,16 +452,9 @@ SUPPORTED_NONLOCALES = [
     "robots.txt",
     ".well-known",
     "telemetry",  # redirect only
-    "webmaker",  # redirect only
     "healthz",  # Needed for k8s
     "readiness",  # Needed for k8s
     "healthz-cron",  # status dash
-    "2004",
-    "2005",
-    "2006",
-    "keymaster",
-    "microsummaries",
-    "xbl",
     "revision.txt",  # from root_files
     "locales",
     "csrf_403",
@@ -742,11 +735,7 @@ INSTALLED_APPS = [
 # page is exempt by default.
 VARY_NOCACHE_EXEMPT_URL_PREFIXES = (
     "/firefox/",
-    "/contribute/",
-    "/about/",
-    "/contact/",
     "/newsletter/",
-    "/privacy/",
 )
 
 # Sessions

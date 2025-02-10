@@ -22,10 +22,10 @@ from sentry_sdk.integrations.logging import LoggingIntegration
 ROOT_PATH = Path(__file__).resolve().parents[1]
 ROOT = str(ROOT_PATH)
 
-# add bedrock to path
+# add springfield to path
 sys.path.append(ROOT)
 
-# must import after adding bedrock to path
+# must import after adding springfield to path
 from springfield.base.config_manager import config  # noqa
 
 # these are the defaults, but explicit is better

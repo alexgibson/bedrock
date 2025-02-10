@@ -166,7 +166,7 @@ def test_git_diff():
     }
 
 
-# real output from git against the bedrock repo
+# real output from git against the springfield repo
 GIT_DIFF_TEST_DATA = """\
 A       docker/run.sh
 M       docs/javascript-libs.rst

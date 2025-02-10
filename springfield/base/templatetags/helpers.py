@@ -55,9 +55,9 @@ def url(viewname, *args, **kwargs):
 
     try:
         # First, look for URLs which only exist in the CMS - these are solely defined
-        # in bedrock/cms/cms_only_urls.py. These URLs are not listed in
+        # in springfield/cms/cms_only_urls.py. These URLs are not listed in
         # the main URLConf because they aren't served by the Django views in
-        # bedrock, but they will/must have matching routes set up in the CMS.
+        # Springfield, but they will/must have matching routes set up in the CMS.
         return reverse(
             viewname,
             urlconf="springfield.cms.cms_only_urls",

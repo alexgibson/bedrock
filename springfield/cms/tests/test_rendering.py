@@ -4,7 +4,7 @@
 
 # Test the way Wagtail pages are handled by lib.l10n_utils.render
 
-# The pytest fixtures used to run these tests are defined in bedrock/cms/tests/conftest.py
+# The pytest fixtures used to run these tests are defined in springfield/cms/tests/conftest.py
 
 from django.conf import settings
 

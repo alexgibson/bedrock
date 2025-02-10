@@ -31,7 +31,7 @@ from csp.contrib.rate_limiting import RateLimitedCSPMiddleware
 from lib.l10n_utils import is_root_path_with_no_language_clues
 from springfield.base import metrics
 from springfield.base.i18n import (
-    check_for_bedrock_language,
+    check_for_springfield_language,
     get_language_from_headers,
     normalize_language,
     path_needs_lang_code,
@@ -39,8 +39,8 @@ from springfield.base.i18n import (
 )
 
 
-class BedrockLangCodeFixupMiddleware(MiddlewareMixin):
-    """Middleware focused on prepping a viable, Bedrock-compatible language code
+class SpringfieldLangCodeFixupMiddleware(MiddlewareMixin):
+    """Middleware focused on prepping a viable, Springfield-compatible language code
     in the URL, ready for the rest of the i18n logic.
 
     It:
@@ -110,7 +110,7 @@ class BedrockLangCodeFixupMiddleware(MiddlewareMixin):
         request.locale = lang_code if lang_code else ""
 
 
-class BedrockLocaleMiddleware(DjangoLocaleMiddleware):
+class SpringfieldLocaleMiddleware(DjangoLocaleMiddleware):
     """Middleware that usually* wraps Django's own i18n middleware in order to
     ensure we normalize language codes - i..e. we ensure they are in
     mixed case we use, rather than Django's internal all-lowercase codes.
@@ -189,7 +189,7 @@ def simplified_check_for_language():
 
     @wraps(check_for_language)
     def simpler_check_for_language(lang_code):
-        return check_for_bedrock_language(lang_code)
+        return check_for_springfield_language(lang_code)
 
     trans_real.check_for_language = simpler_check_for_language
 
@@ -230,7 +230,7 @@ class BasicAuthMiddleware:
                             return None
 
             response = HttpResponse(status=401, content="<h1>Unauthorized. This site is in private demo mode.</h1>")
-            realm = settings.APP_NAME or "bedrock-demo"
+            realm = settings.APP_NAME or "springfield-demo"
             response["WWW-Authenticate"] = f'Basic realm="{realm}"'
             return response
 

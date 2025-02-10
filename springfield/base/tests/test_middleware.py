@@ -20,12 +20,12 @@ from markus.testing import MetricsMock
 from pytest_django.asserts import assertTemplateUsed
 
 from springfield.base.middleware import (
-    BedrockLangCodeFixupMiddleware,
-    BedrockLocaleMiddleware,
     CacheMiddleware,
     ClacksOverheadMiddleware,
     CSPMiddlewareByPathPrefix,
     HostnameMiddleware,
+    SpringfieldLangCodeFixupMiddleware,
+    SpringfieldLocaleMiddleware,
 )
 from springfield.base.tests import TestCase
 
@@ -248,7 +248,7 @@ class TestMetricsViewTimingMiddleware(DjangoTestCase):
         "?lang querystring for valid locale and further querystrings",
     ],
 )
-def test_BedrockLangCodeFixupMiddleware(
+def test_SpringfieldLangCodeFixupMiddleware(
     request_path,
     expected_status_code,
     expected_dest,
@@ -260,7 +260,7 @@ def test_BedrockLangCodeFixupMiddleware(
         HTTP_ACCEPT_LANGUAGE="de-DE,en-GB;q=0.4,en-US;q=0.2",
     )
 
-    middleware = BedrockLangCodeFixupMiddleware(get_response=HttpResponse)
+    middleware = SpringfieldLangCodeFixupMiddleware(get_response=HttpResponse)
 
     resp = middleware.process_request(request)
 
@@ -274,7 +274,7 @@ def test_BedrockLangCodeFixupMiddleware(
 
 
 @pytest.mark.django_db
-def test_BedrockLangCodeFixupMiddleware__no_lang_info_gets_locale_page__end_to_end(client):
+def test_SpringfieldLangCodeFixupMiddleware__no_lang_info_gets_locale_page__end_to_end(client):
     """Quick end-to-end test confirming the custom 404-locale template is rendered
     at the / path when there is no accept-language header"""
 
@@ -287,14 +287,14 @@ def test_BedrockLangCodeFixupMiddleware__no_lang_info_gets_locale_page__end_to_e
 
 @mock.patch("django.middleware.locale.LocaleMiddleware.process_request")
 @mock.patch("django.middleware.locale.LocaleMiddleware.process_response")
-def test_BedrockLocaleMiddleware_skips_super_call_if_path_is_for_root_and_has_no_lang_clues(
+def test_SpringfieldLocaleMiddleware_skips_super_call_if_path_is_for_root_and_has_no_lang_clues(
     mock_django_localemiddleware_process_response,
     mock_django_localemiddleware_process_request,
     rf,
 ):
     fake_request = rf.get("/")
     assert "HTTP_ACCEPT_LANGUAGE" not in fake_request
-    middleware = BedrockLocaleMiddleware(fake_request)
+    middleware = SpringfieldLocaleMiddleware(fake_request)
     middleware.process_request(fake_request)
     assert not mock_django_localemiddleware_process_request.called
 

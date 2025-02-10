@@ -10,16 +10,16 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page as WagtailBasePage
 
-from .base import AbstractBedrockCMSPage
+from .base import AbstractSpringfieldCMSPage
 
 
-class StructuralPage(AbstractBedrockCMSPage):
+class StructuralPage(AbstractSpringfieldCMSPage):
     """A page used to create a folder-like structure within a page tree,
     under/in which other pages live.
     Not directly viewable - will redirect to its parent page if called"""
 
     # There are minimal fields on this model - only exactly what we need
-    # `title` and `slug` fields come from Page->AbstractBedrockCMSPage
+    # `title` and `slug` fields come from Page->AbstractSpringfieldCMSPage
     is_structural_page = True
     # TO COME: guard rails on page hierarchy
     # subpage_types = []
@@ -40,7 +40,7 @@ class StructuralPage(AbstractBedrockCMSPage):
         return redirect(self.get_parent().get_full_url())
 
 
-class SimpleRichTextPage(AbstractBedrockCMSPage):
+class SimpleRichTextPage(AbstractSpringfieldCMSPage):
     """Simple page that renders a rich-text field, using our broadest set of
     allowed rich-text features.
 
@@ -52,7 +52,7 @@ class SimpleRichTextPage(AbstractBedrockCMSPage):
     """
 
     # 1. Define model fields
-    # `title` and `slug` fields come from Page->AbstractBedrockCMSPage
+    # `title` and `slug` fields come from Page->AbstractSpringfieldCMSPage
     content = RichTextField(
         blank=True,
         features=settings.WAGTAIL_RICHTEXT_FEATURES_FULL,
@@ -60,7 +60,7 @@ class SimpleRichTextPage(AbstractBedrockCMSPage):
     # Note there are no other custom fields here
 
     # 2. Define editing UI by extending the default field list
-    content_panels = AbstractBedrockCMSPage.content_panels + [
+    content_panels = AbstractSpringfieldCMSPage.content_panels + [
         FieldPanel("content"),
     ]
 
@@ -70,13 +70,13 @@ class SimpleRichTextPage(AbstractBedrockCMSPage):
     template = "cms/simple_rich_text_page.html"
 
 
-class ArticleIndexPageBase(AbstractBedrockCMSPage):
+class ArticleIndexPageBase(AbstractSpringfieldCMSPage):
     sub_title = models.CharField(
         max_length=255,
         blank=True,
     )
 
-    content_panels = AbstractBedrockCMSPage.content_panels + [
+    content_panels = AbstractSpringfieldCMSPage.content_panels + [
         FieldPanel("sub_title"),
     ]
 
@@ -84,7 +84,7 @@ class ArticleIndexPageBase(AbstractBedrockCMSPage):
         abstract = True
 
 
-class ArticleDetailPageBase(AbstractBedrockCMSPage):
+class ArticleDetailPageBase(AbstractSpringfieldCMSPage):
     image = models.ForeignKey(
         "cms.SpringfieldImage",
         null=True,
@@ -104,7 +104,7 @@ class ArticleDetailPageBase(AbstractBedrockCMSPage):
         features=settings.WAGTAIL_RICHTEXT_FEATURES_FULL,
     )
 
-    content_panels = AbstractBedrockCMSPage.content_panels + [
+    content_panels = AbstractSpringfieldCMSPage.content_panels + [
         FieldPanel("image"),
         FieldPanel("desc"),
         FieldPanel("content"),

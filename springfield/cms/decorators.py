@@ -160,7 +160,7 @@ def prefer_cms(
             # 2) Make extra sure this request is still annotated with any CMS-backed
             # locale versions that are available, so that we can populate the
             # language picker appropriately. (The annotation also happened via
-            # wagtail_serve() thanks to AbstractBedrockCMSPage._patch_request_for_bedrock
+            # wagtail_serve() thanks to AbstractSpringfieldCMSPage._patch_request_for_springfield
             request._locales_available_via_cms = getattr(
                 request,
                 "_locales_available_via_cms",

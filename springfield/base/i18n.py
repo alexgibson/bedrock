@@ -160,7 +160,7 @@ def get_best_language(accept_lang):
             return supported
 
 
-def check_for_bedrock_language(lang_code):
+def check_for_springfield_language(lang_code):
     return lang_code in [x[0] for x in settings.LANGUAGES]
 
 

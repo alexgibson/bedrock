@@ -78,7 +78,7 @@ class SpringfieldImage(AbstractImage):
         )
 
 
-class BedrockRendition(AbstractRendition):
+class SpringfieldRendition(AbstractRendition):
     image = models.ForeignKey(
         SpringfieldImage,
         on_delete=models.CASCADE,

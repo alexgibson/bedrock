@@ -99,7 +99,7 @@ def test_media(url, base_url):
 @pytest.mark.nondestructive
 def test_query_params(base_url):
     """Query params should be respected in the cache and springfield should respond appropriately
-    Based on the `firefox_mobile_faq` function in `bedrock/firefox/redirects.py`.
+    Based on the `firefox_mobile_faq` function in `springfield/firefox/redirects.py`.
     """
     url = f"{base_url}/mobile/faq/"
     resp = requests.head(url)

@@ -17,7 +17,7 @@ log = commonware.log.getLogger("base.util")
 
 def page(name, tmpl, decorators=None, url_name=None, ftl_files=None, **kwargs):
     """
-    Define a bedrock page.
+    Define a Springfield page.
 
     The URL name is the template name, with the extension stripped and the
     slashes changed to dots. So if tmpl="path/to/template.html", then the

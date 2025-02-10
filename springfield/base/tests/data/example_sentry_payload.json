@@ -120,7 +120,7 @@
           "stacktrace": {
             "frames": [
               {
-                "abs_path": "/Users/testharness/Code/bedrock/bedrock/utils/management/decorators.py",
+                "abs_path": "/Users/testharness/Code/springfield/springfield/utils/management/decorators.py",
                 "context_line": "            cls.old_handle(*args, **kwargs)",
                 "filename": "springfield/utils/management/decorators.py",
                 "function": "_handle",
@@ -153,7 +153,7 @@
                 }
               },
               {
-                "abs_path": "/Users/testharness/Code/bedrock/bedrock/base/management/commands/update_product_details_files.py",
+                "abs_path": "/Users/testharness/Code/springfield/springfield/base/management/commands/update_product_details_files.py",
                 "context_line": "        self.load_changes(options, self.file_storage.all_json_files())",
                 "filename": "springfield/base/management/commands/update_product_details_files.py",
                 "function": "handle",
@@ -299,8 +299,8 @@
     },
     "extra": {
       "sys.argv": [
-        "/Users/testharness/.pyenv/versions/bedrock39/bin/pytest",
-        "bedrock"
+        "/Users/testharness/.pyenv/versions/springfield39/bin/pytest",
+        "springfield"
       ]
     },
     "level": "error",
@@ -469,7 +469,7 @@
       ],
       "version": "1.5.7"
     },
-    "server_name": "bedrock",
+    "server_name": "springfield",
     "timestamp": "2022-03-15T11:31:32.496707Z",
     "transaction": "/en-US/download/all/"
   }

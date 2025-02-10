@@ -10,7 +10,7 @@ import pytest
 from wagtail.models import Page
 
 from springfield.cms.models import (
-    AbstractBedrockCMSPage,
+    AbstractSpringfieldCMSPage,
     SimpleRichTextPage,
     StructuralPage,
 )
@@ -45,7 +45,7 @@ def test_cache_control_headers_on_pages_with_view_restrictions(
     page = SimpleRichTextPage.objects.last()  # made by the minimal_site fixture
 
     # Confirm we're using the base page
-    assert isinstance(page, AbstractBedrockCMSPage)
+    assert isinstance(page, AbstractSpringfieldCMSPage)
 
     _relative_url = page.relative_url(minimal_site)
     assert _relative_url == "/en-US/test-page/"
@@ -101,7 +101,7 @@ def test_CMS_ALLOWED_PAGE_MODELS_controls_Page_can_create_at(
 
 
 @mock.patch("springfield.cms.models.base.get_locales_for_cms_page")
-def test__patch_request_for_bedrock__locales_available_via_cms(
+def test__patch_request_for_springfield__locales_available_via_cms(
     mock_get_locales_for_cms_page,
     minimal_site,
     rf,
@@ -112,15 +112,15 @@ def test__patch_request_for_bedrock__locales_available_via_cms(
 
     mock_get_locales_for_cms_page.return_value = ["en-US", "fr", "pt-BR"]
 
-    patched_request = page.specific._patch_request_for_bedrock(request)
+    patched_request = page.specific._patch_request_for_springfield(request)
     assert sorted(patched_request._locales_available_via_cms) == ["en-US", "fr", "pt-BR"]
 
 
-def test__patch_request_for_bedrock_annotates_is_cms_page(tiny_localized_site, rf):
+def test__patch_request_for_springfield_annotates_is_cms_page(tiny_localized_site, rf):
     request = rf.get("/some-path/that/is/irrelevant")
     en_us_homepage = Page.objects.get(locale__language_code="en-US", slug="home")
     en_us_test_page = en_us_homepage.get_children()[0]
     assert en_us_test_page.specific.__class__ == SimpleRichTextPage
 
-    patched_request = en_us_test_page.specific._patch_request_for_bedrock(request)
+    patched_request = en_us_test_page.specific._patch_request_for_springfield(request)
     assert patched_request.is_cms_page is True

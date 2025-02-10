@@ -10,7 +10,7 @@ import pytest
 from lib.l10n_utils import translation
 from springfield.base.i18n import (
     LocalePrefixPattern,
-    check_for_bedrock_language,
+    check_for_springfield_language,
     get_best_language,
     get_language_from_headers,
     normalize_language,
@@ -169,8 +169,8 @@ def test_local_prefix_pattern_fallback_mode():
         ("hsb", "Hornjoserbsce"),
     ]
 )
-def test_check_for_bedrock_language(lang_code, expected_result):
-    assert check_for_bedrock_language(lang_code) == expected_result
+def test_check_for_springfield_language(lang_code, expected_result):
+    assert check_for_springfield_language(lang_code) == expected_result
 
 
 @pytest.mark.parametrize("use_i18n", (True, False))

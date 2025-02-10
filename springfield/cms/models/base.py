@@ -15,7 +15,7 @@ from springfield.cms.utils import get_locales_for_cms_page
 
 
 @method_decorator(never_cache, name="serve_password_required_response")
-class AbstractBedrockCMSPage(WagtailBasePage):
+class AbstractSpringfieldCMSPage(WagtailBasePage):
     """Base page class for all Wagtail pages within Springfield
 
     Things we do to in particular are:
@@ -52,7 +52,7 @@ class AbstractBedrockCMSPage(WagtailBasePage):
             return super().can_create_at(parent)
         return False
 
-    def _patch_request_for_bedrock(self, request):
+    def _patch_request_for_springfield(self, request):
         "Add hints that help us integrate CMS pages with core Springfield logic"
 
         # Quick annotation to help us track the origin of the page
@@ -75,7 +75,7 @@ class AbstractBedrockCMSPage(WagtailBasePage):
         # Need to replicate behaviour in https://github.com/wagtail/wagtail/blob/stable/5.2.x/wagtail/models/__init__.py#L1928
         request.is_preview = False
 
-        request = self._patch_request_for_bedrock(request)
+        request = self._patch_request_for_springfield(request)
 
         response = self._render_with_fluent_string_support(request, *args, **kwargs)
 
@@ -84,5 +84,5 @@ class AbstractBedrockCMSPage(WagtailBasePage):
         return response
 
     def serve_preview(self, request, *args, **kwargs):
-        request = self._patch_request_for_bedrock(request)
+        request = self._patch_request_for_springfield(request)
         return self._render_with_fluent_string_support(request, *args, **kwargs)

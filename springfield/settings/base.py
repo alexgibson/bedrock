@@ -110,7 +110,7 @@ LOG_LEVEL = config(
     ),
 )
 HAS_SYSLOG = True
-SYSLOG_TAG = "http_app_bedrock"
+SYSLOG_TAG = "http_app_springfield"
 LOGGING_CONFIG = None
 
 # Internationalization.
@@ -505,7 +505,7 @@ GS_PROJECT_ID = config("GS_PROJECT_ID", default="")
 STORAGES = {
     # In production only the CMS/Editing deployment has write access
     # to the cloud storage bucket. As such, be careful if you introduce
-    # file uploads to other parts of Bedrock that use "default" storage -
+    # file uploads to other parts of springfield that use "default" storage -
     # it will not allow uploads for the Web deployment. You will have to
     # specify a different, dedicated storage backend for the file-upload process.
     "default": {
@@ -601,16 +601,16 @@ def get_app_name(hostname):
     """
     Get the app name from the host name.
 
-    The hostname in our deployments will be in the form `bedrock-{version}-{type}-{random-ID}`
+    The hostname in our deployments will be in the form `springfield-{version}-{type}-{random-ID}`
     where {version} is "dev", "stage", or "prod", and {type} is the process type
     (e.g. "web" or "clock"). Everywhere else the hostname won't be in this form and
     this helper will just return a default string.
     """
-    if hostname.startswith("bedrock-"):
+    if hostname.startswith("springfield-"):
         app_mode = hostname.split("-")[1]
-        return "bedrock-" + app_mode
+        return "springfield-" + app_mode
 
-    return "bedrock"
+    return "springfield"
 
 
 HOSTNAME = platform.node()
@@ -636,9 +636,9 @@ MIDDLEWARE = [
     # so that it can see the response has a vary on accept-language.
     "springfield.base.middleware.VaryNoCacheMiddleware",
     "springfield.base.middleware.BasicAuthMiddleware",
-    "springfield.redirects.middleware.RedirectsMiddleware",  # must come before BedrockLocaleMiddleware
-    "springfield.base.middleware.BedrockLangCodeFixupMiddleware",  # must come after RedirectsMiddleware
-    "springfield.base.middleware.BedrockLocaleMiddleware",  # wraps django.middleware.locale.LocaleMiddleware
+    "springfield.redirects.middleware.RedirectsMiddleware",  # must come before SpringfieldLocaleMiddleware
+    "springfield.base.middleware.SpringfieldLangCodeFixupMiddleware",  # must come after RedirectsMiddleware
+    "springfield.base.middleware.SpringfieldLocaleMiddleware",  # wraps django.middleware.locale.LocaleMiddleware
     "springfield.base.middleware.ClacksOverheadMiddleware",
     "springfield.base.middleware.MetricsStatusMiddleware",
     "springfield.base.middleware.MetricsViewTimingMiddleware",
@@ -715,7 +715,7 @@ VARY_NOCACHE_EXEMPT_URL_PREFIXES = (
 
 # Sessions
 #
-# NB: There are no sessions in Bedrock - it's currently stateless.
+# NB: There are no sessions in Springfield - it's currently stateless.
 # Django's messages framework is configured to use cookie storage,
 # not session storage - see MESSAGE_STORAGE below
 
@@ -825,7 +825,7 @@ EMAIL_BACKEND = config("EMAIL_BACKEND", default=default_email_backend)
 EMAIL_HOST = config("EMAIL_HOST", default="localhost")
 EMAIL_PORT = config("EMAIL_PORT", default="25", parser=int)
 EMAIL_USE_TLS = config("EMAIL_USE_TLS", default="false", parser=bool)
-EMAIL_SUBJECT_PREFIX = config("EMAIL_SUBJECT_PREFIX", default="[bedrock] ")
+EMAIL_SUBJECT_PREFIX = config("EMAIL_SUBJECT_PREFIX", default="[springfield] ")
 EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
 
@@ -1032,7 +1032,7 @@ if DEBUG or config("DISABLE_LOCAL_MARKUS", default="false", parser=bool):
 else:
     STATSD_HOST = config("STATSD_HOST", default=get_default_gateway_linux())
     STATSD_PORT = config("STATSD_PORT", default="8125", parser=int)
-    STATSD_NAMESPACE = config("APP_NAME", default="bedrock-local")
+    STATSD_NAMESPACE = config("APP_NAME", default="springfield-local")
 
     MARKUS_BACKENDS = [
         {
@@ -1213,7 +1213,7 @@ def lazy_wagtail_langs():
     enabled_wagtail_langs = [
         # Notes:
         # 1) The labels are only used internally so can be in English
-        # 2) These are the Bedrock-side lang codes. They are mapped to
+        # 2) These are the springfield-side lang codes. They are mapped to
         # Smartling-specific ones in the WAGTAIL_LOCALIZE_SMARTLING settings, below
         ("en-US", "English (US)"),
         ("de", "German"),
@@ -1315,7 +1315,7 @@ WAGTAILIMAGES_EXTENSIONS = [
 ]
 
 
-# Custom code in springfield.cms.models.base.AbstractBedrockCMSPage limits what page
+# Custom code in springfield.cms.models.base.AbstractSpringfieldCMSPage limits what page
 # models can be added as a child page.
 #
 # This means we can control when a page is available for use in the CMS, versus

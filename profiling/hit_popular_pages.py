@@ -20,21 +20,21 @@ import time
 import requests
 
 paths = [
-    "/en-US/firefox/",
-    "/en-US/firefox/121.0/system-requirements/",
-    "/en-US/firefox/download/all/",
-    "/en-US/firefox/android/124.0/releasenotes/",
-    "/en-US/firefox/channel/desktop/",
-    "/en-US/firefox/channel/desktop/?reason=manual-update",
-    "/en-US/firefox/developer/",
-    "/en-US/firefox/download/",
-    "/en-US/firefox/download/thanks/",
-    "/en-US/firefox/download/thanks/?s=direct",
-    "/en-US/firefox/enterprise/",
-    "/en-US/firefox/features/",
-    "/en-US/firefox/installer-help/?channel=release&installer_lang=en-US",
-    "/en-US/firefox/releases/",
-    "/en-US/firefox/set-as-default/thanks/",
+    "/en-US/",
+    "/en-US/121.0/system-requirements/",
+    "/en-US/download/all/",
+    "/en-US/android/124.0/releasenotes/",
+    "/en-US/channel/desktop/",
+    "/en-US/channel/desktop/?reason=manual-update",
+    "/en-US/developer/",
+    "/en-US/download/",
+    "/en-US/download/thanks/",
+    "/en-US/download/thanks/?s=direct",
+    "/en-US/enterprise/",
+    "/en-US/features/",
+    "/en-US/installer-help/?channel=release&installer_lang=en-US",
+    "/en-US/releases/",
+    "/en-US/set-as-default/thanks/",
 ]
 
 

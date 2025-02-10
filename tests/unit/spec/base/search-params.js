@@ -62,23 +62,23 @@ describe('search-params.js', function () {
             const sp = new _SearchParams(
                 'utm_dude=lebowski&utm_sport=bowling&source=getfirefox'
             );
-            const utms = sp.utmParamsFxA('/es-ES/firefox/sync/');
+            const utms = sp.utmParamsFxA('/es-ES/sync/');
             expect(utms.utm_dude).toEqual('lebowski');
             expect(utms.utm_campaign).toEqual(
                 'page referral - not part of a campaign'
             );
-            expect(utms.utm_content).toEqual('/firefox/sync/');
+            expect(utms.utm_content).toEqual('/sync/');
         });
 
         it('should return an object of string utm_ values for FxA', function () {
             const sp = new _SearchParams(
                 'utm_dude=lebowski&utm_strikes=10&source=getfirefox'
             );
-            const utms = sp.utmParamsFxA('/es-ES/firefox/sync/');
+            const utms = sp.utmParamsFxA('/es-ES/sync/');
             expect(utms.utm_dude).toEqual('lebowski');
             expect(utms.utm_strikes).not.toEqual(10);
             expect(utms.utm_strikes).toEqual('10');
-            expect(utms.utm_content).toEqual('/firefox/sync/');
+            expect(utms.utm_content).toEqual('/sync/');
         });
 
         it('should not override utm_campaign when set in URL', function () {

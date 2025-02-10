@@ -62,8 +62,7 @@ def get_ssllabs_results(base_url):
     "url",
     (
         "/",
-        "/firefox/",
-        "/firefox/download/",
+        "/download/",
         "/about/",
     ),
 )
@@ -117,7 +116,7 @@ def test_query_params(base_url):
 @pytest.mark.cdn
 @pytest.mark.nondestructive
 def test_cdn_cache(base_url):
-    full_url = "{}/{}{}".format(base_url, "en-US", "/firefox/download/")
+    full_url = "{}/{}{}".format(base_url, "en-US", "/download/")
 
     # hit the url once to make sure the cache is warm
     resp = requests.get(full_url, timeout=5)

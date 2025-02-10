@@ -8,7 +8,7 @@
 
 const { test, expect } = require('@playwright/test');
 const openPage = require('../scripts/open-page');
-const url = '/en-US/firefox/';
+const url = '/en-US/';
 
 test.describe(
     `${url} footer (mobile)`,
@@ -30,7 +30,7 @@ test.describe(
 
             // Change page language from /en-US/ to /de/
             await languageSelect.selectOption('de');
-            await page.waitForURL('**/de/firefox/?automation=true', {
+            await page.waitForURL('**/de/?automation=true', {
                 waitUntil: 'commit'
             });
 

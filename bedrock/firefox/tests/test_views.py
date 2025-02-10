@@ -434,14 +434,14 @@ class TestFirefoxDownload(TestCase):
 
 class TestFirefoxDownloadNoIndex(TestCase):
     def test_download_noindex(self):
-        # Scene 1 of /firefox/download/ should never contain a noindex tag.
+        # Scene 1 of /download/ should never contain a noindex tag.
         response = self.client.get("/en-US/download/")
         doc = pq(response.content)
         robots = doc('meta[name="robots"]')
         assert robots.length == 0
 
     def test_thanks_canonical(self):
-        # Scene 2 /firefox/download/thanks/ should always contain a noindex tag.
+        # Scene 2 /download/thanks/ should always contain a noindex tag.
         response = self.client.get("/en-US/download/thanks/")
         doc = pq(response.content)
         robots = doc('meta[name="robots"]')
@@ -464,13 +464,13 @@ class TestFirefoxGA(TestCase):
                 assert False, f"{link} does not contain attr data-cta-text or data-link-text"
 
     def test_firefox_home_GA(self):
-        req = RequestFactory().get("/en-US/firefox/")
+        req = RequestFactory().get("/en-US/")
         view = views.FirefoxHomeView.as_view()
         response = view(req)
         self.assert_ga_attr(response)
 
     def test_firefox_download_GA(self):
-        req = RequestFactory().get("/en-US/firefox/download/")
+        req = RequestFactory().get("/en-US/download/")
         view = views.DownloadView.as_view()
         response = view(req)
         self.assert_ga_attr(response)

@@ -475,7 +475,7 @@ EXTRA_INDEX_URLS = {
 
 # Pages that have different URLs for different locales, e.g.
 #   'firefox/private-browsing/': {
-#       'en-US': '/firefox/features/private-browsing/',
+#       'en-US': '/features/private-browsing/',
 #   },
 ALT_CANONICAL_PATHS = {}
 

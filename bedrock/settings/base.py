@@ -939,7 +939,7 @@ RELEASE_NOTES_REPO = config("RELEASE_NOTES_REPO", default="https://github.com/mo
 RELEASE_NOTES_BRANCH = config("RELEASE_NOTES_BRANCH", default="master")
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r"^/([a-zA-Z-]+/)?(newsletter)/"
+CORS_URLS_REGEX = r"^/newsletter/$"
 
 LOGGING = {
     "version": 1,

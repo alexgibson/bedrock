@@ -13,9 +13,9 @@ from django.views.generic import TemplateView
 
 from product_details import product_details
 
-from bedrock.base import metrics
-from bedrock.base.i18n import normalize_language, split_path_and_normalize_language
-from bedrock.settings.base import language_url_map_with_fallbacks
+from springfield.base import metrics
+from springfield.base.i18n import normalize_language, split_path_and_normalize_language
+from springfield.settings.base import language_url_map_with_fallbacks
 
 from .fluent import fluent_l10n, ftl_file_is_active, get_active_locales as ftl_active_locales
 

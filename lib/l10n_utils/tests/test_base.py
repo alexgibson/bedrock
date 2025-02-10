@@ -13,8 +13,8 @@ import pytest
 from django_jinja.backend import Jinja2
 from markus.testing import MetricsMock
 
-from bedrock.base.i18n import get_best_language, split_path_and_normalize_language
 from lib import l10n_utils
+from springfield.base.i18n import get_best_language, split_path_and_normalize_language
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test_files")
 TEMPLATE_DIRS = (os.path.join(ROOT, "templates"),)

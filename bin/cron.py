@@ -26,7 +26,7 @@ ROOT = str(ROOT_PATH)
 sys.path.append(ROOT)
 
 # must import after adding bedrock to path
-from bedrock.base.config_manager import config  # noqa
+from springfield.base.config_manager import config  # noqa
 
 # these are the defaults, but explicit is better
 JOB_DEFAULTS = {

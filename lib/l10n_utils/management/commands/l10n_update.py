@@ -6,7 +6,7 @@ from io import StringIO
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from bedrock.utils.git import GitRepo
+from springfield.utils.git import GitRepo
 
 FLUENT_L10N_UPDATE_PARAMS = {
     "Firefox.com": dict(

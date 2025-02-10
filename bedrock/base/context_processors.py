@@ -33,7 +33,7 @@ def globals(request):
 def canonical_path(request):
     """
     The canonical path can be overridden with a template variable like
-    l10n_utils.render(request, template_name, {'canonical_path': '/firefox/'})
+    l10n_utils.render(request, template_name, {'canonical_path': '/android/'})
     """
     lang = getattr(request, "locale", settings.LANGUAGE_CODE)
     url = getattr(request, "path", "/")

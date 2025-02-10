@@ -8,7 +8,7 @@
 
 const { test, expect } = require('@playwright/test');
 const openPage = require('../../../scripts/open-page');
-const url = '/en-US/firefox/installer-help/';
+const url = '/en-US/installer-help/';
 
 test.describe(
     `${url} page`,

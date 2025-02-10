@@ -8,7 +8,7 @@
 
 const { test, expect } = require('@playwright/test');
 const openPage = require('../scripts/open-page');
-const url = '/en-US/firefox/';
+const url = '/en-US/';
 
 test.describe(
     `${url} navigation (desktop)`,
@@ -64,7 +64,7 @@ test.describe(
 
             // Click Firefox desktop link
             await firefoxMenuLink.click();
-            await page.waitForURL('**/firefox/download/', {
+            await page.waitForURL('**/download/', {
                 waitUntil: 'commit'
             });
 
@@ -158,7 +158,7 @@ test.describe(
 
             // Click Firefox desktop link
             await firefoxMenuLink.click();
-            await page.waitForURL('**/firefox/download/', {
+            await page.waitForURL('**/download/', {
                 waitUntil: 'commit'
             });
 

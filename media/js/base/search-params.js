@@ -100,8 +100,8 @@
         }
 
         // remove locale from pathname and store result in utm_content
-        // e.g. https://www.mozilla.org/it/firefox/sync/?foo=bar should
-        // have utm_content value of /firefox/sync/.
+        // e.g. https://www.mozilla.org/it/sync/?foo=bar should
+        // have utm_content value of /sync/.
         var matches = pathname.match(/\/[\w-]+(\/.*)$/);
 
         if (matches && matches.length > 1) {

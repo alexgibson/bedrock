@@ -184,7 +184,7 @@ if (typeof window.Mozilla === 'undefined') {
                 }
             } else if (
                 link.href &&
-                link.href.indexOf('/firefox/download/thanks/') !== -1
+                link.href.indexOf('/download/thanks/') !== -1
             ) {
                 // Append stub data to direct-link data attributes on transitional links for old IE browsers (Issue #9350)
                 directLink = link.getAttribute('data-direct-link');
@@ -272,7 +272,7 @@ if (typeof window.Mozilla === 'undefined') {
             window.location.protocol +
             '//' +
             window.location.host +
-            '/en-US/firefox/stub_attribution_code/';
+            '/en-US/stub_attribution_code/';
         var xhr = new window.XMLHttpRequest();
         var timeoutValue = 10000;
         var timeout = setTimeout(
@@ -530,7 +530,7 @@ if (typeof window.Mozilla === 'undefined') {
     StubAttribution.isFirefoxDownloadThanks = function (location) {
         location =
             typeof location !== 'undefined' ? location : window.location.href;
-        return location.indexOf('/firefox/download/thanks/') > -1;
+        return location.indexOf('/download/thanks/') > -1;
     };
 
     /**

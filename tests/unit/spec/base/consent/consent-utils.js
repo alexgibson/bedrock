@@ -258,36 +258,30 @@ describe('isFirefoxDownloadThanks()', function () {
     it('should return true if URL is /thanks/', function () {
         expect(
             isFirefoxDownloadThanks(
-                'https://www.mozilla.org/en-US/firefox/download/thanks/'
+                'https://www.mozilla.org/en-US/download/thanks/'
             )
         ).toBeTrue();
         expect(
             isFirefoxDownloadThanks(
-                'https://www.allizom.org/en-US/firefox/download/thanks/'
+                'https://www.allizom.org/en-US/download/thanks/'
             )
         ).toBeTrue();
         expect(
             isFirefoxDownloadThanks(
-                'https://localhost:8000/en-US/firefox/download/thanks/'
+                'https://localhost:8000/en-US/download/thanks/'
             )
         ).toBeTrue();
     });
 
     it('should return false if URL is not /thanks/', function () {
         expect(
-            isFirefoxDownloadThanks(
-                'https://www.mozilla.org/en-US/firefox/download/'
-            )
+            isFirefoxDownloadThanks('https://www.mozilla.org/en-US/download/')
         ).toBeFalse();
         expect(
-            isFirefoxDownloadThanks(
-                'https://www.allizom.org/en-US/firefox/download/'
-            )
+            isFirefoxDownloadThanks('https://www.allizom.org/en-US/download/')
         ).toBeFalse();
         expect(
-            isFirefoxDownloadThanks(
-                'https://localhost:8000/en-US/firefox/download/'
-            )
+            isFirefoxDownloadThanks('https://localhost:8000/en-US/download/')
         ).toBeFalse();
         expect(isFirefoxDownloadThanks('')).toBeFalse();
         expect(isFirefoxDownloadThanks(null)).toBeFalse();
@@ -332,8 +326,8 @@ describe('isURLPermitted()', function () {
 
     it('should return false for pathnames not in the allow-list', function () {
         expect(isURLPermitted('/en-US/firefox/')).toBeFalse();
-        expect(isURLPermitted('/en-US/firefox/download/')).toBeFalse();
-        expect(isURLPermitted('/en-US/firefox/download/all/')).toBeFalse();
+        expect(isURLPermitted('/en-US/download/')).toBeFalse();
+        expect(isURLPermitted('/en-US/download/all/')).toBeFalse();
         expect(
             isURLPermitted('/en-US/firefox/124.0.2/releasenotes/')
         ).toBeFalse();

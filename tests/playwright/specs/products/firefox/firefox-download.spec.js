@@ -8,7 +8,7 @@
 
 const { test, expect } = require('@playwright/test');
 const openPage = require('../../../scripts/open-page');
-const url = '/en-US/firefox/download/';
+const url = '/en-US/download/';
 
 test.describe(
     `${url} page`,
@@ -35,7 +35,7 @@ test.describe(
 
             // Click primary download button.
             await downloadButton.click();
-            await page.waitForURL('**/firefox/download/thanks/', {
+            await page.waitForURL('**/download/thanks/', {
                 waitUntil: 'commit'
             });
 
@@ -78,7 +78,7 @@ test.describe(
 
             // Click primary download button.
             await downloadButton.click();
-            await page.waitForURL('**/firefox/download/thanks/', {
+            await page.waitForURL('**/download/thanks/', {
                 waitUntil: 'commit'
             });
 

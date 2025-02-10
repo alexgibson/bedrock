@@ -62,7 +62,7 @@ describe('TrackProductDownload.isValidDownloadURL', function () {
     });
     it('should not accept a random link to firefox.com as a valid URL', function () {
         const testRandomURL = TrackProductDownload.isValidDownloadURL(
-            'https://www.firefox.com/en-US/firefox/download/all/'
+            'https://www.firefox.com/en-US/download/all/'
         );
         expect(testRandomURL).toBe(false);
     });

@@ -81,7 +81,7 @@ def pytest_generate_tests(metafunc):
     if markexpr == "download":
         base_url = metafunc.config.getoption("base_url")
         if "download_path" in metafunc.fixturenames:
-            doc = get_web_page(f"{base_url}/en-US/firefox/download/thanks/")
+            doc = get_web_page(f"{base_url}/en-US/download/thanks/")
             urls = [a.attrib["href"] for a in doc("ul.download-list a")]
             # Bug 1266682 remove links to Play Store to avoid rate limiting in automation.
             skip_urls = ["https://play.google.com", "https://apps.apple.com"]
@@ -91,10 +91,10 @@ def pytest_generate_tests(metafunc):
 
         elif "download_path_l10n" in metafunc.fixturenames:
             urls = []
-            doc = get_web_page(f"{base_url}/en-US/firefox/download/all/")
+            doc = get_web_page(f"{base_url}/en-US/download/all/")
             product_urls = [a.attrib["href"] for a in doc("ul.c-product-list a")]
             # If product url links outside of /firefox/download/all/ ignore it. (e.g. testflight)
-            product_urls = [url for url in product_urls if url.startswith("/en-US/firefox/download/all/")]
+            product_urls = [url for url in product_urls if url.startswith("/en-US/download/all/")]
             for url in product_urls:
                 doc = get_web_page(f"{base_url}{url}")
                 platform_urls = [a.attrib["href"] for a in doc("ul.c-platform-list a")]

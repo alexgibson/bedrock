@@ -359,7 +359,7 @@ class TestStubAttributionCode(TestCase):
 @patch("bedrock.firefox.views.l10n_utils.render", return_value=HttpResponse())
 class TestFirefoxDownload(TestCase):
     def test_post(self, render_mock):
-        req = RequestFactory().post("/firefox/download/")
+        req = RequestFactory().post("/download/")
         req.locale = "en-US"
         view = views.DownloadView.as_view()
         resp = view(req)
@@ -367,7 +367,7 @@ class TestFirefoxDownload(TestCase):
 
     @patch.object(views, "ftl_file_is_active", lambda *x: True)
     def test_download_template(self, render_mock):
-        req = RequestFactory().get("/firefox/download/")
+        req = RequestFactory().get("/download/")
         req.locale = "en-US"
         view = views.DownloadView.as_view()
         view(req)
@@ -376,7 +376,7 @@ class TestFirefoxDownload(TestCase):
 
     @patch.object(views, "ftl_file_is_active", lambda *x: True)
     def test_thanks_template(self, render_mock):
-        req = RequestFactory().get("/firefox/download/thanks/")
+        req = RequestFactory().get("/download/thanks/")
         req.locale = "en-US"
         view = views.DownloadThanksView.as_view()
         view(req)
@@ -385,7 +385,7 @@ class TestFirefoxDownload(TestCase):
 
     @patch.object(views, "ftl_file_is_active", lambda *x: False)
     def test_download_basic_template(self, render_mock):
-        req = RequestFactory().get("/firefox/download/")
+        req = RequestFactory().get("/download/")
         req.locale = "de"
         view = views.DownloadView.as_view()
         view(req)
@@ -394,7 +394,7 @@ class TestFirefoxDownload(TestCase):
 
     @patch.object(views, "ftl_file_is_active", lambda *x: False)
     def test_thanks_basic_template(self, render_mock):
-        req = RequestFactory().get("/firefox/download/thanks/")
+        req = RequestFactory().get("/download/thanks/")
         req.locale = "de"
         view = views.DownloadThanksView.as_view()
         view(req)
@@ -402,18 +402,18 @@ class TestFirefoxDownload(TestCase):
         assert template == ["firefox/download/basic/thanks.html"]
 
     def test_thanks_redirect(self, render_mock):
-        req = RequestFactory().get("/firefox/download/?scene=2&dude=abides")
+        req = RequestFactory().get("/download/?scene=2&dude=abides")
         req.locale = "en-US"
         view = views.DownloadView.as_view()
         resp = view(req)
         assert resp.status_code == 301
-        assert resp["location"].endswith("/firefox/download/thanks/?scene=2&dude=abides")
+        assert resp["location"].endswith("/download/thanks/?scene=2&dude=abides")
 
     # begin /thanks?s=direct URL - issue 10520
 
     @patch.object(views, "ftl_file_is_active", lambda *x: True)
     def test_thanks_desktop_direct(self, render_mock):
-        req = RequestFactory().get("/firefox/download/thanks/?s=direct")
+        req = RequestFactory().get("/download/thanks/?s=direct")
         req.locale = "en-US"
         view = views.DownloadThanksView.as_view()
         view(req)
@@ -422,7 +422,7 @@ class TestFirefoxDownload(TestCase):
 
     @patch.object(views, "ftl_file_is_active", lambda *x: False)
     def test_thanks_basic_direct(self, render_mock):
-        req = RequestFactory().get("/firefox/download/thanks/?s=direct")
+        req = RequestFactory().get("/download/thanks/?s=direct")
         req.locale = "el"
         view = views.DownloadThanksView.as_view()
         view(req)
@@ -434,15 +434,15 @@ class TestFirefoxDownload(TestCase):
 
 class TestFirefoxDownloadNoIndex(TestCase):
     def test_download_noindex(self):
-        # Scene 1 of /firefox/download/ should never contain a noindex tag.
-        response = self.client.get("/en-US/firefox/download/")
+        # Scene 1 of /download/ should never contain a noindex tag.
+        response = self.client.get("/en-US/download/")
         doc = pq(response.content)
         robots = doc('meta[name="robots"]')
         assert robots.length == 0
 
     def test_thanks_canonical(self):
-        # Scene 2 /firefox/download/thanks/ should always contain a noindex tag.
-        response = self.client.get("/en-US/firefox/download/thanks/")
+        # Scene 2 /download/thanks/ should always contain a noindex tag.
+        response = self.client.get("/en-US/download/thanks/")
         doc = pq(response.content)
         robots = doc('meta[name="robots"]')
         assert robots.length == 1
@@ -464,13 +464,13 @@ class TestFirefoxGA(TestCase):
                 assert False, f"{link} does not contain attr data-cta-text or data-link-text"
 
     def test_firefox_home_GA(self):
-        req = RequestFactory().get("/en-US/firefox/")
+        req = RequestFactory().get("/en-US/")
         view = views.FirefoxHomeView.as_view()
         response = view(req)
         self.assert_ga_attr(response)
 
     def test_firefox_download_GA(self):
-        req = RequestFactory().get("/en-US/firefox/download/")
+        req = RequestFactory().get("/en-US/download/")
         view = views.DownloadView.as_view()
         response = view(req)
         self.assert_ga_attr(response)
@@ -479,6 +479,6 @@ class TestFirefoxGA(TestCase):
 # Issue 13253: Ensure that Firefox can continue to refer to this URL.
 class TestFirefoxSetAsDefaultThanks(TestCase):
     def test_firefox_set_as_default_thanks(self):
-        resp = self.client.get("/firefox/set-as-default/thanks/", follow=True)
+        resp = self.client.get("/set-as-default/thanks/", follow=True)
         assert resp.status_code == 200, "Ensure this URL continues to work, see issue 13253"
         assert resp.templates[0].name == "firefox/set-as-default/thanks.html"

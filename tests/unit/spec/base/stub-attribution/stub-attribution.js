@@ -435,15 +435,14 @@ describe('stub-attribution.js', function () {
     });
 
     describe('isFirefoxDownloadThanks', function () {
-        it('should return true if the page is firefox/download/thanks/', function () {
-            const url =
-                'https://www.firefox.com/en-US/firefox/download/thanks/';
+        it('should return true if the page is download/thanks/', function () {
+            const url = 'https://www.firefox.com/en-US/download/thanks/';
             expect(
                 Mozilla.StubAttribution.isFirefoxDownloadThanks(url)
             ).toBeTruthy();
 
             const url2 =
-                'https://www.firefox.com/en-US/firefox/download/thanks/?foo=bar';
+                'https://www.firefox.com/en-US/download/thanks/?foo=bar';
             expect(
                 Mozilla.StubAttribution.isFirefoxDownloadThanks(url2)
             ).toBeTruthy();
@@ -819,8 +818,7 @@ describe('stub-attribution.js', function () {
             'https://download.mozilla.org/?product=firefox-latest-ssl&os=win&lang=en-US';
         const win64Url =
             'https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US';
-        const transitionalUrl =
-            'https://www.firefox.com/firefox/download/thanks/';
+        const transitionalUrl = 'https://www.firefox.com/download/thanks/';
         const winStageUrl =
             'https://bouncer-bouncer.stage.mozaws.net/?product=firefox-latest-ssl&os=win&lang=en-US';
         const win64StageUrl =
@@ -872,7 +870,7 @@ describe('stub-attribution.js', function () {
             );
             Mozilla.StubAttribution.updateBouncerLinks(data);
             expect(document.getElementById('link-transitional').href).toEqual(
-                'https://www.firefox.com/firefox/download/thanks/'
+                'https://www.firefox.com/download/thanks/'
             );
 
             // prod download links

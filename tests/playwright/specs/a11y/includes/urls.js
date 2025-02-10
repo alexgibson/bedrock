@@ -11,22 +11,22 @@
  * Pages will be scanned at both desktop and mobile resolutions.
  */
 const desktopTestURLs = [
-    '/en-US/firefox/',
-    '/en-US/firefox/channel/android/',
-    '/en-US/firefox/channel/desktop/',
-    '/en-US/firefox/developer/',
-    '/en-US/firefox/download/',
-    '/en-US/firefox/download/all/',
-    '/en-US/firefox/download/thanks/',
-    '/en-US/firefox/enterprise/',
+    '/en-US/',
+    '/en-US/channel/android/',
+    '/en-US/channel/desktop/',
+    '/en-US/developer/',
+    '/en-US/download/',
+    '/en-US/download/all/',
+    '/en-US/download/thanks/',
+    '/en-US/enterprise/',
     '/en-US/firefox/releasenotes/',
-    '/en-US/privacy/websites/cookie-settings/'
+    '/en-US/websites/cookie-settings/'
 ];
 
 const mobileTestURLs = [
-    '/en-US/firefox/',
-    '/en-US/firefox/channel/android/',
-    '/en-US/firefox/download/'
+    '/en-US/',
+    '/en-US/channel/android/',
+    '/en-US/download/'
 ];
 
 module.exports = { desktopTestURLs, mobileTestURLs };

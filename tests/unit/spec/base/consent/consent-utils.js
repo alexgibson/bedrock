@@ -217,11 +217,13 @@ describe('getHostName()', function () {
         expect(getHostName('bugzilla.mozilla.org')).toEqual(expected);
     });
 
-    it('should return ".allizom.org" when hostname matches', function () {
-        const expected = '.allizom.org';
-        expect(getHostName('www.allizom.org')).toEqual(expected);
-        expect(getHostName('www-dev.allizom.org')).toEqual(expected);
-        expect(getHostName('www-demo1.allizom.org')).toEqual(expected);
+    it('should return ".springfield.moz.works" when hostname matches', function () {
+        const expected = '.springfield.moz.works';
+        expect(getHostName('www.springfield.moz.works')).toEqual(expected);
+        expect(getHostName('www-dev.springfield.moz.works')).toEqual(expected);
+        expect(getHostName('www-demo1.springfield.moz.works')).toEqual(
+            expected
+        );
     });
 
     it('should return null for other hostnames', function () {
@@ -263,7 +265,7 @@ describe('isFirefoxDownloadThanks()', function () {
         ).toBeTrue();
         expect(
             isFirefoxDownloadThanks(
-                'https://www.allizom.org/en-US/firefox/download/thanks/'
+                'https://www.springfield.moz.works/en-US/firefox/download/thanks/'
             )
         ).toBeTrue();
         expect(
@@ -281,7 +283,7 @@ describe('isFirefoxDownloadThanks()', function () {
         ).toBeFalse();
         expect(
             isFirefoxDownloadThanks(
-                'https://www.allizom.org/en-US/firefox/download/'
+                'https://www.springfield.moz.works/en-US/firefox/download/'
             )
         ).toBeFalse();
         expect(

@@ -61,7 +61,7 @@ class TestRobots(TestCase):
         self.assertFalse(self.view.get_context_data()["disallow_all"])
 
     def test_non_production_disallow_all_is_true(self):
-        self.view.request = self.rf.get("/", HTTP_HOST="www.allizom.org")
+        self.view.request = self.rf.get("/", HTTP_HOST="www.springfield.moz.works")
         self.assertTrue(self.view.get_context_data()["disallow_all"])
 
     def test_robots_no_redirect(self):

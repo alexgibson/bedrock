@@ -88,7 +88,7 @@ jobs:
         if: always()
         run: ./bin/integration_tests/functional_tests.sh
         env:
-          TEST_IMAGE: mozmeao/bedrock_test:${{ github.event.inputs.git_sha }}
+          TEST_IMAGE: mozmeao/springfield_test:${{ github.event.inputs.git_sha }}
 
       - name: Cleanup after functional integration tests
         if: always()

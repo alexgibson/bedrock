@@ -11,12 +11,12 @@
 # time of running), pointing to the source *Postgres* DB
 
 # Usage if you have DATABASE_URL in your Environment:
-# cd /path/to/checkout/of/bedrock/
+# cd /path/to/checkout/of/springfield/
 # ./bin/export-db-to-sqlite.sh /path/to/output.db
 
 # Usage if you do not have DATABASE_URL in your Environment:
-# cd /path/to/checkout/of/bedrock/
-# DATABASE_URL="postgres://user:pass@host:5432/bedrock" ./bin/export-db-to-sqlite.sh /path/to/output.db
+# cd /path/to/checkout/of/springfield/
+# DATABASE_URL="postgres://user:pass@host:5432/springfield" ./bin/export-db-to-sqlite.sh /path/to/output.db
 
 # If you want to run this in debug mode, insert `bash -ex` (without quotes) before ./bin/
 

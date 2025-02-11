@@ -227,7 +227,7 @@ describe('getHostName()', function () {
     it('should return null for other hostnames', function () {
         expect(getHostName('localhost')).toEqual(null);
         expect(getHostName('127.0.0.1')).toEqual(null);
-        expect(getHostName('bedrock-stage.gcp.moz.works')).toEqual(null);
+        expect(getHostName('springfield-stage.gcp.moz.works')).toEqual(null);
     });
 });
 

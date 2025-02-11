@@ -113,7 +113,11 @@ module.exports = {
                 target: process.env.WP_PROXY_URL || 'http://0.0.0.0:8080'
             }
         ],
-        watchFiles: ['media/**/*.js', 'media/**/*.scss', 'bedrock/**/*.html'],
+        watchFiles: [
+            'media/**/*.js',
+            'media/**/*.scss',
+            'springfield/**/*.html'
+        ],
         client: {
             logging: 'error',
             overlay: false

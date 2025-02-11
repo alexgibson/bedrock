@@ -20,10 +20,10 @@ select = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"bedrock/settings/__init__.py" = ["F405"]
+"springfield/settings/__init__.py" = ["F405"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["bedrock", "lib", "pages"]
+known-first-party = ["springfield", "lib", "pages"]
 section-order = ["future", "standard-library", "django", "third-party", "first-party", "local-folder"]
 combine-as-imports = true
 

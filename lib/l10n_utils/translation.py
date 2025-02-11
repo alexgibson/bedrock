@@ -24,7 +24,7 @@ def deactivate():
 def _fix_case(lang_code):
     """Convert lowercase language code to uppercase: en-us -> en-US
 
-    Note: this is less exhaustive than bedrock.base.i18n.normalize_language
+    Note: this is less exhaustive than springfield.base.i18n.normalize_language
     because we don't want it to potentially fall back to to a two-char lang code.
 
     Indeed, because we have normalize_language running earlier in the

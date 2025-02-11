@@ -56,7 +56,7 @@ jobs:
       - name: Run functional download tests
         run: ./bin/integration_tests/functional_tests.sh
         env:
-          TEST_IMAGE: mozmeao/bedrock_test:${{ github.sha }}
+          TEST_IMAGE: mozmeao/springfield_test:${{ github.sha }}
 
       - name: Cleanup after functional download tests
         run: ./bin/integration_tests/cleanup_after_functional_tests.sh

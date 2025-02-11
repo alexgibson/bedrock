@@ -7,7 +7,7 @@ from io import StringIO
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from bedrock.utils.git import GitRepo
+from springfield.utils.git import GitRepo
 
 GIT_COMMIT_EMAIL = "meao-bots+mozmarrobot@mozilla.com"
 GIT_COMMIT_NAME = "MozMEAO Bot"

@@ -10,8 +10,8 @@ from django.test import RequestFactory, override_settings
 
 from django_jinja.backend import Jinja2
 
-from bedrock.base.tests import TestCase
 from lib.l10n_utils import render, render_to_string
+from springfield.base.tests import TestCase
 
 ROOT_PATH = Path(__file__).with_name("test_files")
 ROOT = str(ROOT_PATH)
@@ -64,7 +64,7 @@ class TestLocaleTemplates(TestCase):
         render(request, "firefox/download.html", {"active_locales": ["en-US"]})
         django_render.assert_called_with(request, "firefox/download.html", ANY)
 
-    def test_bedrock_enUS_render(self, django_render):
+    def test_springfield_enUS_render(self, django_render):
         """
         en-US requests with a locale-specific template should render the
         locale-specific template.
@@ -86,7 +86,7 @@ class TestLocaleTemplates(TestCase):
         render(request, "firefox/download.html", {"active_locales": ["de"]})
         django_render.assert_called_with(request, "firefox/download.html", ANY)
 
-    def test_bedrock_locale_render(self, django_render):
+    def test_springfield_locale_render(self, django_render):
         """
         Non en-US requests with a locale-specific template should render the
         locale-specific template.

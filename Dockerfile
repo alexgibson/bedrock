@@ -84,7 +84,7 @@ COPY manage.py LICENSE newrelic.ini ./
 
 # changes more frequently
 COPY ./docker ./docker
-COPY ./bedrock ./bedrock
+COPY ./springfield ./springfield
 COPY ./l10n ./l10n
 COPY ./media ./media
 

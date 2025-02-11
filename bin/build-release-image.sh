@@ -17,9 +17,9 @@ fi
 # we have to do this even if we didn't build a new image so that
 # the latest and git-tag tags are pushed
 if [[ "$1" == "--push" ]]; then
-    docker/bin/push2dockerhub.sh mozmeao/bedrock_test
-    docker/bin/push2dockerhub.sh mozmeao/bedrock_assets
-    docker/bin/push2dockerhub.sh mozmeao/bedrock_code
-    docker/bin/push2dockerhub.sh mozmeao/bedrock_build
-    docker/bin/push2dockerhub.sh mozmeao/bedrock
+    docker/bin/push2dockerhub.sh mozmeao/springfield_test
+    docker/bin/push2dockerhub.sh mozmeao/springfield_assets
+    docker/bin/push2dockerhub.sh mozmeao/springfield_code
+    docker/bin/push2dockerhub.sh mozmeao/springfield_build
+    docker/bin/push2dockerhub.sh mozmeao/springfield
 fi

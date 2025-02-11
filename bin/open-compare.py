@@ -62,7 +62,7 @@ def write_stdout(out_str):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Open github compare view for bedrock.")
+    parser = argparse.ArgumentParser(description="Open github compare view for springfield.")
     parser.add_argument("-e", "--env", default="prod", choices=list(ENV_URLS), metavar="ENV", help="Environment: demo[1-3], stage, or prod (default)")
     parser.add_argument("-r", "--repo", default=DEFAULT_REPO, help="Repository. Default: " + DEFAULT_REPO)
     parser.add_argument("-b", "--branch", default=DEFAULT_BRANCH, help="Branch. Default: " + DEFAULT_BRANCH)

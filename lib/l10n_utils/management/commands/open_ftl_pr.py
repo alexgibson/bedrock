@@ -13,7 +13,7 @@ from django.utils.functional import cached_property
 
 from dirsync import sync
 
-from bedrock.utils import github
+from springfield.utils import github
 
 from ._ftl_repo_base import FTLRepoCommand
 

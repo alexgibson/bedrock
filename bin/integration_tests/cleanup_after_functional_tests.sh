@@ -12,10 +12,10 @@ then
 fi
 
 # Copy artifacts from container to host to make them available for storage as artifacts
-docker cp "bedrock-${CI_JOB_ID}:/app/tests/results" "results-${CI_JOB_ID}"
+docker cp "springfield-${CI_JOB_ID}:/app/tests/results" "results-${CI_JOB_ID}"
 
 # Now that we copied artifact, remove container.
-docker rm "bedrock-${CI_JOB_ID}"
+docker rm "springfield-${CI_JOB_ID}"
 
 if [ "${DRIVER}" = "Remote" ]; then
     docker compose \
